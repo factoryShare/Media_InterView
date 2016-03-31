@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "QMTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    UIWindow *window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    window.backgroundColor = [UIColor grayColor];
+    self.window = window;
+    [self.window makeKeyAndVisible];
+    
+    QMTabBarController *tabC = [[QMTabBarController alloc]init];
+    self.window.rootViewController = tabC;
+    
+    QMLog(@"%@",[NSString getDeviceModel]) ;
+    
     return YES;
 }
 
