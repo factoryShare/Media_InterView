@@ -30,4 +30,14 @@
     btn.size = btn.currentBackgroundImage.size;
     return [[UIBarButtonItem alloc] initWithCustomView:btn];
 }
+
++ (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action normalImage:(NSString *)image {
+    UIButton *btn = [[UIButton alloc]init];
+    [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
+    // 设置图片
+    [btn setBackgroundImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
+    // 设置尺寸
+    btn.size = btn.currentBackgroundImage.size;
+    return [[UIBarButtonItem alloc] initWithCustomView:btn];
+}
 @end

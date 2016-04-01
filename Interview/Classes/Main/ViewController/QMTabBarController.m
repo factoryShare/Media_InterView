@@ -19,18 +19,24 @@
 @end
 
 @implementation QMTabBarController
++ (void)initialize
+{
+    UITabBar *bar = [UITabBar appearance];
+    [bar setBackgroundImage:[UIImage imageNamed:@"tabbar_bg"]];
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // 添加子控制器
-    [self setupChildVc: [[QMRecorderViewController alloc]init] title:@"录音" image:@"录音-未选中+透明底" selectedImage:@"录音-选中+透明底"];
+    [self setupChildVc: [[QMRecorderViewController alloc]init] title:@"录音" image:@"tabbar_recorder" selectedImage:@"tabbar_recorder_click"];
     
-    [self setupChildVc:[[QMManuscriptViewController alloc] init] title:@"稿件" image:@"稿件-未选中+透明底" selectedImage:@"稿件-选中+透明底"];
+    [self setupChildVc:[[QMManuscriptViewController alloc] init] title:@"稿件" image:@"tabbar_Manuscript" selectedImage:@"tabbar_Manuscript_click"];
     
-    [self setupChildVc:[[QMPlanViewController alloc] init] title:@"设置" image:@"设置-未选中+透明底" selectedImage:@"设置-选中+透明底"];
+    [self setupChildVc:[[QMPlanViewController alloc] init] title:@"策划" image:@"tabbar_plan" selectedImage:@"tabbar_plan_click"];
     
-    [self setupChildVc:[[QMPlanViewController alloc] init] title:@"设置" image:@"设置-未选中+透明底" selectedImage:@"设置-选中+透明底"];
+    [self setupChildVc:[[QMPlanViewController alloc] init] title:@"设置" image:@"tabbar_Setting" selectedImage:@"tabbar_Setting_click"];
 }
 
 /**
@@ -39,11 +45,20 @@
 - (void)setupChildVc:(UIViewController *)vc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage
 {
     // 设置文字和图片
-    vc.navigationItem.title = title;
+    vc.navigationItem.title = @"全媒体采访系统";
     vc.tabBarItem.title = title;
-    vc.tabBarItem.image = [UIImage imageNamed:image];
-    vc.tabBarItem.selectedImage = [UIImage imageNamed:selectedImage];
+    vc.tabBarItem.image = [[UIImage imageNamed:image] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    vc.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImage] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     
+    // 设置文字的样式
+    NSMutableDictionary *textAttrs = [NSMutableDictionary dictionary];
+    textAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];;
+    [vc.tabBarItem setTitleTextAttributes:textAttrs forState:UIControlStateNormal];
+
+    NSMutableDictionary *selectTextAttrs = [NSMutableDictionary dictionary];
+    selectTextAttrs[NSForegroundColorAttributeName] = [UIColor whiteColor];
+    [vc.tabBarItem setTitleTextAttributes:selectTextAttrs forState:UIControlStateSelected];
+
     // 包装一个导航控制器, 添加导航控制器为tabbarcontroller的子控制器
     QMNavigationController *nav = [[QMNavigationController alloc] initWithRootViewController:vc];
     [self addChildViewController:nav];
