@@ -2,7 +2,7 @@
 //  QMSettingViewController.h
 //  Interview
 //
-//  Created by Mr.Right on 16/3/31.
+//  Created by Mr.Right on 16/4/1.
 //  Copyright © 2016年 yonganbo. All rights reserved.
 //
 

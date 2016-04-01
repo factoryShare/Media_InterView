@@ -23,7 +23,10 @@
  *  显示已经录制的音频
  */
 - (void)showList {
-
+    UIViewController *vc = [[UIViewController alloc]init];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 /*

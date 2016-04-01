@@ -42,11 +42,12 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
     if (self.childViewControllers.count > 0) { // 如果push进来的不是第一个控制器
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:@"返回" forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"navigationButtonReturn"] forState:UIControlStateNormal];
-        [button setImage:[UIImage imageNamed:@"navigationButtonReturnClick"] forState:UIControlStateHighlighted];
-        button.size = CGSizeMake(70, 30);
+        UIButton *button = [[UIButton alloc]init];
+//        [button setTitle:@"返回" forState:UIControlStateNormal];
+//        [button setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateNormal];
+//        [button setImage:[UIImage imageNamed:@"nav_back"] forState:UIControlStateHighlighted];
+        [button setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:(UIControlStateNormal)];
+        button.size = button.currentBackgroundImage.size;
         // 让按钮内部的所有内容左对齐
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         //        [button sizeToFit];

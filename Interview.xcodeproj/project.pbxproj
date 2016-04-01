@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */; };
+		847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB921CAE76420041BAE3 /* QMPlanViewController.m */; };
+		847DEB961CAE76580041BAE3 /* QMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB951CAE76580041BAE3 /* QMSettingViewController.m */; };
 		84E3457B1CABFA87007A41A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 84E3457A1CABFA87007A41A2 /* main.m */; };
 		84E345861CABFA87007A41A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84E345851CABFA87007A41A2 /* Assets.xcassets */; };
 		84E345891CABFA87007A41A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E345871CABFA87007A41A2 /* LaunchScreen.storyboard */; };
@@ -57,9 +60,6 @@
 		84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDBF41CACBDB8007FD6E0 /* NSString+GetDeviceModel.m */; };
 		84ECDBF81CACBE16007FD6E0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */; };
 		84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */; };
-		84ECDC041CACC6D2007FD6E0 /* QMManuscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC031CACC6D2007FD6E0 /* QMManuscriptViewController.m */; };
-		84ECDC071CACC6F5007FD6E0 /* QMPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC061CACC6F5007FD6E0 /* QMPlanViewController.m */; };
-		84ECDC0A1CACC711007FD6E0 /* QMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC091CACC711007FD6E0 /* QMSettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +80,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		847DEB8E1CAE76180041BAE3 /* QMManuscriptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMManuscriptViewController.h; sourceTree = "<group>"; };
+		847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptViewController.m; sourceTree = "<group>"; };
+		847DEB911CAE76420041BAE3 /* QMPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPlanViewController.h; sourceTree = "<group>"; };
+		847DEB921CAE76420041BAE3 /* QMPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPlanViewController.m; sourceTree = "<group>"; };
+		847DEB941CAE76580041BAE3 /* QMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingViewController.h; sourceTree = "<group>"; };
+		847DEB951CAE76580041BAE3 /* QMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSettingViewController.m; sourceTree = "<group>"; };
 		84E345761CABFA87007A41A2 /* Interview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Interview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84E3457A1CABFA87007A41A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		84E345851CABFA87007A41A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -184,12 +190,6 @@
 		84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		84ECDBFF1CACC4EF007FD6E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
-		84ECDC021CACC6D2007FD6E0 /* QMManuscriptViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMManuscriptViewController.h; sourceTree = "<group>"; };
-		84ECDC031CACC6D2007FD6E0 /* QMManuscriptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptViewController.m; sourceTree = "<group>"; };
-		84ECDC051CACC6F5007FD6E0 /* QMPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPlanViewController.h; sourceTree = "<group>"; };
-		84ECDC061CACC6F5007FD6E0 /* QMPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPlanViewController.m; sourceTree = "<group>"; };
-		84ECDC081CACC711007FD6E0 /* QMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingViewController.h; sourceTree = "<group>"; };
-		84ECDC091CACC711007FD6E0 /* QMSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,8 +389,8 @@
 		84E345D41CAC04AD007A41A2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				84ECDC021CACC6D2007FD6E0 /* QMManuscriptViewController.h */,
-				84ECDC031CACC6D2007FD6E0 /* QMManuscriptViewController.m */,
+				847DEB8E1CAE76180041BAE3 /* QMManuscriptViewController.h */,
+				847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -422,8 +422,8 @@
 		84E345D81CAC04AD007A41A2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				84ECDC051CACC6F5007FD6E0 /* QMPlanViewController.h */,
-				84ECDC061CACC6F5007FD6E0 /* QMPlanViewController.m */,
+				847DEB911CAE76420041BAE3 /* QMPlanViewController.h */,
+				847DEB921CAE76420041BAE3 /* QMPlanViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -488,8 +488,8 @@
 		84E345E01CAC04AD007A41A2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				84ECDC081CACC711007FD6E0 /* QMSettingViewController.h */,
-				84ECDC091CACC711007FD6E0 /* QMSettingViewController.m */,
+				847DEB941CAE76580041BAE3 /* QMSettingViewController.h */,
+				847DEB951CAE76580041BAE3 /* QMSettingViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -805,7 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84E345CB1CAC0358007A41A2 /* AppDelegate.m in Sources */,
-				84ECDC0A1CACC711007FD6E0 /* QMSettingViewController.m in Sources */,
+				847DEB961CAE76580041BAE3 /* QMSettingViewController.m in Sources */,
 				84ECDBCD1CACBAA0007FD6E0 /* MJRefreshStateHeader.m in Sources */,
 				84ECDBC91CACBAA0007FD6E0 /* MJRefreshBackNormalFooter.m in Sources */,
 				84ECDBC31CACBAA0007FD6E0 /* MJRefreshFooter.m in Sources */,
@@ -821,8 +821,8 @@
 				84ECDBE81CACBB4D007FD6E0 /* FMDatabaseAdditions.m in Sources */,
 				84ECDBE71CACBB4D007FD6E0 /* FMDatabase.m in Sources */,
 				84ECDBC01CACBAA0007FD6E0 /* MJRefreshAutoFooter.m in Sources */,
-				84ECDC041CACC6D2007FD6E0 /* QMManuscriptViewController.m in Sources */,
 				84ECDBED1CACBB4D007FD6E0 /* MBProgressHUD+MJ.m in Sources */,
+				847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */,
 				84E345C91CAC0358007A41A2 /* UIBarButtonItem+Extension.m in Sources */,
 				84ECDBC81CACBAA0007FD6E0 /* MJRefreshBackGifFooter.m in Sources */,
 				84ECDBD11CACBAA0007FD6E0 /* UIScrollView+MJRefresh.m in Sources */,
@@ -833,7 +833,7 @@
 				84ECDBEA1CACBB4D007FD6E0 /* FMDatabaseQueue.m in Sources */,
 				84ECDBC21CACBAA0007FD6E0 /* MJRefreshComponent.m in Sources */,
 				84E345E31CAC04F0007A41A2 /* QMRecorderViewController.m in Sources */,
-				84ECDC071CACC6F5007FD6E0 /* QMPlanViewController.m in Sources */,
+				847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */,
 				84ECDBC61CACBAA0007FD6E0 /* MJRefreshAutoNormalFooter.m in Sources */,
 				84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */,
 				84ECDBEF1CACBB4D007FD6E0 /* MBProgressHUD.m in Sources */,
