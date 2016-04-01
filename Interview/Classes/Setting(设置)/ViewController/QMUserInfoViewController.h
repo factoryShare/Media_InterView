@@ -1,5 +1,5 @@
 //
-//  QMSettingViewController.h
+//  QMUserInfoViewController.h
 //  Interview
 //
 //  Created by Mr.Right on 16/4/1.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QMSettingViewController : UIViewController
+@interface QMUserInfoViewController : UIViewController
 
 @end

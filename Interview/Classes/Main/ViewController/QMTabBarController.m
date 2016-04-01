@@ -12,7 +12,7 @@
 #import "QMRecorderViewController.h"
 #import "QMManuscriptViewController.h"
 #import "QMPlanViewController.h"
-#import "QMPlanViewController.h"
+#import "QMSettingViewController.h"
 
 @interface QMTabBarController ()
 
@@ -36,7 +36,10 @@
     
     [self setupChildVc:[[QMPlanViewController alloc] init] title:@"策划" image:@"tabbar_plan" selectedImage:@"tabbar_plan_click"];
     
-    [self setupChildVc:[[QMPlanViewController alloc] init] title:@"设置" image:@"tabbar_Setting" selectedImage:@"tabbar_Setting_click"];
+    
+    UIStoryboard *settingSB = [UIStoryboard storyboardWithName:@"QMSettingViewController" bundle:nil];
+    QMSettingViewController *settingVC = [settingSB instantiateViewControllerWithIdentifier:@"QMSettingViewController"];
+    [self setupChildVc:settingVC title:@"设置" image:@"tabbar_Setting" selectedImage:@"tabbar_Setting_click"];
 }
 
 /**

@@ -1,5 +1,5 @@
 //
-//  QMSettingViewController.h
+//  QMSettingTableViewCell.h
 //  Interview
 //
 //  Created by Mr.Right on 16/4/1.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QMSettingViewController : UIViewController
+@interface QMSettingTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @end
