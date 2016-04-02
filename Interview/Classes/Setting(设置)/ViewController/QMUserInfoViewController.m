@@ -24,6 +24,7 @@
     self.title = @"userinfo";
     
     self.serviceTextField.text = @"114.112.100.68:8020";
+
 }
 
 - (IBAction)rememberInfo:(UIButton *)sender {
@@ -37,14 +38,20 @@
     }
 }
 
-- (IBAction)loginBtn:(id)sender {
-    [self signIn];
+- (IBAction)loginBtn:(UIButton*)sender {
+
+    if ([sender.titleLabel.text isEqualToString:@"登陆"]) {
+        [self signIn];
+        [sender setTitle:@"注销" forState:(UIControlStateNormal)];
+    } else if ([sender.titleLabel.text isEqualToString:@"注销"]) {
+        [sender setTitle:@"登陆" forState:(UIControlStateNormal)];
+        [self logOut];
+    }
 }
 
 - (void)signIn
 {   //@"http://114.112.100.68:8020/Account/Login"
     NSString *path = [NSString stringWithFormat:@"http://%@/Account/Login",_serviceTextField.text];
-    QMLog(@"%@",path);
     
     [[NetWorking shareNetWork]postURL:[NSURL URLWithString:path] loginName:_accountTextField.text loginPassWord:_passwordTextField.text];
     
@@ -53,7 +60,9 @@
 
 - (void)logOut
 {
+    _serviceTextField.text = nil;
     _passwordTextField.text = nil;
+    _accountTextField.text = nil;
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *signIn = @"losed";
     [user setObject:signIn forKey:@"signIn"];
