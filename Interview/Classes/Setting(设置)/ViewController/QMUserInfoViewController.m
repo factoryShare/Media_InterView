@@ -7,9 +7,13 @@
 //
 
 #import "QMUserInfoViewController.h"
+#import "NetWorking.h"
 
 @interface QMUserInfoViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextField *serviceTextField;
+@property (weak, nonatomic) IBOutlet UITextField *accountTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @end
 
 @implementation QMUserInfoViewController
@@ -18,21 +22,68 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"userinfo";
+    
+    self.serviceTextField.text = @"114.112.100.68:8020";
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)rememberInfo:(UIButton *)sender {
+    static BOOL isSelect = YES;
+    if (isSelect) {
+        sender.backgroundColor = [UIColor greenColor];
+         isSelect = NO;
+    } else {
+        sender.backgroundColor = [UIColor redColor];
+        isSelect = YES;
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)loginBtn:(id)sender {
+    [self signIn];
 }
-*/
+
+- (void)signIn
+{   //@"http://114.112.100.68:8020/Account/Login"
+    NSString *path = [NSString stringWithFormat:@"http://%@/Account/Login",_serviceTextField.text];
+    QMLog(@"%@",path);
+    
+    [[NetWorking shareNetWork]postURL:[NSURL URLWithString:path] loginName:_accountTextField.text loginPassWord:_passwordTextField.text];
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(tokenTaking:) name:@"token" object:nil];
+}
+
+- (void)logOut
+{
+    _passwordTextField.text = nil;
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *signIn = @"losed";
+    [user setObject:signIn forKey:@"signIn"];
+    [user setObject:_passwordTextField.text forKey:@"password"];
+}
+
+- (void)tokenTaking:(NSNotification *)notification
+{
+    UIAlertView *alertView;
+    if (notification.object){
+        alertView = [[UIAlertView alloc] initWithTitle:@"提示"
+                                               message:@"登陆成功"
+                                              delegate:nil
+                                     cancelButtonTitle:@"确定"
+                                     otherButtonTitles:nil
+                     , nil];
+    }
+    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
+    NSString *signIn = @"succeed";
+    [user setObject:signIn forKey:@"signIn"];
+    [user setObject:_serviceTextField.text forKey:@"address"];
+    [user setObject:_accountTextField.text forKey:@"userName"];
+    [user setObject:_passwordTextField.text forKey:@"password"];
+    
+    [alertView show];
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
 
 @end

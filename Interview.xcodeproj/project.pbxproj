@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */; };
 		847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB921CAE76420041BAE3 /* QMPlanViewController.m */; };
+		848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E18651CAF46DB0097C487 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E186A1CAF4CC50097C487 /* NetWorking.m */; };
 		84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE482E1CAEBC500012B584 /* QMSettingTableViewCell.m */; };
 		84CE48321CAEC29A0012B584 /* QMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE48311CAEC29A0012B584 /* QMSettingViewController.m */; };
 		84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CE48331CAEC2A90012B584 /* QMSettingViewController.storyboard */; };
@@ -88,6 +90,11 @@
 		847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptViewController.m; sourceTree = "<group>"; };
 		847DEB911CAE76420041BAE3 /* QMPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPlanViewController.h; sourceTree = "<group>"; };
 		847DEB921CAE76420041BAE3 /* QMPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPlanViewController.m; sourceTree = "<group>"; };
+		848E18641CAF46DB0097C487 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		848E18651CAF46DB0097C487 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		848E18661CAF46DB0097C487 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		848E18691CAF4CC50097C487 /* NetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorking.h; sourceTree = "<group>"; };
+		848E186A1CAF4CC50097C487 /* NetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorking.m; sourceTree = "<group>"; };
 		84CE482D1CAEBC500012B584 /* QMSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingTableViewCell.h; sourceTree = "<group>"; };
 		84CE482E1CAEBC500012B584 /* QMSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSettingTableViewCell.m; sourceTree = "<group>"; };
 		84CE48301CAEC29A0012B584 /* QMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingViewController.h; sourceTree = "<group>"; };
@@ -228,6 +235,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		848E18631CAF46DB0097C487 /* GTM */ = {
+			isa = PBXGroup;
+			children = (
+				848E18641CAF46DB0097C487 /* GTMBase64.h */,
+				848E18651CAF46DB0097C487 /* GTMBase64.m */,
+				848E18661CAF46DB0097C487 /* GTMDefines.h */,
+			);
+			name = GTM;
+			path = ThiredPart/GTM;
+			sourceTree = "<group>";
+		};
+		848E18681CAF4CC50097C487 /* NetWorking */ = {
+			isa = PBXGroup;
+			children = (
+				848E18691CAF4CC50097C487 /* NetWorking.h */,
+				848E186A1CAF4CC50097C487 /* NetWorking.m */,
+			);
+			path = NetWorking;
+			sourceTree = "<group>";
+		};
 		84E3456D1CABFA87007A41A2 = {
 			isa = PBXGroup;
 			children = (
@@ -304,6 +331,7 @@
 			isa = PBXGroup;
 			children = (
 				84ECDB771CACB42A007FD6E0 /* ThiredPart */,
+				848E18631CAF46DB0097C487 /* GTM */,
 				84E345B01CAC0358007A41A2 /* Categrory */,
 				84E345B51CAC0358007A41A2 /* Model */,
 				84E345B61CAC0358007A41A2 /* Other */,
@@ -350,6 +378,7 @@
 			children = (
 				84ECDB761CACB26C007FD6E0 /* URLHeader.h */,
 				84ECDB751CACB25C007FD6E0 /* FontTool.h */,
+				848E18681CAF4CC50097C487 /* NetWorking */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -841,6 +870,7 @@
 				84ECDBE81CACBB4D007FD6E0 /* FMDatabaseAdditions.m in Sources */,
 				84ECDBE71CACBB4D007FD6E0 /* FMDatabase.m in Sources */,
 				84ECDBC01CACBAA0007FD6E0 /* MJRefreshAutoFooter.m in Sources */,
+				848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */,
 				84ECDBED1CACBB4D007FD6E0 /* MBProgressHUD+MJ.m in Sources */,
 				847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */,
 				84E345C91CAC0358007A41A2 /* UIBarButtonItem+Extension.m in Sources */,
@@ -849,6 +879,7 @@
 				84ECDBC41CACBAA0007FD6E0 /* MJRefreshHeader.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84ECDBD01CACBAA0007FD6E0 /* UIScrollView+MJExtension.m in Sources */,
+				848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */,
 				84ECDBCB1CACBAA0007FD6E0 /* MJRefreshGifHeader.m in Sources */,
 				84ECDBEA1CACBB4D007FD6E0 /* FMDatabaseQueue.m in Sources */,
 				84ECDBC21CACBAA0007FD6E0 /* MJRefreshComponent.m in Sources */,
