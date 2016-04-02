@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "5A13D3B151A0A48B6350892BB2D022E889839B7C",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "4c590678-422f-4de9-a8bf-73e764933f02++6983" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5A13D3B151A0A48B6350892BB2D022E889839B7C" : 0,
+    "4c590678-422f-4de9-a8bf-73e764933f02++6983" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4244C480-E66A-4B59-AF3C-6BEDD71DD995",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5A13D3B151A0A48B6350892BB2D022E889839B7C" : "Media_InterView\/",
+    "4c590678-422f-4de9-a8bf-73e764933f02++6983" : "Media_InterView\/Interview\/Classes\/Main\/ThiredPart\/Reachability+LZ\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Interview",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Interview.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/192.168.1.30\/yufu365\/ios",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4c590678-422f-4de9-a8bf-73e764933f02++6983"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/factoryShare\/Media_InterView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A13D3B151A0A48B6350892BB2D022E889839B7C"
+    }
+  ]
+}
