@@ -30,9 +30,6 @@ static NetWorking *_netWorking =nil;
     
 }
 
-
-
-
 - (void)postURL:(NSURL *)url loginName:(NSString *)name loginPassWord:(NSString *)password
 {
     NSMutableString  *body=[NSMutableString string];
@@ -81,8 +78,8 @@ static NetWorking *_netWorking =nil;
     [self.responseData appendData:data];
     NSError *error;
     NSDictionary *dict=[NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingMutableContainers error:&error];
-    QMLog(@"%@ ",[[dict objectForKey:@"Data"] objectForKey:@"UserName"]);
-    QMLog(@"%@ ",[[dict objectForKey:@"Data"] objectForKey:@"Token"]);
+//    QMLog(@"%@ ",[[dict objectForKey:@"Data"] objectForKey:@"UserName"]);
+//    QMLog(@"%@ ",[[dict objectForKey:@"Data"] objectForKey:@"Token"]);
     
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
     NSString *userName = [[dict objectForKey:@"Data"] objectForKey:@"UserName"];

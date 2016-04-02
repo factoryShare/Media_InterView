@@ -30,7 +30,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     // 添加子控制器
-    [self setupChildVc: [[QMRecorderViewController alloc]init] title:@"录音" image:@"tabbar_recorder" selectedImage:@"tabbar_recorder_click"];
+    UIStoryboard *recorderSB = [UIStoryboard storyboardWithName:@"QMRecorderViewController" bundle:nil];
+    QMSettingViewController *recorderVC = [recorderSB instantiateViewControllerWithIdentifier:@"QMRecorderViewController"];
+    [self setupChildVc: recorderVC title:@"录音" image:@"tabbar_recorder" selectedImage:@"tabbar_recorder_click"];
     
     [self setupChildVc:[[QMManuscriptViewController alloc] init] title:@"稿件" image:@"tabbar_Manuscript" selectedImage:@"tabbar_Manuscript_click"];
     

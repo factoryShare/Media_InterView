@@ -11,6 +11,8 @@
 		847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB921CAE76420041BAE3 /* QMPlanViewController.m */; };
 		848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E18651CAF46DB0097C487 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E186A1CAF4CC50097C487 /* NetWorking.m */; };
+		84B80F501CB00319002E3870 /* QMRecorderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B80F4F1CB00319002E3870 /* QMRecorderViewController.storyboard */; };
+		84B80F571CB01725002E3870 /* LZRecorderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B80F551CB01725002E3870 /* LZRecorderTool.m */; };
 		84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE482E1CAEBC500012B584 /* QMSettingTableViewCell.m */; };
 		84CE48321CAEC29A0012B584 /* QMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE48311CAEC29A0012B584 /* QMSettingViewController.m */; };
 		84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CE48331CAEC2A90012B584 /* QMSettingViewController.storyboard */; };
@@ -95,6 +97,9 @@
 		848E18661CAF46DB0097C487 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		848E18691CAF4CC50097C487 /* NetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorking.h; sourceTree = "<group>"; };
 		848E186A1CAF4CC50097C487 /* NetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorking.m; sourceTree = "<group>"; };
+		84B80F4F1CB00319002E3870 /* QMRecorderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QMRecorderViewController.storyboard; sourceTree = "<group>"; };
+		84B80F541CB01725002E3870 /* LZRecorderTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZRecorderTool.h; sourceTree = "<group>"; };
+		84B80F551CB01725002E3870 /* LZRecorderTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZRecorderTool.m; sourceTree = "<group>"; };
 		84CE482D1CAEBC500012B584 /* QMSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingTableViewCell.h; sourceTree = "<group>"; };
 		84CE482E1CAEBC500012B584 /* QMSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSettingTableViewCell.m; sourceTree = "<group>"; };
 		84CE48301CAEC29A0012B584 /* QMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingViewController.h; sourceTree = "<group>"; };
@@ -255,6 +260,15 @@
 			path = NetWorking;
 			sourceTree = "<group>";
 		};
+		84B80F511CB01725002E3870 /* RecorderAndPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				84B80F541CB01725002E3870 /* LZRecorderTool.h */,
+				84B80F551CB01725002E3870 /* LZRecorderTool.m */,
+			);
+			path = RecorderAndPlayer;
+			sourceTree = "<group>";
+		};
 		84E3456D1CABFA87007A41A2 = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +392,7 @@
 			children = (
 				84ECDB761CACB26C007FD6E0 /* URLHeader.h */,
 				84ECDB751CACB25C007FD6E0 /* FontTool.h */,
+				84B80F511CB01725002E3870 /* RecorderAndPlayer */,
 				848E18681CAF4CC50097C487 /* NetWorking */,
 			);
 			path = Tools;
@@ -496,6 +511,7 @@
 			children = (
 				84E345E11CAC04F0007A41A2 /* QMRecorderViewController.h */,
 				84E345E21CAC04F0007A41A2 /* QMRecorderViewController.m */,
+				84B80F4F1CB00319002E3870 /* QMRecorderViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -825,6 +841,7 @@
 				84ECDBEE1CACBB4D007FD6E0 /* MBProgressHUD.bundle in Resources */,
 				84ECDBEC1CACBB4D007FD6E0 /* 数据库.rtf in Resources */,
 				84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */,
+				84B80F501CB00319002E3870 /* QMRecorderViewController.storyboard in Resources */,
 				84CE48391CAEC5D60012B584 /* QMUserInfoViewController.xib in Resources */,
 				84ECDBCE1CACBAA0007FD6E0 /* MJRefresh.bundle in Resources */,
 			);
@@ -880,6 +897,7 @@
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84ECDBD01CACBAA0007FD6E0 /* UIScrollView+MJExtension.m in Sources */,
 				848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */,
+				84B80F571CB01725002E3870 /* LZRecorderTool.m in Sources */,
 				84ECDBCB1CACBAA0007FD6E0 /* MJRefreshGifHeader.m in Sources */,
 				84ECDBEA1CACBB4D007FD6E0 /* FMDatabaseQueue.m in Sources */,
 				84ECDBC21CACBAA0007FD6E0 /* MJRefreshComponent.m in Sources */,
