@@ -9,12 +9,13 @@
 #import "LZRecorderTool.h"
 #import <AVFoundation/AVAudioRecorder.h>
 #import <AVFoundation/AVAudioSession.h>
-//#import <CoreAudioKit/CoreAudioKit.h>
+#import "VoiceConverter.h"
 
 @interface LZRecorderTool ()
 @property(nonatomic,strong) AVAudioRecorder *recorder;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,copy) NSString *audioFileSavePath;
+@property(nonatomic,copy) NSString *amrFileSavePath;
 @property(nonatomic,copy) NSString *fileTime;
 
 @end
@@ -23,8 +24,9 @@
 
 - (void)startRecorde {
     if (![self.recorder isRecording]) {
-        [self.recorder record];
         self.timer.fireDate = [NSDate distantPast];// 开启定时器
+        
+        [self.recorder record];
     }
 }
 
@@ -45,13 +47,19 @@
     self.currentTime = self.recorder.currentTime;
     
     [self.recorder stop];
-    self.recorder = nil;
 
     self.timer = nil;
     self.audioPower = 0.0;
     [self audioPowerChanged];
     // 转化为 mp3格式
-    [self audio_PCMtoMP3];
+//    [self audio_PCMtoMP3];
+    // wav 转 amr∫
+    [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        _recorder = nil;
+
+    });
 
 }
 /**
@@ -88,8 +96,13 @@
         self.fileName = [self file];
 //        NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
         NSString *tempDir = NSTemporaryDirectory();
+        // 初始化格式地址
         NSString *path = [tempDir stringByAppendingPathComponent:self.fileName];
         self.audioFileSavePath = path;
+        // amr 地址
+        NSString *armName = [NSString stringWithFormat:@"%@%@",self.fileTime,@".amr"];
+        self.amrFileSavePath = [tempDir stringByAppendingPathComponent:armName];
+
         _recorder = [[AVAudioRecorder alloc]initWithURL:[NSURL URLWithString: path] settings:[self getAudioSetting] error:nil];
         _recorder.meteringEnabled = YES;
         [_recorder prepareToRecord];
@@ -105,7 +118,7 @@
     forma.dateFormat = @"yyyymmddhhmmss";
     NSString *time = [forma stringFromDate:[NSDate date]];
     
-    NSString *file = [NSString stringWithFormat:@"%@.caf",time];
+    NSString *file = [NSString stringWithFormat:@"%@.wav",time];
     
     self.fileTime = time;
     
@@ -129,6 +142,8 @@
     //是否使用浮点数采样
     [dicM setObject:@(YES) forKey:AVLinearPCMIsFloatKey];
     //....其他设置等
+#warning setting2
+    //....其他设置等
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] init];
     //录音格式 无法使用
     [settings setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey: AVFormatIDKey];
@@ -140,8 +155,19 @@
     //[recordSettings setValue :[NSNumber numberWithInt:16] forKey: AVLinearPCMBitDepthKey];
     //音频质量,采样质量
     [settings setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
-
-    return settings;
+#warning setting3
+    NSDictionary *recordSetting = [[NSDictionary alloc] initWithObjectsAndKeys:
+                                   [NSNumber numberWithFloat: 8000.0],AVSampleRateKey, //采样率
+                                   [NSNumber numberWithInt: kAudioFormatLinearPCM],AVFormatIDKey,
+                                   [NSNumber numberWithInt:16],AVLinearPCMBitDepthKey,//采样位数 默认 16
+                                   [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,//通道的数目
+                                   //                                   [NSNumber numberWithBool:NO],AVLinearPCMIsBigEndianKey,//大端还是小端 是内存的组织方式
+                                   //                                   [NSNumber numberWithBool:NO],AVLinearPCMIsFloatKey,//采样信号是整数还是浮点数
+                                   //                                   [NSNumber numberWithInt: AVAudioQualityMedium],AVEncoderAudioQualityKey,//音频编码质量
+                                   nil];
+    
+    
+    return recordSetting;
 }
 /**
  *  监测声波变化
