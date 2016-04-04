@@ -36,7 +36,10 @@
     
     [self setupChildVc:[[QMManuscriptViewController alloc] init] title:@"稿件" image:@"tabbar_Manuscript" selectedImage:@"tabbar_Manuscript_click"];
     
-    [self setupChildVc:[[QMPlanViewController alloc] init] title:@"策划" image:@"tabbar_plan" selectedImage:@"tabbar_plan_click"];
+    
+    QMPlanViewController *planVC = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"QMPlanViewController"];
+    
+    [self setupChildVc:planVC title:@"策划" image:@"tabbar_plan" selectedImage:@"tabbar_plan_click"];
     
     
     UIStoryboard *settingSB = [UIStoryboard storyboardWithName:@"QMSettingViewController" bundle:nil];

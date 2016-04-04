@@ -73,6 +73,13 @@
 		84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDBF41CACBDB8007FD6E0 /* NSString+GetDeviceModel.m */; };
 		84ECDBF81CACBE16007FD6E0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */; };
 		84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */; };
+		A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */; };
+		A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */; };
+		A5D6B5B91CB2360600B6E845 /* PlanListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5B81CB2360600B6E845 /* PlanListVC.m */; };
+		A5D6B5BC1CB23B8000B6E845 /* PlanViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5BB1CB23B8000B6E845 /* PlanViewCell.m */; };
+		A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5BE1CB244AB00B6E845 /* PlanModel.m */; };
+		A5D6B5C21CB2565100B6E845 /* PlanItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5C11CB2565100B6E845 /* PlanItemCell.m */; };
+		A5D6B5C51CB2570A00B6E845 /* PlanItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5C41CB2570A00B6E845 /* PlanItemModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -229,6 +236,19 @@
 		84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		84ECDBFF1CACC4EF007FD6E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
+		A5D6B5B41CB235A100B6E845 /* NewPlanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPlanVC.h; sourceTree = "<group>"; };
+		A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPlanVC.m; sourceTree = "<group>"; };
+		A5D6B5B71CB2360600B6E845 /* PlanListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanListVC.h; sourceTree = "<group>"; };
+		A5D6B5B81CB2360600B6E845 /* PlanListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanListVC.m; sourceTree = "<group>"; };
+		A5D6B5BA1CB23B8000B6E845 /* PlanViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlanViewCell.h; path = "Interview/Classes/Plan(策划)/ViewController/PlanViewCell.h"; sourceTree = SOURCE_ROOT; };
+		A5D6B5BB1CB23B8000B6E845 /* PlanViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlanViewCell.m; path = "Interview/Classes/Plan(策划)/ViewController/PlanViewCell.m"; sourceTree = SOURCE_ROOT; };
+		A5D6B5BD1CB244AB00B6E845 /* PlanModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlanModel.h; path = "Interview/Classes/Plan(策划)/ViewController/PlanModel.h"; sourceTree = SOURCE_ROOT; };
+		A5D6B5BE1CB244AB00B6E845 /* PlanModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlanModel.m; path = "Interview/Classes/Plan(策划)/ViewController/PlanModel.m"; sourceTree = SOURCE_ROOT; };
+		A5D6B5C01CB2565100B6E845 /* PlanItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlanItemCell.h; path = "Interview/Classes/Plan(策划)/ViewController/PlanItemCell.h"; sourceTree = SOURCE_ROOT; };
+		A5D6B5C11CB2565100B6E845 /* PlanItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlanItemCell.m; path = "Interview/Classes/Plan(策划)/ViewController/PlanItemCell.m"; sourceTree = SOURCE_ROOT; };
+		A5D6B5C31CB2570A00B6E845 /* PlanItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlanItemModel.h; path = "Interview/Classes/Plan(策划)/ViewController/PlanItemModel.h"; sourceTree = SOURCE_ROOT; };
+		A5D6B5C41CB2570A00B6E845 /* PlanItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlanItemModel.m; path = "Interview/Classes/Plan(策划)/ViewController/PlanItemModel.m"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -523,6 +543,7 @@
 		84E345D51CAC04AD007A41A2 /* Plan(策划) */ = {
 			isa = PBXGroup;
 			children = (
+				A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */,
 				84E345D61CAC04AD007A41A2 /* Model */,
 				84E345D71CAC04AD007A41A2 /* View */,
 				84E345D81CAC04AD007A41A2 /* ViewController */,
@@ -533,6 +554,10 @@
 		84E345D61CAC04AD007A41A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5D6B5BD1CB244AB00B6E845 /* PlanModel.h */,
+				A5D6B5BE1CB244AB00B6E845 /* PlanModel.m */,
+				A5D6B5C31CB2570A00B6E845 /* PlanItemModel.h */,
+				A5D6B5C41CB2570A00B6E845 /* PlanItemModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +565,10 @@
 		84E345D71CAC04AD007A41A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A5D6B5BA1CB23B8000B6E845 /* PlanViewCell.h */,
+				A5D6B5BB1CB23B8000B6E845 /* PlanViewCell.m */,
+				A5D6B5C01CB2565100B6E845 /* PlanItemCell.h */,
+				A5D6B5C11CB2565100B6E845 /* PlanItemCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -549,6 +578,10 @@
 			children = (
 				847DEB911CAE76420041BAE3 /* QMPlanViewController.h */,
 				847DEB921CAE76420041BAE3 /* QMPlanViewController.m */,
+				A5D6B5B41CB235A100B6E845 /* NewPlanVC.h */,
+				A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */,
+				A5D6B5B71CB2360600B6E845 /* PlanListVC.h */,
+				A5D6B5B81CB2360600B6E845 /* PlanListVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -907,6 +940,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */,
 				84E345891CABFA87007A41A2 /* LaunchScreen.storyboard in Resources */,
 				84E345861CABFA87007A41A2 /* Assets.xcassets in Resources */,
 				84ECDBEE1CACBB4D007FD6E0 /* MBProgressHUD.bundle in Resources */,
@@ -944,6 +978,7 @@
 				84ECDBCD1CACBAA0007FD6E0 /* MJRefreshStateHeader.m in Sources */,
 				84ECDBC91CACBAA0007FD6E0 /* MJRefreshBackNormalFooter.m in Sources */,
 				84ECDBC31CACBAA0007FD6E0 /* MJRefreshFooter.m in Sources */,
+				A5D6B5C51CB2570A00B6E845 /* PlanItemModel.m in Sources */,
 				84ECDB8F1CACB7BA007FD6E0 /* AFSecurityPolicy.m in Sources */,
 				84CE48321CAEC29A0012B584 /* QMSettingViewController.m in Sources */,
 				84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */,
@@ -954,6 +989,7 @@
 				84E345CA1CAC0358007A41A2 /* UIView+Extension.m in Sources */,
 				84ECDBC51CACBAA0007FD6E0 /* MJRefreshAutoGifFooter.m in Sources */,
 				84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */,
+				A5D6B5BC1CB23B8000B6E845 /* PlanViewCell.m in Sources */,
 				84ECDBC71CACBAA0007FD6E0 /* MJRefreshAutoStateFooter.m in Sources */,
 				84ECDB901CACB7BA007FD6E0 /* AFURLRequestSerialization.m in Sources */,
 				84A21B501CB0D4D400440905 /* VoiceConverter.mm in Sources */,
@@ -967,12 +1003,16 @@
 				84ECDBC81CACBAA0007FD6E0 /* MJRefreshBackGifFooter.m in Sources */,
 				84ECDBD11CACBAA0007FD6E0 /* UIScrollView+MJRefresh.m in Sources */,
 				84ECDBC41CACBAA0007FD6E0 /* MJRefreshHeader.m in Sources */,
+				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,
+				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84ECDBD01CACBAA0007FD6E0 /* UIScrollView+MJExtension.m in Sources */,
 				848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */,
 				84B80F571CB01725002E3870 /* LZRecorderTool.m in Sources */,
 				84ECDBCB1CACBAA0007FD6E0 /* MJRefreshGifHeader.m in Sources */,
 				84ECDBEA1CACBB4D007FD6E0 /* FMDatabaseQueue.m in Sources */,
+				A5D6B5C21CB2565100B6E845 /* PlanItemCell.m in Sources */,
+				A5D6B5B91CB2360600B6E845 /* PlanListVC.m in Sources */,
 				84ECDBC21CACBAA0007FD6E0 /* MJRefreshComponent.m in Sources */,
 				84E345E31CAC04F0007A41A2 /* QMRecorderViewController.m in Sources */,
 				847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */,

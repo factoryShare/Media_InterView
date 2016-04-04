@@ -7,21 +7,21 @@
 //
 
 #import "QMPlanViewController.h"
+#import "NewPlanVC.h"
+#import "PlanListVC.h"
+#import "PlanViewCell.h"
 
 @interface QMPlanViewController ()
-
+@property (nonatomic, strong) NSArray *titleArray;
 @end
 
 @implementation QMPlanViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _titleArray = @[@"新建策划", @"未发策划", @"已发策划"];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -30,26 +30,37 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    return _titleArray.count;
 }
 
-/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    PlanViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"planViewCell"];
+    cell.titleLabel.text = _titleArray[indexPath.row];
     return cell;
 }
-*/
+
+#pragma mark - Table view delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // 新建策划
+    if (indexPath.row == 0) {
+        NewPlanVC *newPlanVC = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"NewPlanVC"];
+        [self.navigationController pushViewController:newPlanVC animated:YES];
+    }
+    
+     // 未发策划
+    
+    
+    
+     // 已发策划
+    
+
+}
 
 /*
 // Override to support conditional editing of the table view.
