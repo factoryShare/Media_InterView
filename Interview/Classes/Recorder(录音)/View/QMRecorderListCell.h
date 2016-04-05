@@ -1,5 +1,5 @@
 //
-//  QMRecorderListTableViewController.h
+//  QMRecorderListCell.h
 //  Interview
 //
 //  Created by Mr.Right on 16/4/5.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QMRecorderListTableViewController : UITableViewController
+@interface QMRecorderListCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *musicName;
 
 @end

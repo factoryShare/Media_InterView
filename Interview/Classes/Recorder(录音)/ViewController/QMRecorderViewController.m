@@ -10,7 +10,7 @@
 #import "LZRecorderTool.h"
 #import "QMRecoderDBModel.h"
 #import "QMRecorderDBManager.h"
-#import "QMRecorderListTableViewController.h"
+#import "QMRecorderListViewController.h"
 
 @interface QMRecorderViewController () <LZRecorderDeleagte,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -27,10 +27,16 @@
 /** 录音存储地址(amr) */
 @property(nonatomic,copy) NSString *amrFileSavePath;
 @property(nonatomic,strong) QMRecorderDBManager *recorderDBManager;
+@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
 @implementation QMRecorderViewController
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+        
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -39,15 +45,16 @@
     
     
     self.view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.7];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(showList) normalImage:@"nav_list"];
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(showList) normalImage:@"nav_list"];    
 }
 /**
  *  显示已经录制的音频
  */
 - (void)showList {
-    QMRecorderListTableViewController *listVC = [[QMRecorderListTableViewController alloc]init];
     
-    [self.navigationController pushViewController:listVC animated:YES];
+    QMRecorderListViewController *listVC = [[QMRecorderListViewController alloc]init];
+    
+    [self.navigationController pushViewController:listVC animated:NO];
     
 }
 

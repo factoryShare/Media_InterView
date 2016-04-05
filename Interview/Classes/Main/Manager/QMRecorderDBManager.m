@@ -9,6 +9,7 @@
 #import "QMRecorderDBManager.h"
 #import "FMDB.h"
 #import "MBProgressHUD+MJ.h"
+#import "QMRecoderDBModel.h"
 @interface QMRecorderDBManager () {
     FMDatabaseQueue *_dataBaseQueue;
 }
@@ -76,6 +77,30 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
         }
     }];
 }
+/**
+ *  获取当前数据库数据
+ */
+- (void)getAllModel:(GetRecListBlocks)listModel{
+    
+    [_dataBaseQueue inDatabase:^(FMDatabase *db) {
+        //创建可变数组存储modle
+        NSMutableArray *modelArray = [[NSMutableArray alloc]init];
+        // CustomName, RecorderName, RecorderPath
+        NSString *sql = @"select * from AMRSaveList";
+        //执行查询sql语句
+        FMResultSet *rs = [db executeQuery:sql];
+        
+        while ([rs next]) {
+            QMRecoderDBModel  *model = [[QMRecoderDBModel alloc] init];
+            
+            model.CustomName = [rs stringForColumn:@"CustomName"];
+            model.recorderName = [rs stringForColumn:@"RecorderName"];
+            model.recorderPath = [rs stringForColumn:@"RecorderPath"];
+            [modelArray addObject:model];
+        }
+        //获取model之后，传值回去
+        listModel(modelArray);
+    }];
+}
 
-//
 @end

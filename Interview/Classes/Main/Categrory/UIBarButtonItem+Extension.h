@@ -24,4 +24,6 @@
 
 + (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action normalImage:(NSString *)image;
 
++ (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image selectedImage:(NSString *)selectedImage;
+
 @end

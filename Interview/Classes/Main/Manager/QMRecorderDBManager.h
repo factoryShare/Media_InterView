@@ -10,8 +10,12 @@
 #import "SynthesizeSingleton.h"
 #import "QMRecoderDBModel.h"
 
+typedef void (^GetRecListBlocks)(NSArray *array);
+
 @interface QMRecorderDBManager : NSObject
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(QMRecorderDBManager);
 - (void)insertModel:(QMRecoderDBModel *)model;
+
+- (void)getAllModel:(GetRecListBlocks)listModel;
 @end

@@ -44,7 +44,7 @@
                                             <constraint firstAttribute="width" constant="1" id="gcF-gt-PLD"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-cj-TWg" userLabel="录音控制按钮">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-cj-TWg" userLabel="录音控制按钮">
                                         <rect key="frame" x="225" y="18" width="64" height="64"/>
                                         <state key="normal" image="Recorder_start"/>
                                         <state key="selected" image="Recorder_pause"/>
@@ -94,7 +94,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7X-VN-5tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="264" y="117"/>
+            <point key="canvasLocation" x="166" y="-37"/>
         </scene>
     </scenes>
     <resources>
