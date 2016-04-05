@@ -22,8 +22,11 @@
 @interface LZRecorderTool : NSObject
 /** 录音时长短 */
 @property(nonatomic,assign) int currentTime;
-/** 录音文件地址 */
+/** 录音文件默认名 */
 @property(nonatomic,strong) NSString *fileName;
+/** 录音文件存储地址(amr) */
+@property(nonatomic,copy) NSString *amrFileSavePath;
+
 /** 音频波动峰值 */
 @property(nonatomic,assign)  CGFloat audioPower; //每 0.1f 更新一次
 @property(nonatomic,weak) id<LZRecorderDeleagte> delegate;

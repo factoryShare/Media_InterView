@@ -15,7 +15,6 @@
 @property(nonatomic,strong) AVAudioRecorder *recorder;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,copy) NSString *audioFileSavePath;
-@property(nonatomic,copy) NSString *amrFileSavePath;
 @property(nonatomic,copy) NSString *fileTime;
 
 @end
@@ -23,11 +22,9 @@
 @implementation LZRecorderTool
 
 - (void)startRecorde {
-    if (![self.recorder isRecording]) {
         self.timer.fireDate = [NSDate distantPast];// 开启定时器
-        
+    
         [self.recorder record];
-    }
 }
 
 - (void)pauseRecorde {
@@ -43,24 +40,26 @@
 }
 
 - (void)stopRecorde {
-    // 告知外部录音文件时常
-    self.currentTime = self.recorder.currentTime;
     
-    [self.recorder stop];
-
-    self.timer = nil;
-    self.audioPower = 0.0;
-    [self audioPowerChanged];
-    // 转化为 mp3格式
-//    [self audio_PCMtoMP3];
-    // wav 转 amr∫
-    [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        _recorder = nil;
-
-    });
-
+    if ([self.recorder isRecording]) {
+        // 告知外部录音文件时常
+        self.currentTime = self.recorder.currentTime;
+        
+        [self.recorder stop];
+        
+        self.timer = nil;
+        self.audioPower = 0.0;
+        [self audioPowerChanged];
+        // 转化为 mp3格式
+        //    [self audio_PCMtoMP3];
+        // wav 转 amr∫
+        [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];
+        
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            _recorder = nil;
+//            
+//        });
+    }
 }
 /**
  *  监测声波变化

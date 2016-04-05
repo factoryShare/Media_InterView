@@ -8,8 +8,11 @@
 
 #import "QMRecorderViewController.h"
 #import "LZRecorderTool.h"
+#import "QMRecoderDBModel.h"
+#import "QMRecorderDBManager.h"
+#import "QMRecorderListTableViewController.h"
 
-@interface QMRecorderViewController () <LZRecorderDeleagte>
+@interface QMRecorderViewController () <LZRecorderDeleagte,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UIProgressView *powerIndicater;
 @property (weak, nonatomic) IBOutlet UIButton *controlBtn;
@@ -19,6 +22,11 @@
 @property(nonatomic,assign) int timerValue;
 @property(nonatomic,strong) UIView *coverView;
 @property(nonatomic,strong) LZRecorderTool *recorder;
+/** 录音默认文件名 */
+@property(nonatomic,copy) NSString *fileName;
+/** 录音存储地址(amr) */
+@property(nonatomic,copy) NSString *amrFileSavePath;
+@property(nonatomic,strong) QMRecorderDBManager *recorderDBManager;
 
 @end
 
@@ -37,9 +45,9 @@
  *  显示已经录制的音频
  */
 - (void)showList {
-    UIViewController *vc = [[UIViewController alloc]init];
+    QMRecorderListTableViewController *listVC = [[QMRecorderListTableViewController alloc]init];
     
-    [self.navigationController pushViewController:vc animated:YES];
+    [self.navigationController pushViewController:listVC animated:YES];
     
 }
 
@@ -63,8 +71,19 @@
         _timer = nil;
         [self timeChanged];
         
+        // 存储文件名
+        self.fileName = self.recorder.fileName;
+        self.amrFileSavePath  =self.recorder.amrFileSavePath;
+        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"请输入录音名" message: nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        
+        [alert setAlertViewStyle:(UIAlertViewStylePlainTextInput)];
+        
+        [alert show];
         // 结束录制
         [self.recorder stopRecorde];
+        
+        self.recorder = nil;
         
         isRecording = YES;
     }
@@ -116,6 +135,21 @@
 
     self.powerIndicater.progress = power;
 }
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == alertView.firstOtherButtonIndex) {
+        UITextField *textField = [alertView textFieldAtIndex:0];
+        NSDictionary *dic = @{@"CustomName":textField.text,@"recorderName":self.fileName,@"recorderPath":self.amrFileSavePath};
+        
+        QMRecoderDBModel *model = [[QMRecoderDBModel alloc]init];
+        [model setValuesForKeysWithDictionary:dic];
+        
+        // 建立本地数据库
+        [self.recorderDBManager insertModel:model];
+        
+    }
+}
 #pragma mark - 初始化
 - (NSTimer *)timer {
     if (_timer == nil) {
@@ -134,5 +168,12 @@
     }
     
     return _recorder;
+}
+
+- (QMRecorderDBManager *)recorderDBManager {
+    if (_recorderDBManager == nil) {
+        _recorderDBManager = [QMRecorderDBManager sharedQMRecorderDBManager];
+    }
+    return  _recorderDBManager;
 }
 @end
