@@ -14,18 +14,20 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZST-CS-Vj9">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZST-CS-Vj9">
                         <rect key="frame" x="5" y="10" width="29" height="25"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="25" id="G1R-qN-XSr"/>
                             <constraint firstAttribute="width" constant="29" id="Und-qj-OS9"/>
                         </constraints>
                         <state key="normal" image="Recorder_List"/>
+                        <state key="selected" image="RecorderList_pause"/>
+                        <state key="highlighted" image="Recorder_pause"/>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-tr-j2Z" userLabel="歌曲名">
                         <rect key="frame" x="54" y="5" width="256" height="29.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -48,12 +50,15 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="cellPlayBtn" destination="ZST-CS-Vj9" id="HdP-4d-aCl"/>
                 <outlet property="musicName" destination="mTa-tr-j2Z" id="SxJ-hj-1FF"/>
             </connections>
-            <point key="canvasLocation" x="-110" y="259"/>
+            <point key="canvasLocation" x="-206" y="227"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="RecorderList_pause" width="29" height="25"/>
         <image name="Recorder_List" width="29" height="25"/>
+        <image name="Recorder_pause" width="64" height="64"/>
     </resources>
 </document>

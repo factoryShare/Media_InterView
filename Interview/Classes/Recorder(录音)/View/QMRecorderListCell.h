@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QMRecoderDBModel.h"
 
 @interface QMRecorderListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *musicName;
+@property (strong, nonatomic) IBOutlet UIButton *cellPlayBtn;
+
+@property(nonatomic,strong) QMRecoderDBModel *model;
+
+
++ (instancetype)cellWithTableView:(UITableView *)tableView;
 
 @end

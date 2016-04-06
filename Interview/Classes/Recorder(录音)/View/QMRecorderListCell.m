@@ -10,15 +10,17 @@
 
 @implementation QMRecorderListCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
++ (instancetype)cellWithTableView:(UITableView *)tableView{
+    static NSString *ID = @"QMRecorderListCell";
+    QMRecorderListCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([QMRecorderListCell class]) owner:nil options:nil] lastObject];
+    }
+    return cell;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setModel:(QMRecoderDBModel *)model {
+    self.musicName.text = model.CustomName;
 }
 
 @end

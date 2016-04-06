@@ -44,7 +44,7 @@
                                             <constraint firstAttribute="width" constant="1" id="gcF-gt-PLD"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-cj-TWg" userLabel="录音控制按钮">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-cj-TWg" userLabel="录音控制按钮">
                                         <rect key="frame" x="225" y="18" width="64" height="64"/>
                                         <state key="normal" image="Recorder_start"/>
                                         <state key="selected" image="Recorder_pause"/>
@@ -61,7 +61,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.68235294120000001" green="0.54117647059999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="EcO-bV-K7M" firstAttribute="leading" secondItem="hKz-cj-TWg" secondAttribute="trailing" constant="10" id="2hn-bl-lsn"/>
                                     <constraint firstAttribute="bottom" secondItem="EcO-bV-K7M" secondAttribute="bottom" id="4Wg-0v-vfc"/>

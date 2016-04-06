@@ -15,7 +15,10 @@ typedef void (^GetRecListBlocks)(NSArray *array);
 @interface QMRecorderDBManager : NSObject
 
 SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(QMRecorderDBManager);
+/** 更 */
 - (void)insertModel:(QMRecoderDBModel *)model;
+/** 删 */
+- (void)deleteModel:(NSString *)title;
 
 - (void)getAllModel:(GetRecListBlocks)listModel;
 @end

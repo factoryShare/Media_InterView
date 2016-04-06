@@ -46,6 +46,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
     
 }
 #pragma mark 外部方法
+/**
+ *  更
+ */
 - (void)insertModel:(QMRecoderDBModel *)model{
     [_dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 按默认名
@@ -69,7 +72,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
                 });
             } else {
                 QMLog(@"%@",@"插入数据失败");
-                [MBProgressHUD showSuccess:@"保存失败,请联系开发者"];
+                [MBProgressHUD showError:@"保存失败,请联系开发者"];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [MBProgressHUD hideHUD];
                 });
@@ -78,7 +81,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
     }];
 }
 /**
- *  获取当前数据库数据
+ *  删
+ */
+- (void)deleteModel:(NSString *)title{
+    
+    [_dataBaseQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString *sqlDelegate = @"delete from AMRSaveList where RecorderName = ?";
+        BOOL isSuccess = [db executeUpdate:sqlDelegate,title];
+        if (isSuccess) {
+            [MBProgressHUD showSuccess:@"删除成功"];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUD];
+            });
+            QMLog(@"CollectionList 数据删除成功");
+        }
+    }];
+}
+
+
+/**
+ *  获取当前数据库所有数据
  */
 - (void)getAllModel:(GetRecListBlocks)listModel{
     
@@ -102,5 +125,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
         listModel(modelArray);
     }];
 }
+
 
 @end

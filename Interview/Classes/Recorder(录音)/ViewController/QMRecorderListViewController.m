@@ -26,11 +26,7 @@
     
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(rightItemClick:)image:@"nav_delete" selectedImage:@"nav_save"];
     
-    [[QMRecorderDBManager sharedQMRecorderDBManager] getAllModel:^(NSArray *array) {
-        self.dataSource = [NSMutableArray arrayWithArray:array];
-    }];
-    
-    [self createTableView];
+    [self updateTableView];
     
     [self createBottomView];
 }
@@ -42,6 +38,7 @@
     } else {// 保存
         buttonItem.selected = NO;
     }
+    [self.tableView setEditing:!self.tableView.isEditing animated:YES];
 }
 /**
  *  控制音乐播放暂停
@@ -52,6 +49,17 @@
     } else {// 暂停
         button.selected = NO;
     }
+}
+/**
+ *  cell点击播放
+ */
+- (void)cellPlayOnClick:(UIButton *)button {
+    if (!button.selected) {// 播放
+        button.selected = YES;
+    } else {// 暂停
+        button.selected = NO;
+    }
+
 }
 #pragma mark - Table view data source
 
@@ -67,15 +75,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    QMRecorderListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"QMRecorderListCell" forIndexPath:indexPath];
+    QMRecorderListCell *cell = [QMRecorderListCell cellWithTableView:tableView];
     
-    QMRecoderDBModel *model = self.dataSource[indexPath.row];
+    cell.model = self.dataSource[indexPath.row];
     
-    cell.musicName.text  = model.CustomName;
     
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 60;
 }
@@ -84,21 +92,53 @@
     return 60;
 }
 
-#pragma mark - 初始化
-- (void)createTableView {
-    self.automaticallyAdjustsScrollViewInsets = YES;
-    UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.height, self.dataSource.count * 60) style:(UITableViewStylePlain)];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.backgroundColor = [UIColor whiteColor];
-    self.tableView = tableView;
-
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"QMRecorderListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"QMRecorderListCell"];
-    
-    
-    [self.view addSubview:self.tableView];
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        QMRecoderDBModel *delegateModel = self.dataSource[indexPath.row];
+        [self.dataSource removeObjectAtIndex:indexPath.row];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:(UITableViewRowAnimationFade)];
+        [[QMRecorderDBManager sharedQMRecorderDBManager] deleteModel:delegateModel.recorderName];
+        [self.tableView reloadData];
+        // 更新 表格
+        [self updateTableView];
+    }
 }
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - 初始化
+- (void)updateTableView {
+    self.automaticallyAdjustsScrollViewInsets = YES;
+    CGFloat tableViewH = 0;
+    if (self.tableView == nil) {
+        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, tableViewH) style:(UITableViewStylePlain)];
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        tableView.backgroundColor = [UIColor whiteColor];
+        //    tableView.allowsMultipleSelection = YES;
+        self.tableView = tableView;
+        
+        [self.tableView registerNib:[UINib nibWithNibName:@"QMRecorderListCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"QMRecorderListCell"];
+        
+        [self.view addSubview:self.tableView];
+
+    }
+    
+    if ( self.dataSource.count * 60 > [UIScreen mainScreen].bounds.size.height -100) {
+        tableViewH = [UIScreen mainScreen].bounds.size.height -100;
+        self.tableView.height = tableViewH;
+        [self.tableView setScrollEnabled:YES];
+    } else {
+        tableViewH = self.dataSource.count * 60;
+        self.tableView.height = tableViewH;
+        [self.tableView setScrollEnabled:NO];
+    }}
 
 - (void)createBottomView {
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.height - 100, self.view.frame.size.width, 100)];
@@ -122,6 +162,10 @@
 - (NSMutableArray *)dataSource {
     if (_dataSource == nil) {
         _dataSource = [NSMutableArray array];
+        
+        [[QMRecorderDBManager sharedQMRecorderDBManager] getAllModel:^(NSArray *array) {
+            self.dataSource = [NSMutableArray arrayWithArray:array];
+        }];
     }
     return _dataSource;
 }
