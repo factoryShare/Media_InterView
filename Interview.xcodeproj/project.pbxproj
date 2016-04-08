@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
+		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
+		8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */; };
 		8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847864891CB3A15600F66CC7 /* QMRecorderListCell.m */; };
 		8478648C1CB3A15600F66CC7 /* QMRecorderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */; };
 		847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */; };
@@ -22,6 +24,7 @@
 		84AF69E11CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AF69E01CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m */; };
 		84B80F501CB00319002E3870 /* QMRecorderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B80F4F1CB00319002E3870 /* QMRecorderViewController.storyboard */; };
 		84B80F571CB01725002E3870 /* LZRecorderTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B80F551CB01725002E3870 /* LZRecorderTool.m */; };
+		84C81BB81CB6674B0053FF3B /* LZFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C81BB71CB6674B0053FF3B /* LZFileHandle.m */; };
 		84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE482E1CAEBC500012B584 /* QMSettingTableViewCell.m */; };
 		84CE48321CAEC29A0012B584 /* QMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE48311CAEC29A0012B584 /* QMSettingViewController.m */; };
 		84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84CE48331CAEC2A90012B584 /* QMSettingViewController.storyboard */; };
@@ -108,6 +111,9 @@
 /* Begin PBXFileReference section */
 		840F1CCC1CB397B0006F38B1 /* QMRecorderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListViewController.h; sourceTree = "<group>"; };
 		840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListViewController.m; sourceTree = "<group>"; };
+		8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMRecorderListBottomView.xib; sourceTree = "<group>"; };
+		8418C12D1CB753FE0027C257 /* QMRecorderListBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListBottomView.h; sourceTree = "<group>"; };
+		8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListBottomView.m; sourceTree = "<group>"; };
 		847864881CB3A15600F66CC7 /* QMRecorderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListCell.h; sourceTree = "<group>"; };
 		847864891CB3A15600F66CC7 /* QMRecorderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListCell.m; sourceTree = "<group>"; };
 		8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMRecorderListCell.xib; sourceTree = "<group>"; };
@@ -137,6 +143,8 @@
 		84B80F4F1CB00319002E3870 /* QMRecorderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QMRecorderViewController.storyboard; sourceTree = "<group>"; };
 		84B80F541CB01725002E3870 /* LZRecorderTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZRecorderTool.h; sourceTree = "<group>"; };
 		84B80F551CB01725002E3870 /* LZRecorderTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZRecorderTool.m; sourceTree = "<group>"; };
+		84C81BB61CB6674B0053FF3B /* LZFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZFileHandle.h; sourceTree = "<group>"; };
+		84C81BB71CB6674B0053FF3B /* LZFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZFileHandle.m; sourceTree = "<group>"; };
 		84CE482D1CAEBC500012B584 /* QMSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingTableViewCell.h; sourceTree = "<group>"; };
 		84CE482E1CAEBC500012B584 /* QMSettingTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMSettingTableViewCell.m; sourceTree = "<group>"; };
 		84CE48301CAEC29A0012B584 /* QMSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingViewController.h; sourceTree = "<group>"; };
@@ -379,6 +387,15 @@
 			path = RecorderAndPlayer;
 			sourceTree = "<group>";
 		};
+		84C81BB51CB6674B0053FF3B /* LZFileHandle */ = {
+			isa = PBXGroup;
+			children = (
+				84C81BB61CB6674B0053FF3B /* LZFileHandle.h */,
+				84C81BB71CB6674B0053FF3B /* LZFileHandle.m */,
+			);
+			path = LZFileHandle;
+			sourceTree = "<group>";
+		};
 		84E3456D1CABFA87007A41A2 = {
 			isa = PBXGroup;
 			children = (
@@ -504,6 +521,7 @@
 				84ECDB761CACB26C007FD6E0 /* URLHeader.h */,
 				84ECDB751CACB25C007FD6E0 /* FontTool.h */,
 				84E4D9631CB28AAF00910C91 /* SynthesizeSingleton.h */,
+				84C81BB51CB6674B0053FF3B /* LZFileHandle */,
 				84A21B3B1CB0D4D400440905 /* VoiceConvert */,
 				84B80F511CB01725002E3870 /* RecorderAndPlayer */,
 				848E18681CAF4CC50097C487 /* NetWorking */,
@@ -633,6 +651,9 @@
 				847864881CB3A15600F66CC7 /* QMRecorderListCell.h */,
 				847864891CB3A15600F66CC7 /* QMRecorderListCell.m */,
 				8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */,
+				8418C12D1CB753FE0027C257 /* QMRecorderListBottomView.h */,
+				8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */,
+				8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -981,6 +1002,7 @@
 				A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */,
 				84E345891CABFA87007A41A2 /* LaunchScreen.storyboard in Resources */,
 				84E345861CABFA87007A41A2 /* Assets.xcassets in Resources */,
+				8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */,
 				84ECDBEE1CACBB4D007FD6E0 /* MBProgressHUD.bundle in Resources */,
 				84ECDBEC1CACBB4D007FD6E0 /* 数据库.rtf in Resources */,
 				84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */,
@@ -1025,6 +1047,7 @@
 				84ECDBCA1CACBAA0007FD6E0 /* MJRefreshBackStateFooter.m in Sources */,
 				84E345D01CAC0358007A41A2 /* QMTabBarController.m in Sources */,
 				84ECDBCF1CACBAA0007FD6E0 /* MJRefreshConst.m in Sources */,
+				8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */,
 				84E345CA1CAC0358007A41A2 /* UIView+Extension.m in Sources */,
 				84ECDBC51CACBAA0007FD6E0 /* MJRefreshAutoGifFooter.m in Sources */,
 				84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */,
@@ -1043,6 +1066,7 @@
 				84E4D9691CB2AD5400910C91 /* QMRecoderDBModel.m in Sources */,
 				84ECDBC81CACBAA0007FD6E0 /* MJRefreshBackGifFooter.m in Sources */,
 				84ECDBD11CACBAA0007FD6E0 /* UIScrollView+MJRefresh.m in Sources */,
+				84C81BB81CB6674B0053FF3B /* LZFileHandle.m in Sources */,
 				84ECDBC41CACBAA0007FD6E0 /* MJRefreshHeader.m in Sources */,
 				84AF69E11CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m in Sources */,
 				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,

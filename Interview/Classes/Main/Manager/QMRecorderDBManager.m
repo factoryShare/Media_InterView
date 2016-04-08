@@ -99,7 +99,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
     }];
 }
 
-
 /**
  *  获取当前数据库所有数据
  */

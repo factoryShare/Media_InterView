@@ -15,4 +15,6 @@
 @property(nonatomic,copy) NSString *recorderName;
 /** 录音缓存文件名 */
 @property(nonatomic,copy) NSString *recorderPath;
+/** 录音文件时长 */
+//@property(nonatomic,copy) NSString *timeLong;
 @end

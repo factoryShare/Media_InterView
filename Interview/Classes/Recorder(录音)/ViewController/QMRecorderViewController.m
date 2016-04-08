@@ -11,6 +11,8 @@
 #import "QMRecoderDBModel.h"
 #import "QMRecorderDBManager.h"
 #import "QMRecorderListViewController.h"
+#import "QMRecorderListBottomView.h"
+
 
 @interface QMRecorderViewController () <LZRecorderDeleagte,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -20,6 +22,7 @@
 
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,assign) int timerValue;
+@property(nonatomic,assign) int timerLong;
 @property(nonatomic,strong) UIView *coverView;
 @property(nonatomic,strong) LZRecorderTool *recorder;
 /** 录音默认文件名 */
@@ -42,10 +45,12 @@
     [super viewDidLoad];
 
     _timerValue = 0;
+    _timerLong = 0;
     
     
     self.view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.7];
-    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(showList) normalImage:@"nav_list"];    
+    self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(showList) normalImage:@"nav_list"];
+
 }
 /**
  *  显示已经录制的音频
@@ -69,6 +74,7 @@
         
         isRecording = NO;
     } else {
+        _timerLong = _timerValue;
         _timerValue = 0;
         
         self.timer.fireDate = [NSDate distantFuture];
@@ -147,7 +153,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == alertView.firstOtherButtonIndex) {
         UITextField *textField = [alertView textFieldAtIndex:0];
-        NSDictionary *dic = @{@"CustomName":textField.text,@"recorderName":self.fileName,@"recorderPath":self.amrFileSavePath};
+        NSDictionary *dic = @{@"CustomName":textField.text,@"recorderName":self.fileName,@"recorderPath":self.amrFileSavePath}; //,@"timeLong":[NSString stringWithFormat:@"%d",_timerLong]
         
         QMRecoderDBModel *model = [[QMRecoderDBModel alloc]init];
         [model setValuesForKeysWithDictionary:dic];
@@ -183,4 +189,5 @@
     }
     return  _recorderDBManager;
 }
+
 @end
