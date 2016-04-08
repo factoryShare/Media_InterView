@@ -22,8 +22,17 @@
 @property(nonatomic,strong) LZPlayerForRecorder *player;
 /** 底部视图 */
 @property(nonatomic,strong) UIView *bottomView;
+@property(nonatomic,strong) UIView *progressBgView;
 @property(nonatomic,strong) UIView *progressView;
 @property(nonatomic,strong) UIButton *playBtn;
+
+/** 音频总时长 */
+@property(nonatomic,copy) NSString *timeLong;
+/** 音频跟踪定时器 */
+@property(nonatomic,strong) NSTimer *timer;
+/** 没单位时间精度条自增长长度 */
+@property(nonatomic,assign) double timerValue;
+@property(nonatomic,strong) QMRecoderDBModel *recorderDBModel;
 
 @end
 
@@ -32,6 +41,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    // 初始播放设置
+    [self getInitial];
+    
+    self.recorderDBModel = nil;
+    
     self.view.backgroundColor = QMColor(127, 127, 127);
 
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(rightItemClick:)image:@"nav_delete" selectedImage:@"nav_save"];
@@ -39,15 +53,6 @@
     [self updateTableView];
     
     [self createBottomView];
-    
-//    _playBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-//    [_playBtn setImage:[UIImage imageNamed:@"Playerplay"] forState:(UIControlStateNormal)];
-//    [_playBtn setImage:[UIImage imageNamed:@"Playerpause"] forState:(UIControlStateSelected)];
-//    _playBtn.frame = CGRectMake(100, 100, 0, 0);
-//    _playBtn.size = _playBtn.currentImage.size;
-//    
-//    [self.view addSubview:_playBtn];
-
 
 }
 
@@ -66,11 +71,16 @@
  */
 - (void)playBtnOnClick:(UIButton *)button {
     if (!button.selected) {// 播放
+        [self.player startPlay];
+        // 开始计时
+        self.timer.fireDate = [NSDate distantPast];
         button.selected = YES;
     } else {// 暂停
+        [self.player pause];
+        // 暂停计时
+        self.timer.fireDate = [NSDate  distantFuture];
         button.selected = NO;
     }
-    _progressView.width += 10;
 }
 /**
  *  cell点击播放
@@ -141,11 +151,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    QMRecoderDBModel *model = self.dataSource[indexPath.row];
     
-    self.player.filePath = model.recorderPath;
-//    NSLog(@"%@",model.timeLong);
-    [self.player startPlay];
+    [self getInitial];
+    
+    self.recorderDBModel = self.dataSource[indexPath.row];
+//    NSString *tempDir = NSTemporaryDirectory();
+//    // 初始化格式地址
+//    NSString *path = [tempDir stringByAppendingPathComponent: self.recorderDBModel.recorderName];
+//    // amr 地址
+//    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
+//    NSLog(@"%@",amrFileSavePath);
+    // 音频播放
+    self.player.filePath = self.recorderDBModel.recorderPath;
+    self.timeLong = self.recorderDBModel.timeLong;
+    _timerValue =  self.progressBgView.width / [_timeLong intValue] / 10.0;
+    
+    // 点击播放按钮
+    [self playBtnOnClick:self.playBtn];
+
 }
 
 #pragma mark - 初始化
@@ -193,7 +216,6 @@
     
     // 创建底部视图
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, _kScreenHeight - 100, _kScreenWidth, 100)];
-    bottomView.backgroundColor = [UIColor redColor];
     self.bottomView = bottomView;
     [self.view addSubview: self.bottomView];
     
@@ -209,9 +231,10 @@
     [self.bottomView addSubview: self.playBtn];
     
     // 播放进度条背景
-    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(playBtn.width + 20, playBtn.centerY, 0, 3)];
+    UIView *bgView = [[UIView alloc]initWithFrame:CGRectMake(playBtn.width + 20, playBtn.centerY, _kScreenWidth - playBtn.width - 20 * 2, 3)];
     bgView.backgroundColor = [UIColor whiteColor];
-    [self.bottomView addSubview:bgView];
+    self.progressBgView = bgView;
+    [self.bottomView addSubview:self.progressBgView];
     
     // 播放进度条
     UIView *progressView = [[UIView alloc]initWithFrame:CGRectMake(playBtn.width + 20, playBtn.centerY, 0, 3)];
@@ -227,7 +250,44 @@
     }
     return _player;
 }
-//
+
+- (NSTimer *)timer {
+    if (_timer == nil) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:0.1f target:self selector:@selector(timeChanged) userInfo:nil repeats:YES];
+        [[NSRunLoop mainRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+        _timer.fireDate = [NSDate distantFuture];
+    }
+    
+    return _timer;
+}
+
+/**
+ *  更新时间
+ */
+- (void)timeChanged {
+    _progressView.width += _timerValue;
+    if (_progressBgView.width <= _progressView.width) {
+        [self getInitial];
+    }
+
+}
+/**
+ *  初始化播放设置
+ */
+- (void)getInitial {
+    _progressView.width = 0;
+    _timeLong = @"0";
+    self.player = nil;
+    self.timeLong = @"0";
+    
+    self.timer.fireDate = [NSDate distantFuture];
+    if (self.timer.isValid) {
+        [_timer invalidate];
+    }
+    _timer = nil;
+
+}
+
 //- (QMRecorderListBottomView *)bottomView {
 //    if (_bottomView == nil) {
 //        _bottomView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([QMRecorderListBottomView class]) owner:self options:nil] lastObject];

@@ -153,7 +153,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex == alertView.firstOtherButtonIndex) {
         UITextField *textField = [alertView textFieldAtIndex:0];
-        NSDictionary *dic = @{@"CustomName":textField.text,@"recorderName":self.fileName,@"recorderPath":self.amrFileSavePath}; //,@"timeLong":[NSString stringWithFormat:@"%d",_timerLong]
+        NSDictionary *dic = @{@"CustomName":[NSString stringWithFormat:@"录音:%@",textField.text],@"recorderName":self.fileName,@"recorderPath":self.amrFileSavePath,@"TimeLong":[NSString stringWithFormat:@"%d",_timerLong]};
         
         QMRecoderDBModel *model = [[QMRecoderDBModel alloc]init];
         [model setValuesForKeysWithDictionary:dic];

@@ -29,7 +29,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
  */
 -(void)createDataBase{
     //CustomName:用户输入名,recorderName:默认名,recorderPath:存储地址
-    NSString *sql = @"CREATE TABLE IF NOT EXISTS AMRSaveList (CustomName text, RecorderName text, RecorderPath text)";
+    NSString *sql = @"CREATE TABLE IF NOT EXISTS AMRSaveTable (CustomName text, RecorderName text, RecorderPath text, TimerLong text)";
     NSString *docPath  = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
     NSString *dbPath = [docPath stringByAppendingPathComponent:@"RecorderList.db"];
     
@@ -52,7 +52,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
 - (void)insertModel:(QMRecoderDBModel *)model{
     [_dataBaseQueue inDatabase:^(FMDatabase *db) {
         // 按默认名
-        NSString *selectSql = @"select * from RecorderList where RecorderName = ?";
+        NSString *selectSql = @"select * from AMRSaveTable where RecorderName = ?";
         FMResultSet *rs = [db executeQuery:selectSql,model.recorderName];
         BOOL isEs  = NO;//判断当前插入的数据是否存在
         while ([rs next]) {
@@ -62,10 +62,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
             });
         }
         if (isEs == NO) {
-            NSString *insertSQL =  @"INSERT INTO AMRSaveList(CustomName, RecorderName, RecorderPath) VALUES(?, ?, ?)";
-            BOOL isSucess =  [db executeUpdate:insertSQL, model.CustomName,model.recorderName,model.recorderPath];
+            NSString *insertSQL =  @"INSERT INTO AMRSaveTable(CustomName, RecorderName, RecorderPath, TimerLong) VALUES(?, ?, ?, ?)";
+            BOOL isSucess =  [db executeUpdate:insertSQL, model.CustomName,model.recorderName,model.recorderPath,model.timeLong];
             if (isSucess) {
-                QMLog(@"AMRSaveList插入数据%@",@"成功");
+                QMLog(@"AMRSaveTable插入数据%@",@"成功");
                 [MBProgressHUD showSuccess:@"录音成功"];
                 dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                     [MBProgressHUD hideHUD];
@@ -87,14 +87,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
     
     [_dataBaseQueue inDatabase:^(FMDatabase *db) {
         
-        NSString *sqlDelegate = @"delete from AMRSaveList where RecorderName = ?";
+        NSString *sqlDelegate = @"delete from AMRSaveTable where RecorderName = ?";
         BOOL isSuccess = [db executeUpdate:sqlDelegate,title];
         if (isSuccess) {
             [MBProgressHUD showSuccess:@"删除成功"];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [MBProgressHUD hideHUD];
             });
-            QMLog(@"CollectionList 数据删除成功");
+            QMLog(@"AMRSaveTable 数据删除成功");
         }
     }];
 }
@@ -108,7 +108,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
         //创建可变数组存储modle
         NSMutableArray *modelArray = [[NSMutableArray alloc]init];
         // CustomName, RecorderName, RecorderPath
-        NSString *sql = @"select * from AMRSaveList";
+        NSString *sql = @"select * from AMRSaveTable";
         //执行查询sql语句
         FMResultSet *rs = [db executeQuery:sql];
         
@@ -118,6 +118,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
             model.CustomName = [rs stringForColumn:@"CustomName"];
             model.recorderName = [rs stringForColumn:@"RecorderName"];
             model.recorderPath = [rs stringForColumn:@"RecorderPath"];
+            model.timeLong = [rs stringForColumn:@"TimerLong"];
             [modelArray addObject:model];
         }
         //获取model之后，传值回去

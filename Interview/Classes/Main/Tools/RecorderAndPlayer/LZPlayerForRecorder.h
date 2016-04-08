@@ -14,4 +14,6 @@
 @property(nonatomic,strong) NSString *filePath;
 
 - (void)startPlay;
+
+- (void)pause;
 @end

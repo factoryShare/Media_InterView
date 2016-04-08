@@ -82,6 +82,7 @@
 		84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDBF41CACBDB8007FD6E0 /* NSString+GetDeviceModel.m */; };
 		84ECDBF81CACBE16007FD6E0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */; };
 		84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */; };
+		84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */; };
 		A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */; };
 		A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */; };
 		A5D6B5B91CB2360600B6E845 /* PlanListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5B81CB2360600B6E845 /* PlanListVC.m */; };
@@ -262,6 +263,7 @@
 		84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		84ECDBFF1CACC4EF007FD6E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PreciNewsMobile.txt; sourceTree = "<group>"; };
 		A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
 		A5D6B5B41CB235A100B6E845 /* NewPlanVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPlanVC.h; sourceTree = "<group>"; };
 		A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPlanVC.m; sourceTree = "<group>"; };
@@ -433,6 +435,7 @@
 				84E345AD1CAC01A9007A41A2 /* PrefixHeader.pch */,
 				84E345871CABFA87007A41A2 /* LaunchScreen.storyboard */,
 				84E3458A1CABFA87007A41A2 /* Info.plist */,
+				84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */,
 				84E3457A1CABFA87007A41A2 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1004,6 +1007,7 @@
 				84E345861CABFA87007A41A2 /* Assets.xcassets in Resources */,
 				8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */,
 				84ECDBEE1CACBB4D007FD6E0 /* MBProgressHUD.bundle in Resources */,
+				84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */,
 				84ECDBEC1CACBB4D007FD6E0 /* 数据库.rtf in Resources */,
 				84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */,
 				8478648C1CB3A15600F66CC7 /* QMRecorderListCell.xib in Resources */,

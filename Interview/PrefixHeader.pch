@@ -15,6 +15,7 @@
 #import "UIBarButtonItem+Extension.h"
 #import "NSString+GetDeviceModel.h"
 
+#import "MBProgressHUD+MJ.h"
 
 // 自定义Log
 #ifdef DEBUG
