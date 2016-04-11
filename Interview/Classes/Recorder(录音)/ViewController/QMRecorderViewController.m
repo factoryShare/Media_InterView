@@ -143,7 +143,12 @@
 
 #pragma mark - LZRecorderDeleagte 
 - (void)getaudioPower:(float)power {
+    NSLog(@"%lf",power);
     int character = power / 160 * 26;
+    if (character > 26) {
+        character = 26;
+    }
+    
     NSString *imageName = [NSString stringWithFormat:@"vu%C",(unichar)(character + 97)];
     
     self.powerIndicaterIm.image = [UIImage imageNamed:imageName];
