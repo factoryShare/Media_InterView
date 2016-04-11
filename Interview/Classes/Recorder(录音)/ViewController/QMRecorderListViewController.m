@@ -359,12 +359,6 @@
     }
 }
 /**
- *  拖动进度条
- */
-- (void)changeProgress {
-    
-}
-/**
  *  初始化播放设置
  */
 - (void)getInitial {

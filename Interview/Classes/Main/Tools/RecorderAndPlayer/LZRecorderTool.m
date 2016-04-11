@@ -5,6 +5,7 @@
 //  Created by Mr.Right on 16/3/28.
 //  Copyright © 2016年 lizheng. All rights reserved.
 ///
+#define kSTOP stop
 
 #import "LZRecorderTool.h"
 #import <AVFoundation/AVAudioRecorder.h>
@@ -46,29 +47,33 @@
         self.currentTime = self.recorder.currentTime;
         
         [self.recorder stop];
-        
-        self.timer = nil;
-        self.audioPower = 0.0;
-        [self audioPowerChanged];
         // 转化为 mp3格式
         //    [self audio_PCMtoMP3];
         // wav 转 amr∫
-        [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];    }
+        [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];
+    }
 }
 /**
  *  监测声波变化
  */
 - (void)audioPowerChanged {
-    [self.recorder updateMeters];
-    
-    float power = [self.recorder averagePowerForChannel:0]; //取得第一个通道的音频，注意音频强度范围时-160到0
-    
-    self.audioPower = (CGFloat)(1.0/160.0) * (power+160.0);
-    
-    if (self.delegate && [self.delegate respondsToSelector:@selector(getaudioPower:)]) {
-        [self.delegate getaudioPower:self.audioPower];
+    if ([self.recorder isRecording]) {
+        [self.recorder updateMeters];
+        
+        float power = [self.recorder averagePowerForChannel:0]; //取得第一个通道的音频，注意音频强度范围时-160到0
+        
+        self.audioPower = (CGFloat)(power+160.0);
+        if (self.delegate && [self.delegate respondsToSelector:@selector(getaudioPower:)]) {
+            [self.delegate getaudioPower:self.audioPower];
+        } else {
+            QMLog(@"没有设置代理或没有实现协议方法");
+        }
     } else {
-//        NSLog(@"没有设置代理或没有实现协议方法");
+        self.timer.fireDate = [NSDate distantFuture]; // 关闭定时器
+        if (self.timer.isValid) {
+            [_timer invalidate];
+        }
+        _timer = nil;
     }
 }
 
@@ -80,7 +85,7 @@
         NSError *error;
         [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
         if (error) {
-             NSLog(@"AVAudioSessionCategoryPlayback:error---%@", [error description]);
+             QMLog(@"AVAudioSessionCategoryPlayback:error---%@", [error description]);
         }
         
         [session setActive:YES error:nil];

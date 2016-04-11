@@ -27,13 +27,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AVg-jl-Mue">
-                                <rect key="frame" x="30" y="120" width="160" height="2"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="2" id="SGz-mF-dhN"/>
-                                    <constraint firstAttribute="width" constant="160" id="dNN-ph-kKM"/>
-                                </constraints>
-                            </progressView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-f4-P2j" userLabel="按钮 View">
                                 <rect key="frame" x="0.0" y="450" width="600" height="100"/>
                                 <subviews>
@@ -73,22 +66,35 @@
                                     <constraint firstItem="hKz-cj-TWg" firstAttribute="centerY" secondItem="H2w-f4-P2j" secondAttribute="centerY" id="nAb-IT-Zne"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vu" translatesAutoresizingMaskIntoConstraints="NO" id="Gc7-Ot-F8o" userLabel="音量指示器">
+                                <rect key="frame" x="140" y="120" width="320" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="M9K-Uz-fUx"/>
+                                    <constraint firstAttribute="width" constant="320" id="Scb-bD-lWo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="H2w-f4-P2j" secondAttribute="trailing" id="8Bx-T5-ldn"/>
+                            <constraint firstItem="Gc7-Ot-F8o" firstAttribute="top" secondItem="AKq-sA-CKg" secondAttribute="bottom" constant="30" id="BBa-yb-Cfr"/>
                             <constraint firstItem="RR5-G8-RNX" firstAttribute="top" secondItem="H2w-f4-P2j" secondAttribute="bottom" constant="50" id="Bx7-el-SRS"/>
                             <constraint firstAttribute="trailing" secondItem="AKq-sA-CKg" secondAttribute="trailing" constant="20" id="Ghe-Xm-IcX"/>
                             <constraint firstItem="AKq-sA-CKg" firstAttribute="top" secondItem="OIp-Ir-cAg" secondAttribute="bottom" constant="20" id="J2D-l2-Sda"/>
-                            <constraint firstItem="AVg-jl-Mue" firstAttribute="leading" secondItem="TO3-Mb-dEp" secondAttribute="leading" constant="30" id="alf-vR-j0j"/>
+                            <constraint firstItem="Gc7-Ot-F8o" firstAttribute="centerX" secondItem="TO3-Mb-dEp" secondAttribute="centerX" id="Jfi-kw-AA4"/>
+                            <constraint firstItem="AKq-sA-CKg" firstAttribute="leading" secondItem="Gc7-Ot-F8o" secondAttribute="trailing" constant="30" id="SpE-JH-rFa"/>
                             <constraint firstItem="H2w-f4-P2j" firstAttribute="leading" secondItem="TO3-Mb-dEp" secondAttribute="leading" id="pBj-LW-Y6t"/>
-                            <constraint firstItem="AVg-jl-Mue" firstAttribute="top" secondItem="AKq-sA-CKg" secondAttribute="bottom" constant="30" id="xlH-ib-auu"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="SpE-JH-rFa"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="controlBtn" destination="hKz-cj-TWg" id="JhA-hQ-BoU"/>
                         <outlet property="lockBtn" destination="P2y-QW-pc1" id="DId-51-Q8g"/>
-                        <outlet property="powerIndicater" destination="AVg-jl-Mue" id="DRp-No-vpM"/>
+                        <outlet property="powerIndicaterIm" destination="Gc7-Ot-F8o" id="S5m-4t-hWN"/>
                         <outlet property="timeLabel" destination="AKq-sA-CKg" id="1nH-ap-lrR"/>
                     </connections>
                 </viewController>
@@ -102,5 +108,6 @@
         <image name="Recorder_lock_click" width="64" height="64"/>
         <image name="Recorder_pause" width="64" height="64"/>
         <image name="Recorder_start" width="64" height="64"/>
+        <image name="vu" width="640" height="160"/>
     </resources>
 </document>

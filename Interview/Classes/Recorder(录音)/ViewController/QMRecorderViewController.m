@@ -16,9 +16,9 @@
 
 @interface QMRecorderViewController () <LZRecorderDeleagte,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UIProgressView *powerIndicater;
 @property (weak, nonatomic) IBOutlet UIButton *controlBtn;
 @property (weak, nonatomic) IBOutlet UIButton *lockBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *powerIndicaterIm;
 
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,assign) int timerValue;
@@ -30,7 +30,6 @@
 /** 录音存储地址(amr) */
 @property(nonatomic,copy) NSString *amrFileSavePath;
 @property(nonatomic,strong) QMRecorderDBManager *recorderDBManager;
-@property (weak, nonatomic) IBOutlet UIButton *backBtn;
 
 @end
 
@@ -66,14 +65,13 @@
 - (IBAction)recorde:(UIButton *)sender {
     static BOOL isRecording = YES;
     sender.selected = isRecording;
-    if (isRecording) {
+    if (isRecording) {// 开始录制
         self.timer.fireDate = [NSDate distantPast];
         
-        // 开始录制
         [self.recorder startRecorde];
         
         isRecording = NO;
-    } else {
+    } else { // 结束录制
         _timerLong = _timerValue;
         _timerValue = 0;
         
@@ -145,8 +143,10 @@
 
 #pragma mark - LZRecorderDeleagte 
 - (void)getaudioPower:(float)power {
-
-    self.powerIndicater.progress = power;
+    int character = power / 160 * 26;
+    NSString *imageName = [NSString stringWithFormat:@"vu%C",(unichar)(character + 97)];
+    
+    self.powerIndicaterIm.image = [UIImage imageNamed:imageName];
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -160,6 +160,9 @@
         
         // 建立本地数据库
         [self.recorderDBManager insertModel:model];
+        
+        self.powerIndicaterIm.image = [UIImage imageNamed:@"vu"];
+
     }
 }
 #pragma mark - 初始化
