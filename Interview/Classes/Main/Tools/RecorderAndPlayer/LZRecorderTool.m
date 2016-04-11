@@ -11,7 +11,7 @@
 #import <AVFoundation/AVAudioSession.h>
 #import "VoiceConverter.h"
 
-@interface LZRecorderTool ()
+@interface LZRecorderTool () <AVAudioRecorderDelegate>
 @property(nonatomic,strong) AVAudioRecorder *recorder;
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,copy) NSString *audioFileSavePath;
@@ -53,13 +53,7 @@
         // 转化为 mp3格式
         //    [self audio_PCMtoMP3];
         // wav 转 amr∫
-        [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];
-        
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            _recorder = nil;
-//            
-//        });
-    }
+        [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];    }
 }
 /**
  *  监测声波变化
@@ -83,7 +77,11 @@
     if (self = [super init]) {
         AVAudioSession *session = [AVAudioSession sharedInstance];
         
-        [session setCategory:AVAudioSessionCategorySoloAmbient error:nil];
+        NSError *error;
+        [session setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+        if (error) {
+             NSLog(@"AVAudioSessionCategoryPlayback:error---%@", [error description]);
+        }
         
         [session setActive:YES error:nil];
     }
@@ -93,8 +91,7 @@
 - (AVAudioRecorder *)recorder {
     if (_recorder == nil) {
         self.fileName = [self file];
-//        NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *tempDir = NSTemporaryDirectory();
+        NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
         // 初始化格式地址
         NSString *path = [tempDir stringByAppendingPathComponent:self.fileName];
         self.audioFileSavePath = path;
@@ -103,6 +100,7 @@
         self.amrFileSavePath = [tempDir stringByAppendingPathComponent:armName];
 
         _recorder = [[AVAudioRecorder alloc]initWithURL:[NSURL URLWithString: path] settings:[self getAudioSetting] error:nil];
+        _recorder.delegate = self;
         _recorder.meteringEnabled = YES;
         [_recorder prepareToRecord];
     }
@@ -228,6 +226,19 @@
 //        
 //    }
     
+}
+
+
+#pragma mark - AVAudioRecorderDelegate 
+
+/* audioRecorderDidFinishRecording:successfully: is called when a recording has been finished or stopped. This method is NOT called if the recorder is stopped due to an interruption. */
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *)recorder successfully:(BOOL)flag {
+    QMLog(@"%d",flag);
+}
+
+/* if an error occurs while encoding it will be reported to the delegate. */
+- (void)audioRecorderEncodeErrorDidOccur:(AVAudioRecorder *)recorder error:(NSError * __nullable)error {
+    QMLog(@"%@",error);
 }
 
 @end

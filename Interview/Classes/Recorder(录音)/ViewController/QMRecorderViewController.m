@@ -160,7 +160,6 @@
         
         // 建立本地数据库
         [self.recorderDBManager insertModel:model];
-        
     }
 }
 #pragma mark - 初始化
