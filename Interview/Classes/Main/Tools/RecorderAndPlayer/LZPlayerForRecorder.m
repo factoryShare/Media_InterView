@@ -33,6 +33,11 @@
     _filePath = filePath;
 }
 
+- (NSTimeInterval)MusicDuring {
+    return self.player.duration;
+}
+
+
 #pragma mark - 初始化
 - (AVAudioPlayer *)player {
     if (!_player) {

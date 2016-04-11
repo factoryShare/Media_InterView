@@ -27,7 +27,7 @@
 @property(nonatomic,strong) UIButton *playBtn;
 
 /** 音频总时长 */
-@property(nonatomic,copy) NSString *timeLong;
+@property(nonatomic,assign) NSTimeInterval timeLong;
 /** 音频跟踪定时器 */
 @property(nonatomic,strong) NSTimer *timer;
 /** 没单位时间精度条自增长长度 */
@@ -155,20 +155,21 @@
     [self getInitial];
     
     self.recorderDBModel = self.dataSource[indexPath.row];
-//    NSString *tempDir = NSTemporaryDirectory();
-//    // 初始化格式地址
-//    NSString *path = [tempDir stringByAppendingPathComponent: self.recorderDBModel.recorderName];
-//    // amr 地址
-//    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
-//    NSLog(@"%@",amrFileSavePath);
+    NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 初始化格式地址
+    NSString *path = [tempDir stringByAppendingPathComponent: self.recorderDBModel.recorderName];
+    // amr 地址
+    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
+    QMLog(@"%@",amrFileSavePath);
     // 音频播放
-    self.player.filePath = self.recorderDBModel.recorderPath;
-    self.timeLong = self.recorderDBModel.timeLong;
-    _timerValue =  self.progressBgView.width / [_timeLong intValue] / 10.0;
+    self.player.filePath = path;
+    
+    self.timeLong = self.player.MusicDuring;
+    _timerValue =  self.progressBgView.width / self.timeLong / 10.0;
     
     // 点击播放按钮
     [self playBtnOnClick:self.playBtn];
-
+    
 }
 
 #pragma mark - 初始化
@@ -276,9 +277,7 @@
  */
 - (void)getInitial {
     _progressView.width = 0;
-    _timeLong = @"0";
     self.player = nil;
-    self.timeLong = @"0";
     
     self.timer.fireDate = [NSDate distantFuture];
     if (self.timer.isValid) {

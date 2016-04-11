@@ -12,8 +12,10 @@
 
 /** 本地播放文件地址 */
 @property(nonatomic,strong) NSString *filePath;
+@property(nonatomic,assign,readonly) NSTimeInterval MusicDuring;
 
 - (void)startPlay;
 
 - (void)pause;
+
 @end

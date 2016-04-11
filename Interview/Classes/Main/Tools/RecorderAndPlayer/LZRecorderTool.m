@@ -93,8 +93,7 @@
 - (AVAudioRecorder *)recorder {
     if (_recorder == nil) {
         self.fileName = [self file];
-//        NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-        NSString *tempDir = NSTemporaryDirectory();
+        NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
         // 初始化格式地址
         NSString *path = [tempDir stringByAppendingPathComponent:self.fileName];
         self.audioFileSavePath = path;
