@@ -10,13 +10,19 @@
 #import "PlanItemModel.h"
 #import "PlanItemCell.h"
 #import "PlanModel.h"
-@interface NewPlanVC () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
+#import "DatePickView.h"
+
+#define screenWidth [UIScreen mainScreen].bounds.size.width
+#define screenHeight [UIScreen mainScreen].bounds.size.height
+
+@interface NewPlanVC () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, DatePickViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) PlanModel *planModel;
 @property (nonatomic, strong) NSArray *itemsArray;
 @property (nonatomic, strong) UIAlertView *subjectAlert;
 @property (nonatomic, strong) UIAlertView *contentAlert;
 @property (nonatomic, strong) UIPickerView *planTimePicker;
+@property (nonatomic, strong) DatePickView *datePicker;
 @end
 
 @implementation NewPlanVC
@@ -142,47 +148,21 @@
     }
 }
 
+#pragma  mark  --DatePickView日期选择
 - (void)addDatePicker {
-    
-    UIView *pickerBack = [[UIView alloc] initWithFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height-216, 0, 216)];
-    pickerBack.backgroundColor = [UIColor blackColor];
-    [[UIApplication sharedApplication].keyWindow addSubview:pickerBack];
-    //    这里设置width和height是无效的
-    UIDatePicker *datePicker =[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
-    //    设置本地化
-    datePicker.locale=[NSLocale localeWithLocaleIdentifier:@"zh"];
-    //    设置显示模式
-    datePicker.datePickerMode=UIDatePickerModeDate;
-    [pickerBack addSubview:datePicker];
-    //    设置时区
-    datePicker.timeZone=[NSTimeZone localTimeZone];
-    //    最小最大时间
-    //    日期转换类
-    NSDateFormatter *df=[[NSDateFormatter alloc]init];
-    NSString * dateStr=@"2000-01-01";
-    //    设置日期转换格式
-    df.dateFormat=@"yyyy-MM-dd";
-    //    dateFromString从字符串转日期
-    NSDate * date=[df dateFromString:dateStr];
-    datePicker.minimumDate=date;
-    //    设置最大时间
-    datePicker.maximumDate=[NSDate date];
-    [datePicker addTarget:self action:@selector(datePickerViewChange:) forControlEvents:UIControlEventValueChanged];
-    
+    _datePicker = [[DatePickView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _datePicker.delegate = self;
+    [[UIApplication sharedApplication].keyWindow addSubview:_datePicker];
 }
-
-#pragma mark datePicker值改变后执行的方法
--(void)datePickerViewChange:(UIDatePicker *)datePicker {
-    NSLog(@"datePicker值改变");
-    NSDateFormatter * df=[[NSDateFormatter alloc]init];
-    //    日期转化为字符串
-    //    设置转换格式
-    df.dateFormat=@"yyyy-MM-dd HH:mm:ss";
-    
-    NSString * strDate=[df stringFromDate:datePicker.date];
-    NSLog(@"%@",strDate);
+- (void)datePickViewDelegateCancle {
+    [_datePicker removeFromSuperview];
+    _datePicker.hidden = YES;
 }
-
+- (void)datePickViewDelegateConfirm:(NSString *)dateString {
+    NSLog(@"dateString:%@",dateString);
+    [_datePicker removeFromSuperview];
+    _datePicker.hidden = YES;
+}
 
 #pragma mark --------UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
