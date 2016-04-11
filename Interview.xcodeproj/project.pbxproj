@@ -465,7 +465,7 @@
 				84E345AF1CAC0358007A41A2 /* Main */,
 				84E345D91CAC04AD007A41A2 /* Recorder(录音) */,
 				84E345D11CAC04AD007A41A2 /* Manuscript(稿件) */,
-				84E345D51CAC04AD007A41A2 /* Plan(策划) */,
+				84E345D51CAC04AD007A41A2 /* Plan */,
 				84E345DD1CAC04AD007A41A2 /* Setting(设置) */,
 			);
 			path = Classes;
@@ -583,7 +583,7 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		84E345D51CAC04AD007A41A2 /* Plan(策划) */ = {
+		84E345D51CAC04AD007A41A2 /* Plan */ = {
 			isa = PBXGroup;
 			children = (
 				A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */,
@@ -591,6 +591,7 @@
 				84E345D71CAC04AD007A41A2 /* View */,
 				84E345D81CAC04AD007A41A2 /* ViewController */,
 			);
+			name = Plan;
 			path = "Plan(策划)";
 			sourceTree = "<group>";
 		};
