@@ -37,6 +37,11 @@
     return self.player.duration;
 }
 
+- (void)playAtTime:(NSTimeInterval)time {
+    if ([self.player isPlaying]) {
+        self.player.currentTime = time;
+    }
+}
 
 #pragma mark - 初始化
 - (AVAudioPlayer *)player {

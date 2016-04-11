@@ -17,5 +17,12 @@
 - (void)startPlay;
 
 - (void)pause;
+/**
+ *  从固定时间点进行播放
+ *
+ *  @param time 播放的时间点
+ */
+- (void)playAtTime:(NSTimeInterval)time;
+
 
 @end

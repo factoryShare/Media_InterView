@@ -10,6 +10,7 @@
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
 		8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */; };
+		846D36F51CBB6F0000EF7254 /* LZCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D36F41CBB6F0000EF7254 /* LZCode.m */; };
 		8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847864891CB3A15600F66CC7 /* QMRecorderListCell.m */; };
 		8478648C1CB3A15600F66CC7 /* QMRecorderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */; };
 		847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */; };
@@ -115,6 +116,8 @@
 		8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMRecorderListBottomView.xib; sourceTree = "<group>"; };
 		8418C12D1CB753FE0027C257 /* QMRecorderListBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListBottomView.h; sourceTree = "<group>"; };
 		8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListBottomView.m; sourceTree = "<group>"; };
+		846D36F31CBB6F0000EF7254 /* LZCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCode.h; sourceTree = "<group>"; };
+		846D36F41CBB6F0000EF7254 /* LZCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCode.m; sourceTree = "<group>"; };
 		847864881CB3A15600F66CC7 /* QMRecorderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListCell.h; sourceTree = "<group>"; };
 		847864891CB3A15600F66CC7 /* QMRecorderListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListCell.m; sourceTree = "<group>"; };
 		8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMRecorderListCell.xib; sourceTree = "<group>"; };
@@ -307,6 +310,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		846D36F21CBB6F0000EF7254 /* LZCode */ = {
+			isa = PBXGroup;
+			children = (
+				846D36F31CBB6F0000EF7254 /* LZCode.h */,
+				846D36F41CBB6F0000EF7254 /* LZCode.m */,
+			);
+			path = LZCode;
+			sourceTree = "<group>";
+		};
 		848E18631CAF46DB0097C487 /* GTM */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +536,7 @@
 				84ECDB761CACB26C007FD6E0 /* URLHeader.h */,
 				84ECDB751CACB25C007FD6E0 /* FontTool.h */,
 				84E4D9631CB28AAF00910C91 /* SynthesizeSingleton.h */,
+				846D36F21CBB6F0000EF7254 /* LZCode */,
 				84C81BB51CB6674B0053FF3B /* LZFileHandle */,
 				84A21B3B1CB0D4D400440905 /* VoiceConvert */,
 				84B80F511CB01725002E3870 /* RecorderAndPlayer */,
@@ -1080,6 +1093,7 @@
 				84E4D9661CB2AA5F00910C91 /* QMRecorderDBManager.m in Sources */,
 				84ECDBD01CACBAA0007FD6E0 /* UIScrollView+MJExtension.m in Sources */,
 				848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */,
+				846D36F51CBB6F0000EF7254 /* LZCode.m in Sources */,
 				84B80F571CB01725002E3870 /* LZRecorderTool.m in Sources */,
 				84ECDBCB1CACBAA0007FD6E0 /* MJRefreshGifHeader.m in Sources */,
 				84ECDBEA1CACBB4D007FD6E0 /* FMDatabaseQueue.m in Sources */,

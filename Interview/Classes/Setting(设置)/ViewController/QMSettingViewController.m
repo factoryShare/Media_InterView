@@ -66,10 +66,17 @@
         QMUserInfoViewController *userInfoVC = [[QMUserInfoViewController alloc]init];
         [self.navigationController pushViewController:userInfoVC animated:YES];
     } else {
+        UIViewController *bannerVC = [[UIViewController alloc]init];
+        UIImageView *im = [[UIImageView alloc]initWithFrame:bannerVC.view.bounds];
+        im.image = [UIImage imageNamed:@"Banner_bg"];
+        [bannerVC.view addSubview:im];
         
+        [self.navigationController pushViewController:bannerVC animated:YES
+         ];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
+
 @end

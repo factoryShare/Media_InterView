@@ -25,6 +25,7 @@
 @property(nonatomic,strong) UIView *progressBgView;
 @property(nonatomic,strong) UIView *progressView;
 @property(nonatomic,strong) UIButton *playBtn;
+@property(nonatomic,strong) UIButton *thumbBtn;
 
 /** 音频总时长 */
 @property(nonatomic,assign) NSTimeInterval timeLong;
@@ -58,6 +59,7 @@
 
 #pragma mark - 删除音频文件
 - (void)rightItemClick:(UIButton *)buttonItem {
+    
     if (!buttonItem.selected) {// 删除
         buttonItem.selected = YES;
     } else {// 保存
@@ -70,6 +72,26 @@
  *  控制音乐播放暂停
  */
 - (void)playBtnOnClick:(UIButton *)button {
+    self.recorderDBModel = self.dataSource[self.tableView.indexPathForSelectedRow.row];
+    NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // 初始化格式地址
+    NSString *path = [tempDir stringByAppendingPathComponent: self.recorderDBModel.recorderName];
+    // 音频播放
+    LZFileHandle *handle = [[LZFileHandle alloc]init];
+    self.player.filePath = path;
+    if ([handle isFileExisting:path]) {
+        self.timeLong = self.player.MusicDuring;
+        if (self.timeLong == 0) {
+            NSLog(@"00000");
+            return;
+        }
+        
+        _timerValue =  self.progressBgView.width / self.timeLong / 10.0;
+    
+    } else {
+        return;
+    }
+
     if (!button.selected) {// 播放
         [self.player startPlay];
         // 开始计时
@@ -82,6 +104,55 @@
         button.selected = NO;
     }
 }
+
+/**
+ *  给视图添加移动手势
+ *
+ *  @param myView 要添加到得视图
+ */
+- (void)addPan:(UIView *)myView{
+    //创建移动手势
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]init];
+    //添加回调函数
+    [pan addTarget:self action:@selector(pan:)];
+    //视图添加手势
+    [myView addGestureRecognizer:pan];
+}
+//移动手势的回调函数
+- (void)pan:(UIPanGestureRecognizer *)pan{
+    
+    static CGPoint beganCenter;
+    //获得偏移量
+    CGPoint point = [pan translationInView:pan.view];
+    //判断手势的状态
+    switch (pan.state) {
+        //开始
+        case UIGestureRecognizerStateBegan:
+        {
+            beganCenter = pan.view.center;
+
+        }break;
+        // 移动
+        case UIGestureRecognizerStateChanged:{
+            // 按钮位置
+            CGPoint center = CGPointMake(point.x+beganCenter.x, beganCenter.y);
+            pan.view.center = (center.x >= self.progressBgView.x && center.x <= self.progressBgView.width + self.progressBgView.x) ? center : pan.view.center;
+            // 进度条位置
+            self.progressView.width = pan.view.center.x - self.progressBgView.x;
+        }break;
+        //结束
+        case UIGestureRecognizerStateEnded:{
+            // 播放音乐
+            [self.player playAtTime:self.progressView.width / (1.0*self.progressBgView.width) * self.player.MusicDuring];
+
+        }break;
+        
+        default:
+            break;
+    }
+    
+}
+
 /**
  *  cell点击播放
  */
@@ -149,9 +220,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self getInitial];
     
     self.recorderDBModel = self.dataSource[indexPath.row];
@@ -161,18 +230,22 @@
     // amr 地址
 //    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
     // 音频播放
+    LZFileHandle *handle = [[LZFileHandle alloc]init];
     self.player.filePath = path;
-    
-    self.timeLong = self.player.MusicDuring;
-    if (self.timeLong == 0) {
-        NSLog(@"00000");
+    if ([handle isFileExisting:path]) {
+        self.timeLong = self.player.MusicDuring;
+        if (self.timeLong == 0) {
+            NSLog(@"00000");
+            return;
+        }
+        // 设置精度条步进值/0.1s
+        _timerValue =  self.progressBgView.width / self.timeLong / 10.0;
+        
+        // 点击播放按钮
+        [self playBtnOnClick:self.playBtn];
+    } else {
         return;
     }
-    _timerValue =  self.progressBgView.width / self.timeLong / 10.0;
-    
-    // 点击播放按钮
-    [self playBtnOnClick:self.playBtn];
-    
 }
 
 #pragma mark - 初始化
@@ -241,11 +314,21 @@
     [self.bottomView addSubview:self.progressBgView];
     
     // 播放进度条
-    UIView *progressView = [[UIView alloc]initWithFrame:CGRectMake(playBtn.width + 20, playBtn.centerY, 0, 3)];
+    UIView *progressView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 3)];
     progressView.backgroundColor = [UIColor blueColor];
     self.progressView = progressView;
-    [self.bottomView addSubview:progressView];
-
+    [self.progressBgView addSubview:progressView];
+    
+    // 拖动按钮
+    UIButton *thumbBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    [thumbBtn setImage:[UIImage imageNamed:@"process_thumb"] forState:(UIControlStateNormal)];
+    thumbBtn.size = thumbBtn.currentImage.size;
+    thumbBtn.centerX = bgView.x;
+    thumbBtn.centerY = bgView.y + bgView.height / 2;
+    self.thumbBtn = thumbBtn;
+    [self.bottomView addSubview:self.thumbBtn];
+    
+    [self addPan:thumbBtn];
 }
 
 - (LZPlayerForRecorder *)player {
@@ -270,10 +353,16 @@
  */
 - (void)timeChanged {
     _progressView.width += _timerValue;
+    self.thumbBtn.centerX += _timerValue;
     if (_progressBgView.width <= _progressView.width) {
         [self getInitial];
     }
-
+}
+/**
+ *  拖动进度条
+ */
+- (void)changeProgress {
+    
 }
 /**
  *  初始化播放设置
@@ -281,7 +370,11 @@
 - (void)getInitial {
     _progressView.width = 0;
     self.player = nil;
-    
+    self.playBtn.selected = NO;
+
+    self.thumbBtn.centerX = self.progressBgView.x;
+    self.thumbBtn.centerY = self.progressBgView.y + self.progressBgView.height / 2;
+
     self.timer.fireDate = [NSDate distantFuture];
     if (self.timer.isValid) {
         [_timer invalidate];
