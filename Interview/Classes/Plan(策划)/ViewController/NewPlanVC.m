@@ -144,7 +144,6 @@
     
     if ([model.title isEqualToString:@"策划日期"]) {
         [self addDatePicker];
-        
     }
 }
 
@@ -162,6 +161,14 @@
     NSLog(@"dateString:%@",dateString);
     [_datePicker removeFromSuperview];
     _datePicker.hidden = YES;
+    
+    //更新模型
+    for (PlanItemModel *model in self.itemsArray) {
+        if ([model.title isEqualToString:@"策划日期"]) {
+            model.detail = dateString;
+        }
+    }
+    [self.tableView reloadData];
 }
 
 #pragma mark --------UIAlertViewDelegate

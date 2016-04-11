@@ -54,6 +54,8 @@
         df.dateFormat=@"yyyy-MM-dd";
         //    dateFromString从字符串转日期
         NSDate * date=[df dateFromString:dateStr];
+        // 设置选择器的初始值
+        _dateString=[df stringFromDate:_datePicker.date];
         _datePicker.minimumDate=date;
         //    设置最大时间
         _datePicker.maximumDate=[NSDate date];
@@ -85,7 +87,7 @@
     NSDateFormatter * df=[[NSDateFormatter alloc]init];
     //    日期转化为字符串
     //    设置转换格式
-    df.dateFormat=@"yyyy-MM-dd HH:mm:ss";
+    df.dateFormat=@"yyyy-MM-dd";
     _dateString=[df stringFromDate:datePicker.date];
     NSLog(@"%@",_dateString);
 }
