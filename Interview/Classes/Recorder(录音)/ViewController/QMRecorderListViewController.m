@@ -159,12 +159,15 @@
     // 初始化格式地址
     NSString *path = [tempDir stringByAppendingPathComponent: self.recorderDBModel.recorderName];
     // amr 地址
-    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
-    QMLog(@"%@",amrFileSavePath);
+//    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
     // 音频播放
     self.player.filePath = path;
     
     self.timeLong = self.player.MusicDuring;
+    if (self.timeLong == 0) {
+        NSLog(@"00000");
+        return;
+    }
     _timerValue =  self.progressBgView.width / self.timeLong / 10.0;
     
     // 点击播放按钮

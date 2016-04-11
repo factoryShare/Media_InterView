@@ -43,6 +43,7 @@
     if (!_player) {
         NSError *error = nil;
         _player = [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:_filePath] error:&error];
+        _player.volume = 1.0;
         if (error) {
             QMLog(@"%@",error);
         }
