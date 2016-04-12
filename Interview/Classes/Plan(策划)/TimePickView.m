@@ -1,26 +1,25 @@
 //
-//  DatePickView.m
+//  TimePickView.m
 //  Interview
 //
-//  Created by fei on 16/4/11.
+//  Created by ChengFei on 16/4/11.
 //  Copyright © 2016年 yonganbo. All rights reserved.
 //
 
-#import "DatePickView.h"
-
+#import "TimePickView.h"
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
 
-@interface DatePickView()
+@interface TimePickView()
 @property (nonatomic, strong) UIView *translucentView;
 @property (nonatomic, strong) UIView *backView;
-@property (nonatomic, strong) UIDatePicker *datePicker;
+@property (nonatomic, strong) UIDatePicker *timePicker;
 @property (nonatomic, strong) UIButton *cancleBtn;
 @property (nonatomic, strong) UIButton *confirmBtn;
-@property (nonatomic, strong) NSString *dateString;
+@property (nonatomic, strong) NSString *timeString;
 @end
 
-@implementation DatePickView
+@implementation TimePickView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
@@ -37,29 +36,28 @@
         _backView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_backView];
         
-       // 时间选择
-        _datePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 44, screenWidth, 216)];
+        // 时间选择
+        _timePicker = [[UIDatePicker alloc]initWithFrame:CGRectMake(0, 44, screenWidth, 216)];
         //    设置本地化
-        _datePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
+        _timePicker.locale = [NSLocale localeWithLocaleIdentifier:@"zh"];
         //    设置显示模式
-        _datePicker.datePickerMode = UIDatePickerModeDate;
-        [_backView addSubview:_datePicker];
+        _timePicker.datePickerMode = UIDatePickerModeTime;
+        [_backView addSubview:_timePicker];
         //    设置时区
-        _datePicker.timeZone = [NSTimeZone localTimeZone];
+        _timePicker.timeZone=[NSTimeZone localTimeZone];
         //    最小最大时间
         //    日期转换类
-        NSDateFormatter *df = [[NSDateFormatter alloc]init];
-        NSString * dateStr = @"2000-01-01";
+        NSDateFormatter *df=[[NSDateFormatter alloc]init];
+        NSString * dateStr=@"00:00";
         //    设置日期转换格式
-        df.dateFormat = @"yyyy-MM-dd";
+        df.dateFormat=@"HH:mm";
         //    dateFromString从字符串转日期
-        NSDate * date = [df dateFromString:dateStr];
+        NSDate * date=[df dateFromString:dateStr];
+        
         // 设置选择器的初始值
-        _dateString = [df stringFromDate:_datePicker.date];
-        _datePicker.minimumDate = date;
-        //    设置最大时间
-        _datePicker.maximumDate=[NSDate date];
-        [_datePicker addTarget:self action:@selector(datePickerViewChange:) forControlEvents:UIControlEventValueChanged];
+        _timeString=[df stringFromDate:_timePicker.date];
+        _timePicker.minimumDate=date;
+        [_timePicker addTarget:self action:@selector(datePickerViewChange:) forControlEvents:UIControlEventValueChanged];
         
         
         // 取消 按钮
@@ -87,21 +85,23 @@
     NSDateFormatter * df=[[NSDateFormatter alloc]init];
     //    日期转化为字符串
     //    设置转换格式
-    df.dateFormat=@"yyyy-MM-dd";
-    _dateString=[df stringFromDate:datePicker.date];
-    NSLog(@"%@",_dateString);
+    df.dateFormat=@"HH:mm";
+    _timeString=[df stringFromDate:datePicker.date];
+    NSLog(@"%@",_timeString);
 }
 
 - (void)cancleBtnClicked {
-    if ([self.delegate respondsToSelector:@selector(datePickViewDelegateCancle)]) {
-        [self.delegate datePickViewDelegateCancle];
+    if ([self.delegate respondsToSelector:@selector(timePickViewDelegateCancle)]) {
+        [self.delegate timePickViewDelegateCancle];
     }
 }
 
 - (void)setConfirmBtnClicked {
-    if ([self.delegate respondsToSelector:@selector(datePickViewDelegateConfirm:)]) {
-        [self.delegate datePickViewDelegateConfirm:_dateString];
+    if ([self.delegate respondsToSelector:@selector(timePickViewDelegateConfirm:)]) {
+        [self.delegate timePickViewDelegateConfirm:_timeString];
     }
 }
+
+
 
 @end

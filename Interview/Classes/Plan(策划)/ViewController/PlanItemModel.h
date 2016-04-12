@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface PlanItemModel : NSObject
+@property (nonatomic,copy) NSString *identifier;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *detail;
 @end

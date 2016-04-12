@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E491CBBA6B900B5A698 /* TimePickView.m */; };
+		5F3D0E501CBBC89200B5A698 /* CustomPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */; };
+		5F3D0E5C1CBC852500B5A698 /* LKDB+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E531CBC852500B5A698 /* LKDB+Mapping.m */; };
+		5F3D0E5D1CBC852500B5A698 /* LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E551CBC852500B5A698 /* LKDBHelper.m */; };
+		5F3D0E5E1CBC852500B5A698 /* LKDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E571CBC852500B5A698 /* LKDBUtils.m */; };
+		5F3D0E5F1CBC852500B5A698 /* NSObject+LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E591CBC852500B5A698 /* NSObject+LKDBHelper.m */; };
+		5F3D0E601CBC852500B5A698 /* NSObject+LKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E5B1CBC852500B5A698 /* NSObject+LKModel.m */; };
+		5F3D0E661CBCB50700B5A698 /* CommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E651CBCB50700B5A698 /* CommonUI.m */; };
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
 		8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */; };
@@ -112,6 +120,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5F3D0E481CBBA6B900B5A698 /* TimePickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TimePickView.h; path = "Interview/Classes/Plan(策划)/TimePickView.h"; sourceTree = SOURCE_ROOT; };
+		5F3D0E491CBBA6B900B5A698 /* TimePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimePickView.m; path = "Interview/Classes/Plan(策划)/TimePickView.m"; sourceTree = SOURCE_ROOT; };
+		5F3D0E4E1CBBC89200B5A698 /* CustomPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPickView.h; path = "Interview/Classes/Plan(策划)/CustomPickView.h"; sourceTree = SOURCE_ROOT; };
+		5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPickView.m; path = "Interview/Classes/Plan(策划)/CustomPickView.m"; sourceTree = SOURCE_ROOT; };
+		5F3D0E521CBC852500B5A698 /* LKDB+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LKDB+Mapping.h"; sourceTree = "<group>"; };
+		5F3D0E531CBC852500B5A698 /* LKDB+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LKDB+Mapping.m"; sourceTree = "<group>"; };
+		5F3D0E541CBC852500B5A698 /* LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBHelper.h; sourceTree = "<group>"; };
+		5F3D0E551CBC852500B5A698 /* LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBHelper.m; sourceTree = "<group>"; };
+		5F3D0E561CBC852500B5A698 /* LKDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBUtils.h; sourceTree = "<group>"; };
+		5F3D0E571CBC852500B5A698 /* LKDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBUtils.m; sourceTree = "<group>"; };
+		5F3D0E581CBC852500B5A698 /* NSObject+LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKDBHelper.h"; sourceTree = "<group>"; };
+		5F3D0E591CBC852500B5A698 /* NSObject+LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKDBHelper.m"; sourceTree = "<group>"; };
+		5F3D0E5A1CBC852500B5A698 /* NSObject+LKModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKModel.h"; sourceTree = "<group>"; };
+		5F3D0E5B1CBC852500B5A698 /* NSObject+LKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKModel.m"; sourceTree = "<group>"; };
+		5F3D0E641CBCB50700B5A698 /* CommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
+		5F3D0E651CBCB50700B5A698 /* CommonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUI.m; sourceTree = "<group>"; };
 		840F1CCC1CB397B0006F38B1 /* QMRecorderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListViewController.h; sourceTree = "<group>"; };
 		840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListViewController.m; sourceTree = "<group>"; };
 		8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMRecorderListBottomView.xib; sourceTree = "<group>"; };
@@ -313,6 +337,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F3D0E511CBC852500B5A698 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				5F3D0E521CBC852500B5A698 /* LKDB+Mapping.h */,
+				5F3D0E531CBC852500B5A698 /* LKDB+Mapping.m */,
+				5F3D0E541CBC852500B5A698 /* LKDBHelper.h */,
+				5F3D0E551CBC852500B5A698 /* LKDBHelper.m */,
+				5F3D0E561CBC852500B5A698 /* LKDBUtils.h */,
+				5F3D0E571CBC852500B5A698 /* LKDBUtils.m */,
+				5F3D0E581CBC852500B5A698 /* NSObject+LKDBHelper.h */,
+				5F3D0E591CBC852500B5A698 /* NSObject+LKDBHelper.m */,
+				5F3D0E5A1CBC852500B5A698 /* NSObject+LKModel.h */,
+				5F3D0E5B1CBC852500B5A698 /* NSObject+LKModel.m */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		846D36F21CBB6F0000EF7254 /* LZCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -536,6 +577,8 @@
 		84E345B91CAC0358007A41A2 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				5F3D0E641CBCB50700B5A698 /* CommonUI.h */,
+				5F3D0E651CBCB50700B5A698 /* CommonUI.m */,
 				84ECDB761CACB26C007FD6E0 /* URLHeader.h */,
 				84ECDB751CACB25C007FD6E0 /* FontTool.h */,
 				84E4D9631CB28AAF00910C91 /* SynthesizeSingleton.h */,
@@ -631,6 +674,10 @@
 				A5D6B5C11CB2565100B6E845 /* PlanItemCell.m */,
 				A5975F161CBB715E005D2C3B /* DatePickView.h */,
 				A5975F171CBB715E005D2C3B /* DatePickView.m */,
+				5F3D0E481CBBA6B900B5A698 /* TimePickView.h */,
+				5F3D0E491CBBA6B900B5A698 /* TimePickView.m */,
+				5F3D0E4E1CBBC89200B5A698 /* CustomPickView.h */,
+				5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -743,6 +790,7 @@
 		84ECDB771CACB42A007FD6E0 /* ThiredPart */ = {
 			isa = PBXGroup;
 			children = (
+				5F3D0E511CBC852500B5A698 /* Helper */,
 				84ECDBD31CACBB4D007FD6E0 /* FMDB */,
 				84ECDBE11CACBB4D007FD6E0 /* MBProgressHUD */,
 				84ECDB7F1CACB7BA007FD6E0 /* AFNetworking */,
@@ -984,7 +1032,7 @@
 				TargetAttributes = {
 					84E345751CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = G9GWY6T6FF;
+						DevelopmentTeam = X448TB9G2B;
 					};
 					84E3458E1CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1065,6 +1113,7 @@
 				A5D6B5C51CB2570A00B6E845 /* PlanItemModel.m in Sources */,
 				84ECDB8F1CACB7BA007FD6E0 /* AFSecurityPolicy.m in Sources */,
 				84CE48321CAEC29A0012B584 /* QMSettingViewController.m in Sources */,
+				5F3D0E501CBBC89200B5A698 /* CustomPickView.m in Sources */,
 				84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */,
 				84CE48381CAEC5D60012B584 /* QMUserInfoViewController.m in Sources */,
 				84ECDBCA1CACBAA0007FD6E0 /* MJRefreshBackStateFooter.m in Sources */,
@@ -1080,6 +1129,8 @@
 				840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */,
 				84A21B501CB0D4D400440905 /* VoiceConverter.mm in Sources */,
 				84ECDBE81CACBB4D007FD6E0 /* FMDatabaseAdditions.m in Sources */,
+				5F3D0E661CBCB50700B5A698 /* CommonUI.m in Sources */,
+				5F3D0E5C1CBC852500B5A698 /* LKDB+Mapping.m in Sources */,
 				84ECDBE71CACBB4D007FD6E0 /* FMDatabase.m in Sources */,
 				84ECDBC01CACBAA0007FD6E0 /* MJRefreshAutoFooter.m in Sources */,
 				848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */,
@@ -1093,6 +1144,7 @@
 				84ECDBC41CACBAA0007FD6E0 /* MJRefreshHeader.m in Sources */,
 				84AF69E11CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m in Sources */,
 				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,
+				5F3D0E5F1CBC852500B5A698 /* NSObject+LKDBHelper.m in Sources */,
 				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84E4D9661CB2AA5F00910C91 /* QMRecorderDBManager.m in Sources */,
@@ -1115,9 +1167,12 @@
 				84ECDBE91CACBB4D007FD6E0 /* FMDatabasePool.m in Sources */,
 				84E345CF1CAC0358007A41A2 /* QMNavigationController.m in Sources */,
 				84E3457B1CABFA87007A41A2 /* main.m in Sources */,
+				5F3D0E5D1CBC852500B5A698 /* LKDBHelper.m in Sources */,
+				5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */,
 				84ECDB911CACB7BA007FD6E0 /* AFURLResponseSerialization.m in Sources */,
 				84A21B4C1CB0D4D400440905 /* amrFileCodec.mm in Sources */,
 				84ECDB8E1CACB7BA007FD6E0 /* AFNetworkReachabilityManager.m in Sources */,
+				5F3D0E601CBC852500B5A698 /* NSObject+LKModel.m in Sources */,
 				84ECDB7E1CACB45C007FD6E0 /* Reachability.m in Sources */,
 				84ECDBD21CACBAA0007FD6E0 /* UIView+MJExtension.m in Sources */,
 				84ECDBCC1CACBAA0007FD6E0 /* MJRefreshNormalHeader.m in Sources */,
@@ -1125,6 +1180,7 @@
 				84ECDBEB1CACBB4D007FD6E0 /* FMResultSet.m in Sources */,
 				84ECDBC11CACBAA0007FD6E0 /* MJRefreshBackFooter.m in Sources */,
 				84ECDB8D1CACB7BA007FD6E0 /* AFHTTPSessionManager.m in Sources */,
+				5F3D0E5E1CBC852500B5A698 /* LKDBUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

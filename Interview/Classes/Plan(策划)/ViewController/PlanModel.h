@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LKDBHelper.h"
+
+
 // EventTitle, EventDate,OccurTime,ReportType,MainDesign,WorkAttendance,SendPackets,EventDescribe
 @interface PlanModel : NSObject
 @property (nonatomic, copy) NSString *EventTitle;
