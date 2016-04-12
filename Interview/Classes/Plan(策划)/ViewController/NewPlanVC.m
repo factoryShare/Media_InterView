@@ -9,7 +9,6 @@
 #import "NewPlanVC.h"
 #import "PlanItemModel.h"
 #import "PlanItemCell.h"
-#import "PlanModel.h"
 #import "DatePickView.h"
 #import "TimePickView.h"
 #import "CustomPickView.h"
@@ -21,7 +20,7 @@
 
 @interface NewPlanVC () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, DatePickViewDelegate, TimePickViewDelegate, CustomPickViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) PlanModel *planModel;
+
 @property (nonatomic, strong) NSArray *itemsArray;
 @property (nonatomic, strong) UIAlertView *subjectAlert;
 @property (nonatomic, strong) UIAlertView *contentAlert;
@@ -37,7 +36,11 @@
 @property (nonatomic, strong) CustomPickView *planSubjectPicker;
 @property (nonatomic, strong) CustomPickView *attendancePicker;
 @property (nonatomic, strong) CustomPickView *columePicker;
+@property (nonatomic, strong) UIBarButtonItem *saveItem;
+@property (nonatomic, strong) UIBarButtonItem *editItem;
 
+
+@property (nonatomic, assign) BOOL canEdit;
 
 @end
 
@@ -47,6 +50,11 @@
     [super viewDidLoad];
     [self initUI];
     [self loadData];
+    _canEdit = YES;
+    if (self.planModel == nil) {
+        _planModel = [[PlanModel alloc] init];
+    }
+    
 }
 
 // 初始化模型
@@ -113,28 +121,19 @@
     self.title = @"新建策划";
     
     // 保存按钮
-    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"save"] style:UIBarButtonItemStylePlain target:self action:@selector(saveBtnClicked)];
-    saveItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = saveItem;
+    _saveItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_save"] style:UIBarButtonItemStylePlain target:self action:@selector(saveItemClicked)];
+    _saveItem.tintColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = _saveItem;
+    
+    _editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editItemClicked)];
+    _editItem.tintColor = [UIColor whiteColor];
+    
 }
 
-- (void)saveBtnClicked {
-    
-    /*
-     
-     @property (nonatomic, copy) NSString *EventTitle;
-     @property (nonatomic, copy) NSString *EventDate;
-     @property (nonatomic, copy) NSString *OccurTime;
-     @property (nonatomic, copy) NSString *ReportType;
-     @property (nonatomic, copy) NSString *MainDesign;
-     @property (nonatomic, copy) NSString *WorkAttendance;
-     @property (nonatomic, copy) NSString *SendPackets;
-     @property (nonatomic, copy) NSString *EventDescribe;
-     
-     */
-    
+- (void)saveItemClicked {
+
     BOOL canSaveToDB = YES;
-    _planModel = [[PlanModel alloc] init];
+   
     for (PlanItemModel *itemModel in self.itemsArray) {
         NSString *identifier = itemModel.identifier;
         if (itemModel.detail.length <= 0) {
@@ -166,15 +165,22 @@
         }
     }
     
-    
     if (canSaveToDB) {
         // 保存到数据库
         [_planModel saveToDB];
+        _canEdit = NO;
+        self.navigationItem.rightBarButtonItem = _editItem;
+        [self.tableView reloadData];
+        
     } else {
         [CommonUI showTextOnly:@"请填写完整信息"];
     }
-    
-    
+}
+
+- (void)editItemClicked {
+    _canEdit = YES;
+    [self.tableView reloadData];
+    self.navigationItem.rightBarButtonItem = _saveItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -187,7 +193,12 @@
     return 1;
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.itemsArray.count;
+    if (_canEdit) {
+        return self.itemsArray.count;
+    } else {
+        return self.itemsArray.count + 1;
+    }
+    
 }
 
 #pragma mark -- tableView delegate 
@@ -205,56 +216,64 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section < self.itemsArray.count) {
+        PlanItemModel *model = self.itemsArray[indexPath.section];
+        PlanItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlanItemCell"];
+        cell.titleLabel.text = model.title;
+        cell.detailLabel.text = model.detail;
+        return cell;
+    } else {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SendCell"];
+        return cell;
+    }
     
-    PlanItemModel *model = self.itemsArray[indexPath.section];
-    PlanItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PlanItemCell"];
-    cell.titleLabel.text = model.title;
-    cell.detailLabel.text = model.detail;
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    PlanItemModel *model = self.itemsArray[indexPath.section];
-    if ([model.title isEqualToString:@"采访主题"]) {
-        _subjectAlert = [[UIAlertView alloc] initWithTitle:@"请输入标题" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        _subjectAlert.delegate = self;
-        _subjectAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [_subjectAlert show];
-        //得到输入框
-        UITextField *tf = [_subjectAlert textFieldAtIndex:0];
-        tf.text = model.detail;
-    }
     
-    if ([model.title isEqualToString:@"策划内容"]) {
-        _contentAlert = [[UIAlertView alloc] initWithTitle:@"请输入内容" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        _contentAlert.delegate = self;
-        _contentAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [_contentAlert show];
-        //输入框
-        UITextField *tf = [_contentAlert textFieldAtIndex:0];
-        tf.text = model.detail;
-    }
-    
-    if ([model.title isEqualToString:@"策划日期"]) {
-        [self addDatePicker];
-    }
-    
-    if ([model.title isEqualToString:@"发生时间"]) {
-        [self addTimePicker];
-    }
-    
-    if ([model.title isEqualToString:@"报道形式"]) {
-        [self addReportPickerWithArray:_reportFormArray];
-    }
-    
-    if ([model.title isEqualToString:@"主题策划"]) {
-        [self addPlanSubjectPickerWithArray:_planSubjectArray];
-    }
-    if ([model.title isEqualToString:@"工作出勤"]) {
-        [self addAttendancePickerWithArray:_attendanceArray];
-    }
-    if ([model.title isEqualToString:@"发稿栏目"]) {
-        [self addColumePickerWithArray:_columeArray];
+    if (_canEdit) {
+        PlanItemModel *model = self.itemsArray[indexPath.section];
+        if ([model.title isEqualToString:@"采访主题"]) {
+            _subjectAlert = [[UIAlertView alloc] initWithTitle:@"请输入标题" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            _subjectAlert.delegate = self;
+            _subjectAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+            [_subjectAlert show];
+            //得到输入框
+            UITextField *tf = [_subjectAlert textFieldAtIndex:0];
+            tf.text = model.detail;
+        }
+        
+        if ([model.title isEqualToString:@"策划内容"]) {
+            _contentAlert = [[UIAlertView alloc] initWithTitle:@"请输入内容" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            _contentAlert.delegate = self;
+            _contentAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+            [_contentAlert show];
+            //输入框
+            UITextField *tf = [_contentAlert textFieldAtIndex:0];
+            tf.text = model.detail;
+        }
+        
+        if ([model.title isEqualToString:@"策划日期"]) {
+            [self addDatePicker];
+        }
+        
+        if ([model.title isEqualToString:@"发生时间"]) {
+            [self addTimePicker];
+        }
+        
+        if ([model.title isEqualToString:@"报道形式"]) {
+            [self addReportPickerWithArray:_reportFormArray];
+        }
+        
+        if ([model.title isEqualToString:@"主题策划"]) {
+            [self addPlanSubjectPickerWithArray:_planSubjectArray];
+        }
+        if ([model.title isEqualToString:@"工作出勤"]) {
+            [self addAttendancePickerWithArray:_attendanceArray];
+        }
+        if ([model.title isEqualToString:@"发稿栏目"]) {
+            [self addColumePickerWithArray:_columeArray];
+        }
     }
 }
 

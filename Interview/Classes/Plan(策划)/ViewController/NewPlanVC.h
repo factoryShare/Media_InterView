@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "PlanModel.h"
 @interface NewPlanVC : UIViewController
 
+@property (nonatomic, strong) PlanModel *planModel;
 @end

@@ -112,6 +112,24 @@
                                             <outlet property="titleLabel" destination="7m7-ZX-og0" id="zSr-rr-8sB"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" alpha="0.59999999999999998" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SendCell" id="eLD-Di-B1W">
+                                        <rect key="frame" x="0.0" y="78" width="320" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eLD-Di-B1W" id="cVo-mI-ZfL">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_send" translatesAutoresizingMaskIntoConstraints="NO" id="SX1-qV-PEd">
+                                                    <rect key="frame" x="145" y="10" width="30" height="30"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SX1-qV-PEd" firstAttribute="centerY" secondItem="cVo-mI-ZfL" secondAttribute="centerY" id="8Zm-Hu-RDL"/>
+                                                <constraint firstItem="SX1-qV-PEd" firstAttribute="centerX" secondItem="cVo-mI-ZfL" secondAttribute="centerX" id="Zc9-T0-oAT"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="QoI-R9-QDd" id="lza-JD-HYt"/>
@@ -156,4 +174,7 @@
             <point key="canvasLocation" x="559" y="364"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_send" width="30" height="30"/>
+    </resources>
 </document>
