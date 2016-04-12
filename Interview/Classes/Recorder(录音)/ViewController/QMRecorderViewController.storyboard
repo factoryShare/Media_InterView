@@ -27,7 +27,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-f4-P2j" userLabel="按钮 View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-f4-P2j" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="450" width="600" height="100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcO-bV-K7M" userLabel="中线">
@@ -92,6 +92,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="bottomView" destination="H2w-f4-P2j" id="kLt-1c-yA9"/>
                         <outlet property="controlBtn" destination="hKz-cj-TWg" id="JhA-hQ-BoU"/>
                         <outlet property="lockBtn" destination="P2y-QW-pc1" id="DId-51-Q8g"/>
                         <outlet property="powerIndicaterIm" destination="Gc7-Ot-F8o" id="S5m-4t-hWN"/>

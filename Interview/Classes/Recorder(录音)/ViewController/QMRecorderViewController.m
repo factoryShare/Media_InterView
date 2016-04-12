@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *controlBtn;
 @property (weak, nonatomic) IBOutlet UIButton *lockBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *powerIndicaterIm;
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
 
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,assign) int timerValue;
@@ -30,6 +31,7 @@
 /** 录音存储地址(amr) */
 @property(nonatomic,copy) NSString *amrFileSavePath;
 @property(nonatomic,strong) QMRecorderDBManager *recorderDBManager;
+@property(nonatomic,strong) UIWindow *keyWindow;
 
 @end
 
@@ -102,22 +104,27 @@
 /**
  *  锁定屏幕 */
 - (IBAction)lockView:(UIButton *)sender {
-    static BOOL isLocking = YES;
-    sender.selected = isLocking;
-    if (isLocking) {
-//        _coverView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-//        _coverView.backgroundColor = [UIColor redColor];
-//        [[UIApplication sharedApplication].keyWindow addSubview: _coverView];
-//        
-//        UIView *view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 100, 100)];
-//        view.backgroundColor = [UIColor greenColor];
-//        
-//        [_coverView addSubview:self.lockBtn];
-        isLocking = NO;
-    } else {
-        isLocking = YES;
-    }
+    _coverView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    _coverView.backgroundColor = [UIColor clearColor];
+    self.keyWindow = [UIApplication sharedApplication].keyWindow;
+    [self.keyWindow addSubview: _coverView];
+    
+    CGRect rect;
+    
+    rect = [self.bottomView convertRect:self.lockBtn.frame toView:_keyWindow];
+    
+    UIButton *lockBtnOnCover = [UIButton buttonWithType:(UIButtonTypeCustom)];
+    lockBtnOnCover.frame = rect;
+    [lockBtnOnCover setImage:[UIImage imageNamed:@"Recorder_lock_click"] forState:(UIControlStateNormal)];        [lockBtnOnCover addTarget:self action:@selector(lockBtnOnCoverClick:) forControlEvents:(UIControlEventTouchUpInside)];
+    
+    [_coverView addSubview:lockBtnOnCover];
 
+}
+/**
+ *  解锁 
+ */
+- (void)lockBtnOnCoverClick:(UIButton *)btn {
+    [self.coverView removeFromSuperview];
 }
 
 /**

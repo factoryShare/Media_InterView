@@ -387,4 +387,10 @@
 //    return _bottomView;
 //}
 
+//地址: http://path-to-service/story/UploadMedias
+//方式: POST
+//参数:string token, string fileIDs, string fileTypes, string title, string author, string caption, long channelID
+//说明：channelID=1    author=登录用户名  fileIDs多个文件用，号隔开  fileTypes多个用逗号隔开
+//fileTypes 图片=2   音频=1
+
 @end
