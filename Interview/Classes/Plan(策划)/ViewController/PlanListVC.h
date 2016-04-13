@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface PlanListVC : UIViewController
-
+@property (nonatomic, assign) BOOL isSendToServer;
 @end

@@ -32,5 +32,11 @@
 }
 
 
+//已经插入数据库
++(void)dbDidInserted:(NSObject *)entity result:(BOOL)result
+{
+    LKErrorLog(@"did insert : %@",NSStringFromClass(self));
+}
+
 
 @end

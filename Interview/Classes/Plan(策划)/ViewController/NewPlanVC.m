@@ -57,6 +57,7 @@
     _canEdit = YES;
     if (self.planModel == nil) {
         _planModel = [[PlanModel alloc] init];
+        _planModel.isSendToServer = NO;
     }
     
 }
@@ -323,6 +324,8 @@
         
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
         NSLog(@"result: %@", result);
+        _planModel.isSendToServer = YES;
+        [_planModel updateToDB];
         [CommonUI showTextOnly:@"上传成功"];
         [self.navigationController popViewControllerAnimated:YES];
         

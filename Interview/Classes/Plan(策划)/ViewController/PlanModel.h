@@ -20,5 +20,6 @@
 @property (nonatomic, copy) NSString *WorkAttendance;
 @property (nonatomic, copy) NSString *SendPackets;
 @property (nonatomic, copy) NSString *EventDescribe;
+@property (nonatomic, assign) BOOL isSendToServer;
 @end
 
