@@ -92,6 +92,7 @@
 		84ECDBF81CACBE16007FD6E0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */; };
 		84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */; };
 		84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */; };
+		A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */; };
 		A5975F181CBB715E005D2C3B /* DatePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5975F171CBB715E005D2C3B /* DatePickView.m */; };
 		A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */; };
 		A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */; };
@@ -292,6 +293,8 @@
 		84ECDBFF1CACC4EF007FD6E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PreciNewsMobile.txt; sourceTree = "<group>"; };
+		A529902E1CBE8D2C00BE46D8 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTextView.h; path = "Interview/Classes/Plan(策划)/CustomTextView.h"; sourceTree = SOURCE_ROOT; };
+		A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTextView.m; path = "Interview/Classes/Plan(策划)/CustomTextView.m"; sourceTree = SOURCE_ROOT; };
 		A5975F161CBB715E005D2C3B /* DatePickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickView.h; path = "Interview/Classes/Plan(策划)/DatePickView.h"; sourceTree = SOURCE_ROOT; };
 		A5975F171CBB715E005D2C3B /* DatePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickView.m; path = "Interview/Classes/Plan(策划)/DatePickView.m"; sourceTree = SOURCE_ROOT; };
 		A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
@@ -678,6 +681,8 @@
 				5F3D0E491CBBA6B900B5A698 /* TimePickView.m */,
 				5F3D0E4E1CBBC89200B5A698 /* CustomPickView.h */,
 				5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */,
+				A529902E1CBE8D2C00BE46D8 /* CustomTextView.h */,
+				A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1167,6 +1172,7 @@
 				84ECDBEF1CACBB4D007FD6E0 /* MBProgressHUD.m in Sources */,
 				84ECDBE91CACBB4D007FD6E0 /* FMDatabasePool.m in Sources */,
 				84E345CF1CAC0358007A41A2 /* QMNavigationController.m in Sources */,
+				A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */,
 				84E3457B1CABFA87007A41A2 /* main.m in Sources */,
 				5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */,
 				5FBA39B51CBE5F21002F90C0 /* LKDB+Mapping.m in Sources */,
