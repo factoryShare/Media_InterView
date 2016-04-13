@@ -35,5 +35,7 @@
 #define _kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define _kScreenWidth [UIScreen mainScreen].bounds.size.width
 
+#define kRememberKey @"RememberKey"
+
 
 #endif /* PrefixHeader_pch */

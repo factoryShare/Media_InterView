@@ -24,7 +24,14 @@ path-to-service： 114.112.100.68:8020
 {{{
 token, EventTitle, EventDate,OccurTime,ReportType,MainDesign,WorkAttendance,SendPackets,EventDescribe
 }}}
-返回: status 
+返回: status  如 :
+                    result:{
+                        Data = {
+                                EventDesignID = 0;
+                            };
+                        Error = "<null>";
+                    }
+
 
 
 新建上传文件

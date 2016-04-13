@@ -47,6 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  The current network reachability status.
  */
+
 @property (readonly, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;
 
 /**

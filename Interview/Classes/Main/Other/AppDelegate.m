@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AFNetworkReachabilityManager.h"
 #import "QMTabBarController.h"
 
 @interface AppDelegate ()
@@ -27,7 +28,7 @@
     QMTabBarController *tabC = [[QMTabBarController alloc]init];
     self.window.rootViewController = tabC;
     
-    QMLog(@"%@",[NSString getDeviceModel]) ;
+    [self startMonitoringNetWorking];
     
     return YES;
 }
@@ -52,6 +53,40 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - 私人方法
+/**
+ *  全局监测网络状态
+ */
+- (void)startMonitoringNetWorking {
+    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+    
+    [manager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                break;
+                
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+                break;
+                
+            case AFNetworkReachabilityStatusNotReachable:
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [MBProgressHUD showError:@"请检测网络状态"];
+                });
+                
+                break;
+                
+            case AFNetworkReachabilityStatusUnknown:
+                
+                break;
+            default:
+                break;
+        }
+        
+    }];
+    
+    [manager startMonitoring];
 }
 
 @end
