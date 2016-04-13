@@ -14,9 +14,12 @@
 #import "CustomPickView.h"
 #import "PlanModel.h"
 #import "CommonUI.h"
+#import "AFNetworking.h"
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
+
+#define pathToService @"114.112.100.68:8020"
 
 @interface NewPlanVC () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, DatePickViewDelegate, TimePickViewDelegate, CustomPickViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -38,6 +41,7 @@
 @property (nonatomic, strong) CustomPickView *columePicker;
 @property (nonatomic, strong) UIBarButtonItem *saveItem;
 @property (nonatomic, strong) UIBarButtonItem *editItem;
+@property (nonatomic, strong) UIAlertView *sendAlert;
 
 
 @property (nonatomic, assign) BOOL canEdit;
@@ -275,9 +279,58 @@
             [self addColumePickerWithArray:_columeArray];
         }
     }
+    
+    // 发送策划到服务器
+    if (indexPath.section == self.itemsArray.count) {
+        
+        _sendAlert = [[UIAlertView alloc] initWithTitle:@"是否上传" message: nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"上传", nil];
+        [_sendAlert show];
+        
+    }
+    
 }
 
-
+#pragma mark --- 网络
+- (void)sendPlanToServer {
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/eventDesign/uploadEventDesign",pathToService];
+    // 请求的参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject:_planModel.EventTitle forKey:@"EventTitle"];
+    [parameters setObject:_planModel.EventDate  forKey:@"EventDate"];
+    [parameters setObject:_planModel.OccurTime forKey:@"OccurTime"];
+    [parameters setObject:_planModel.ReportType forKey:@"ReportType"];
+    [parameters setObject:_planModel.MainDesign forKey:@"MainDesign"];
+    [parameters setObject:_planModel.WorkAttendance forKey:@"WorkAttendance"];
+    [parameters setObject:_planModel.SendPackets forKey:@"SendPackets"];
+    [parameters setObject:_planModel.EventDescribe forKey:@"EventDescribe"];
+    
+    // 初始化Manager
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    // 不加上这句话，会报“Request failed: unacceptable content-type: text/plain”错误，因为我们要获取text/plain类型数据
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    // post请求
+    [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id  _Nonnull formData) {
+        // 拼接data到请求体，这个block的参数是遵守AFMultipartFormData协议的。
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        // 这里可以获取到目前的数据请求的进度
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+        NSLog(@"result: %@", result);
+        [CommonUI showTextOnly:@"上传成功"];
+        [self.navigationController popViewControllerAnimated:YES];
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        // 请求失败
+        NSLog(@"error: %@", [error localizedDescription]);
+    }];
+    
+}
 
 #pragma  mark  --DatePickView日期选择
 - (void)addDatePicker {
@@ -430,6 +483,13 @@
             [self.tableView reloadData];
         }
     }
+    
+    if (alertView == _sendAlert) {
+        if (buttonIndex == 1) {
+            [self sendPlanToServer];
+        }
+    }
+    
     
 }
 
