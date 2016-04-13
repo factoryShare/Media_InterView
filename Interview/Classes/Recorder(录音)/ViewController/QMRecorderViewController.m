@@ -150,7 +150,6 @@
 
 #pragma mark - LZRecorderDeleagte 
 - (void)getaudioPower:(float)power {
-    NSLog(@"%lf",power);
     int character = power / 160 * 26;
     if (character > 26) {
         character = 26;

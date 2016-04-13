@@ -295,6 +295,8 @@
     NSString *urlString = [NSString stringWithFormat:@"http://%@/eventDesign/uploadEventDesign",pathToService];
     // 请求的参数
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
+    [parameters setObject: token forKey:@"token"];
     [parameters setObject:_planModel.EventTitle forKey:@"EventTitle"];
     [parameters setObject:_planModel.EventDate  forKey:@"EventDate"];
     [parameters setObject:_planModel.OccurTime forKey:@"OccurTime"];
