@@ -14,6 +14,7 @@
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
 		8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */; };
+		841F30A91CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */; };
 		846D36F51CBB6F0000EF7254 /* LZCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D36F41CBB6F0000EF7254 /* LZCode.m */; };
 		8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847864891CB3A15600F66CC7 /* QMRecorderListCell.m */; };
 		8478648C1CB3A15600F66CC7 /* QMRecorderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */; };
@@ -136,6 +137,8 @@
 		8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMRecorderListBottomView.xib; sourceTree = "<group>"; };
 		8418C12D1CB753FE0027C257 /* QMRecorderListBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListBottomView.h; sourceTree = "<group>"; };
 		8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListBottomView.m; sourceTree = "<group>"; };
+		841F30A71CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMManuscriptAMRListViewController.h; sourceTree = "<group>"; };
+		841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptAMRListViewController.m; sourceTree = "<group>"; };
 		846D36F31CBB6F0000EF7254 /* LZCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCode.h; sourceTree = "<group>"; };
 		846D36F41CBB6F0000EF7254 /* LZCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCode.m; sourceTree = "<group>"; };
 		847864881CB3A15600F66CC7 /* QMRecorderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListCell.h; sourceTree = "<group>"; };
@@ -659,6 +662,8 @@
 			children = (
 				847DEB8E1CAE76180041BAE3 /* QMManuscriptViewController.h */,
 				847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */,
+				841F30A71CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.h */,
+				841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1166,6 +1171,7 @@
 				84ECDBC41CACBAA0007FD6E0 /* MJRefreshHeader.m in Sources */,
 				A5568A891CBF2C3200CCC984 /* LKDB+Mapping.m in Sources */,
 				84AF69E11CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m in Sources */,
+				841F30A91CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m in Sources */,
 				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,
 				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,

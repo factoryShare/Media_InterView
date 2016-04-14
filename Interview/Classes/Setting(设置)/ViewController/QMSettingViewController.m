@@ -10,6 +10,9 @@
 #import "QMSettingTableViewCell.h"
 #import "QMUserInfoViewController.h"
 
+#import "QMManuscriptAMRListViewController.h"
+
+
 @interface QMSettingViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -25,7 +28,7 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"push" style:(UIBarButtonItemStyleDone) target:self action:@selector(push)];;
 }
 
 #pragma mark - Table view data source
@@ -77,6 +80,12 @@
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+}
+
+#pragma mark - 瞎搞
+- (void)push {
+    QMManuscriptAMRListViewController *vc = [[QMManuscriptAMRListViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

@@ -64,7 +64,6 @@
 }
 
 - (IBAction)loginBtn:(UIButton*)sender {
-
     if ([sender.titleLabel.text isEqualToString:@"登陆"]) {
 //        [self signIn];
         [self singnInWithAFN];
@@ -82,7 +81,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     [parameters setObject: _accountTextField.text forKey:@"userName"];
     [parameters setObject: _passwordTextField.text forKey:@"password"];
-    [parameters setObject: [NSString getDeviceModel] forKey:@"deviceID"];
+    [parameters setObject: [self mAppUUID] forKey:@"deviceID"];
     // 初始化Manager
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
@@ -132,6 +131,22 @@
     
 }
 
+#pragma mark - 原工程代码
+- (NSString *)mAppUUID {
+    NSUserDefaults *UserDef = [NSUserDefaults standardUserDefaults];
+    NSString *deviceIdStr = [UserDef valueForKey:@"deviceId"];
+    if (!deviceIdStr) {
+        CFUUIDRef deviceId = CFUUIDCreate (NULL);
+        CFStringRef deviceIdStrRef = CFUUIDCreateString(NULL,deviceId);
+        CFRelease(deviceId);
+        deviceIdStr = [NSString stringWithString:(__bridge NSString *)deviceIdStrRef];
+        [UserDef setValue:deviceIdStr forKey:@"deviceId"];
+        [UserDef synchronize];
+    }
+    NSMutableString *str = [NSMutableString stringWithString:deviceIdStr];
+    [str replaceOccurrencesOfString:@"-" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, str.length)];
+    return str;
+}
 
 - (void)logOut {
     _serviceTextField.text = nil;

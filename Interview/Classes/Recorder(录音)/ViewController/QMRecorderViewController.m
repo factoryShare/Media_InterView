@@ -60,7 +60,7 @@
     
     QMRecorderListViewController *listVC = [[QMRecorderListViewController alloc]init];
     
-    [self.navigationController pushViewController:listVC animated:NO];
+    [self.navigationController pushViewController:listVC animated:YES];
     
 }
 
