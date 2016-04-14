@@ -39,13 +39,31 @@ token, EventTitle, EventDate,OccurTime,ReportType,MainDesign,WorkAttendance,Send
  方式: POST
  参数: token, fileSize（文件大小）, fileName（文件名）, fileFormat（后缀比如amr）
  返回: status, fileID(文件标识), blockCount(块数), blockSize(块大小)
- 
+
+success,responseObject{
+Data =     {
+BlockCount = 2;
+BlockSize = 10240;
+FileID = "3cbef61e-1550-4aa6-8b8d-1a387ba12b9b";
+};
+Error = "<null>";
+}
+
 
 上传文件
  地址: http://path-to-service/story/uploadFile
  方式: POST
  参数: token, fileID, 
- 返回: status, blockIndex,blockCount(块数),blockSize(块大小)  
+ 返回: status, blockIndex,blockCount(块数),blockSize(块大小)
+
+success,responseObject{
+Data =     {
+BlockCount = 2;
+BlockIndex = 0;
+BlockSize = 10240;
+};
+Error = "<null>";
+}
 
 
 上传文件数据
