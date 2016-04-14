@@ -90,6 +90,11 @@
 		84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */; };
 		84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */; };
 		A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */; };
+		A5568A891CBF2C3200CCC984 /* LKDB+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A5568A801CBF2C3200CCC984 /* LKDB+Mapping.m */; };
+		A5568A8A1CBF2C3200CCC984 /* LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5568A821CBF2C3200CCC984 /* LKDBHelper.m */; };
+		A5568A8B1CBF2C3200CCC984 /* LKDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A5568A841CBF2C3200CCC984 /* LKDBUtils.m */; };
+		A5568A8C1CBF2C3200CCC984 /* NSObject+LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5568A861CBF2C3200CCC984 /* NSObject+LKDBHelper.m */; };
+		A5568A8D1CBF2C3200CCC984 /* NSObject+LKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5568A881CBF2C3200CCC984 /* NSObject+LKModel.m */; };
 		A5975F181CBB715E005D2C3B /* DatePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5975F171CBB715E005D2C3B /* DatePickView.m */; };
 		A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */; };
 		A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */; };
@@ -285,6 +290,16 @@
 		84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PreciNewsMobile.txt; sourceTree = "<group>"; };
 		A529902E1CBE8D2C00BE46D8 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTextView.h; path = "Interview/Classes/Plan(策划)/CustomTextView.h"; sourceTree = SOURCE_ROOT; };
 		A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTextView.m; path = "Interview/Classes/Plan(策划)/CustomTextView.m"; sourceTree = SOURCE_ROOT; };
+		A5568A7F1CBF2C3200CCC984 /* LKDB+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LKDB+Mapping.h"; sourceTree = "<group>"; };
+		A5568A801CBF2C3200CCC984 /* LKDB+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LKDB+Mapping.m"; sourceTree = "<group>"; };
+		A5568A811CBF2C3200CCC984 /* LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBHelper.h; sourceTree = "<group>"; };
+		A5568A821CBF2C3200CCC984 /* LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBHelper.m; sourceTree = "<group>"; };
+		A5568A831CBF2C3200CCC984 /* LKDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBUtils.h; sourceTree = "<group>"; };
+		A5568A841CBF2C3200CCC984 /* LKDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBUtils.m; sourceTree = "<group>"; };
+		A5568A851CBF2C3200CCC984 /* NSObject+LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKDBHelper.h"; sourceTree = "<group>"; };
+		A5568A861CBF2C3200CCC984 /* NSObject+LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKDBHelper.m"; sourceTree = "<group>"; };
+		A5568A871CBF2C3200CCC984 /* NSObject+LKModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKModel.h"; sourceTree = "<group>"; };
+		A5568A881CBF2C3200CCC984 /* NSObject+LKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKModel.m"; sourceTree = "<group>"; };
 		A5975F161CBB715E005D2C3B /* DatePickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickView.h; path = "Interview/Classes/Plan(策划)/DatePickView.h"; sourceTree = SOURCE_ROOT; };
 		A5975F171CBB715E005D2C3B /* DatePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickView.m; path = "Interview/Classes/Plan(策划)/DatePickView.m"; sourceTree = SOURCE_ROOT; };
 		A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
@@ -334,16 +349,16 @@
 		5FBA39AA1CBE5F21002F90C0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5FBA39AB1CBE5F21002F90C0 /* LKDB+Mapping.h */,
-				5FBA39AC1CBE5F21002F90C0 /* LKDB+Mapping.m */,
-				5FBA39AD1CBE5F21002F90C0 /* LKDBHelper.h */,
-				5FBA39AE1CBE5F21002F90C0 /* LKDBHelper.m */,
-				5FBA39AF1CBE5F21002F90C0 /* LKDBUtils.h */,
-				5FBA39B01CBE5F21002F90C0 /* LKDBUtils.m */,
-				5FBA39B11CBE5F21002F90C0 /* NSObject+LKDBHelper.h */,
-				5FBA39B21CBE5F21002F90C0 /* NSObject+LKDBHelper.m */,
-				5FBA39B31CBE5F21002F90C0 /* NSObject+LKModel.h */,
-				5FBA39B41CBE5F21002F90C0 /* NSObject+LKModel.m */,
+				A5568A7F1CBF2C3200CCC984 /* LKDB+Mapping.h */,
+				A5568A801CBF2C3200CCC984 /* LKDB+Mapping.m */,
+				A5568A811CBF2C3200CCC984 /* LKDBHelper.h */,
+				A5568A821CBF2C3200CCC984 /* LKDBHelper.m */,
+				A5568A831CBF2C3200CCC984 /* LKDBUtils.h */,
+				A5568A841CBF2C3200CCC984 /* LKDBUtils.m */,
+				A5568A851CBF2C3200CCC984 /* NSObject+LKDBHelper.h */,
+				A5568A861CBF2C3200CCC984 /* NSObject+LKDBHelper.m */,
+				A5568A871CBF2C3200CCC984 /* NSObject+LKModel.h */,
+				A5568A881CBF2C3200CCC984 /* NSObject+LKModel.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -1121,9 +1136,12 @@
 				84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */,
 				84CE48381CAEC5D60012B584 /* QMUserInfoViewController.m in Sources */,
 				84ECDBCA1CACBAA0007FD6E0 /* MJRefreshBackStateFooter.m in Sources */,
+				A5568A8D1CBF2C3200CCC984 /* NSObject+LKModel.m in Sources */,
 				84E345D01CAC0358007A41A2 /* QMTabBarController.m in Sources */,
 				84ECDBCF1CACBAA0007FD6E0 /* MJRefreshConst.m in Sources */,
 				8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */,
+				A5568A8A1CBF2C3200CCC984 /* LKDBHelper.m in Sources */,
+				A5568A8B1CBF2C3200CCC984 /* LKDBUtils.m in Sources */,
 				84E345CA1CAC0358007A41A2 /* UIView+Extension.m in Sources */,
 				84ECDBC51CACBAA0007FD6E0 /* MJRefreshAutoGifFooter.m in Sources */,
 				84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */,
@@ -1133,11 +1151,9 @@
 				840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */,
 				84A21B501CB0D4D400440905 /* VoiceConverter.mm in Sources */,
 				84ECDBE81CACBB4D007FD6E0 /* FMDatabaseAdditions.m in Sources */,
-				5FBA39B71CBE5F21002F90C0 /* LKDBUtils.m in Sources */,
 				5F3D0E661CBCB50700B5A698 /* CommonUI.m in Sources */,
 				84ECDBE71CACBB4D007FD6E0 /* FMDatabase.m in Sources */,
 				84ECDBC01CACBAA0007FD6E0 /* MJRefreshAutoFooter.m in Sources */,
-				5FBA39B91CBE5F21002F90C0 /* NSObject+LKModel.m in Sources */,
 				848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */,
 				84ECDBED1CACBB4D007FD6E0 /* MBProgressHUD+MJ.m in Sources */,
 				847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */,
@@ -1148,9 +1164,9 @@
 				84C81BB81CB6674B0053FF3B /* LZFileHandle.m in Sources */,
 				840E80BF1CBE0D560049EE51 /* QMUserModel.m in Sources */,
 				84ECDBC41CACBAA0007FD6E0 /* MJRefreshHeader.m in Sources */,
+				A5568A891CBF2C3200CCC984 /* LKDB+Mapping.m in Sources */,
 				84AF69E11CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m in Sources */,
 				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,
-				5FBA39B81CBE5F21002F90C0 /* NSObject+LKDBHelper.m in Sources */,
 				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84E4D9661CB2AA5F00910C91 /* QMRecorderDBManager.m in Sources */,
@@ -1169,6 +1185,7 @@
 				84B8150C1CBE36F40078755E /* KeychainItemWrapper.m in Sources */,
 				847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */,
 				8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */,
+				A5568A8C1CBF2C3200CCC984 /* NSObject+LKDBHelper.m in Sources */,
 				84ECDBC61CACBAA0007FD6E0 /* MJRefreshAutoNormalFooter.m in Sources */,
 				84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */,
 				84ECDBEF1CACBB4D007FD6E0 /* MBProgressHUD.m in Sources */,
@@ -1176,15 +1193,11 @@
 				84E345CF1CAC0358007A41A2 /* QMNavigationController.m in Sources */,
 				A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */,
 				84E3457B1CABFA87007A41A2 /* main.m in Sources */,
-				5F3D0E5D1CBC852500B5A698 /* LKDBHelper.m in Sources */,
 				84B815031CBE32D80078755E /* QMRememberButton.m in Sources */,
 				5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */,
-				5FBA39B51CBE5F21002F90C0 /* LKDB+Mapping.m in Sources */,
 				84ECDB911CACB7BA007FD6E0 /* AFURLResponseSerialization.m in Sources */,
 				84A21B4C1CB0D4D400440905 /* amrFileCodec.mm in Sources */,
-				5F3D0E601CBC852500B5A698 /* NSObject+LKModel.m in Sources */,
 				84ECDBD21CACBAA0007FD6E0 /* UIView+MJExtension.m in Sources */,
-				5FBA39B61CBE5F21002F90C0 /* LKDBHelper.m in Sources */,
 				84ECDBCC1CACBAA0007FD6E0 /* MJRefreshNormalHeader.m in Sources */,
 				84ECDBEB1CACBB4D007FD6E0 /* FMResultSet.m in Sources */,
 				84ECDBC11CACBAA0007FD6E0 /* MJRefreshBackFooter.m in Sources */,
