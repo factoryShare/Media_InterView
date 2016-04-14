@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E491CBBA6B900B5A698 /* TimePickView.m */; };
 		5F3D0E501CBBC89200B5A698 /* CustomPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */; };
-		5F3D0E5C1CBC852500B5A698 /* LKDB+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E531CBC852500B5A698 /* LKDB+Mapping.m */; };
-		5F3D0E5D1CBC852500B5A698 /* LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E551CBC852500B5A698 /* LKDBHelper.m */; };
-		5F3D0E5E1CBC852500B5A698 /* LKDBUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E571CBC852500B5A698 /* LKDBUtils.m */; };
-		5F3D0E5F1CBC852500B5A698 /* NSObject+LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E591CBC852500B5A698 /* NSObject+LKDBHelper.m */; };
-		5F3D0E601CBC852500B5A698 /* NSObject+LKModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E5B1CBC852500B5A698 /* NSObject+LKModel.m */; };
 		5F3D0E661CBCB50700B5A698 /* CommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E651CBCB50700B5A698 /* CommonUI.m */; };
 		840E80BF1CBE0D560049EE51 /* QMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E80BE1CBE0D560049EE51 /* QMUserModel.m */; };
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
@@ -94,6 +89,7 @@
 		84ECDBF81CACBE16007FD6E0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */; };
 		84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */; };
 		84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */; };
+		A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */; };
 		A5975F181CBB715E005D2C3B /* DatePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5975F171CBB715E005D2C3B /* DatePickView.m */; };
 		A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */; };
 		A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D6B5B51CB235A100B6E845 /* NewPlanVC.m */; };
@@ -126,16 +122,6 @@
 		5F3D0E491CBBA6B900B5A698 /* TimePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TimePickView.m; path = "Interview/Classes/Plan(策划)/TimePickView.m"; sourceTree = SOURCE_ROOT; };
 		5F3D0E4E1CBBC89200B5A698 /* CustomPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomPickView.h; path = "Interview/Classes/Plan(策划)/CustomPickView.h"; sourceTree = SOURCE_ROOT; };
 		5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPickView.m; path = "Interview/Classes/Plan(策划)/CustomPickView.m"; sourceTree = SOURCE_ROOT; };
-		5F3D0E521CBC852500B5A698 /* LKDB+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LKDB+Mapping.h"; sourceTree = "<group>"; };
-		5F3D0E531CBC852500B5A698 /* LKDB+Mapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LKDB+Mapping.m"; sourceTree = "<group>"; };
-		5F3D0E541CBC852500B5A698 /* LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBHelper.h; sourceTree = "<group>"; };
-		5F3D0E551CBC852500B5A698 /* LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBHelper.m; sourceTree = "<group>"; };
-		5F3D0E561CBC852500B5A698 /* LKDBUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LKDBUtils.h; sourceTree = "<group>"; };
-		5F3D0E571CBC852500B5A698 /* LKDBUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LKDBUtils.m; sourceTree = "<group>"; };
-		5F3D0E581CBC852500B5A698 /* NSObject+LKDBHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKDBHelper.h"; sourceTree = "<group>"; };
-		5F3D0E591CBC852500B5A698 /* NSObject+LKDBHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKDBHelper.m"; sourceTree = "<group>"; };
-		5F3D0E5A1CBC852500B5A698 /* NSObject+LKModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LKModel.h"; sourceTree = "<group>"; };
-		5F3D0E5B1CBC852500B5A698 /* NSObject+LKModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LKModel.m"; sourceTree = "<group>"; };
 		5F3D0E641CBCB50700B5A698 /* CommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
 		5F3D0E651CBCB50700B5A698 /* CommonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUI.m; sourceTree = "<group>"; };
 		840E80BD1CBE0D560049EE51 /* QMUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUserModel.h; sourceTree = "<group>"; };
@@ -297,6 +283,8 @@
 		84ECDBFF1CACC4EF007FD6E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
 		84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PreciNewsMobile.txt; sourceTree = "<group>"; };
+		A529902E1CBE8D2C00BE46D8 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTextView.h; path = "Interview/Classes/Plan(策划)/CustomTextView.h"; sourceTree = SOURCE_ROOT; };
+		A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTextView.m; path = "Interview/Classes/Plan(策划)/CustomTextView.m"; sourceTree = SOURCE_ROOT; };
 		A5975F161CBB715E005D2C3B /* DatePickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DatePickView.h; path = "Interview/Classes/Plan(策划)/DatePickView.h"; sourceTree = SOURCE_ROOT; };
 		A5975F171CBB715E005D2C3B /* DatePickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DatePickView.m; path = "Interview/Classes/Plan(策划)/DatePickView.m"; sourceTree = SOURCE_ROOT; };
 		A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Plan.storyboard; sourceTree = "<group>"; };
@@ -343,19 +331,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5F3D0E511CBC852500B5A698 /* Helper */ = {
+		5FBA39AA1CBE5F21002F90C0 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
-				5F3D0E521CBC852500B5A698 /* LKDB+Mapping.h */,
-				5F3D0E531CBC852500B5A698 /* LKDB+Mapping.m */,
-				5F3D0E541CBC852500B5A698 /* LKDBHelper.h */,
-				5F3D0E551CBC852500B5A698 /* LKDBHelper.m */,
-				5F3D0E561CBC852500B5A698 /* LKDBUtils.h */,
-				5F3D0E571CBC852500B5A698 /* LKDBUtils.m */,
-				5F3D0E581CBC852500B5A698 /* NSObject+LKDBHelper.h */,
-				5F3D0E591CBC852500B5A698 /* NSObject+LKDBHelper.m */,
-				5F3D0E5A1CBC852500B5A698 /* NSObject+LKModel.h */,
-				5F3D0E5B1CBC852500B5A698 /* NSObject+LKModel.m */,
+				5FBA39AB1CBE5F21002F90C0 /* LKDB+Mapping.h */,
+				5FBA39AC1CBE5F21002F90C0 /* LKDB+Mapping.m */,
+				5FBA39AD1CBE5F21002F90C0 /* LKDBHelper.h */,
+				5FBA39AE1CBE5F21002F90C0 /* LKDBHelper.m */,
+				5FBA39AF1CBE5F21002F90C0 /* LKDBUtils.h */,
+				5FBA39B01CBE5F21002F90C0 /* LKDBUtils.m */,
+				5FBA39B11CBE5F21002F90C0 /* NSObject+LKDBHelper.h */,
+				5FBA39B21CBE5F21002F90C0 /* NSObject+LKDBHelper.m */,
+				5FBA39B31CBE5F21002F90C0 /* NSObject+LKModel.h */,
+				5FBA39B41CBE5F21002F90C0 /* NSObject+LKModel.m */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -696,6 +684,8 @@
 				5F3D0E491CBBA6B900B5A698 /* TimePickView.m */,
 				5F3D0E4E1CBBC89200B5A698 /* CustomPickView.h */,
 				5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */,
+				A529902E1CBE8D2C00BE46D8 /* CustomTextView.h */,
+				A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -810,7 +800,7 @@
 		84ECDB771CACB42A007FD6E0 /* ThiredPart */ = {
 			isa = PBXGroup;
 			children = (
-				5F3D0E511CBC852500B5A698 /* Helper */,
+				5FBA39AA1CBE5F21002F90C0 /* Helper */,
 				84ECDBD31CACBB4D007FD6E0 /* FMDB */,
 				84ECDBE11CACBB4D007FD6E0 /* MBProgressHUD */,
 				84ECDB7F1CACB7BA007FD6E0 /* AFNetworking */,
@@ -1143,10 +1133,11 @@
 				840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */,
 				84A21B501CB0D4D400440905 /* VoiceConverter.mm in Sources */,
 				84ECDBE81CACBB4D007FD6E0 /* FMDatabaseAdditions.m in Sources */,
+				5FBA39B71CBE5F21002F90C0 /* LKDBUtils.m in Sources */,
 				5F3D0E661CBCB50700B5A698 /* CommonUI.m in Sources */,
-				5F3D0E5C1CBC852500B5A698 /* LKDB+Mapping.m in Sources */,
 				84ECDBE71CACBB4D007FD6E0 /* FMDatabase.m in Sources */,
 				84ECDBC01CACBAA0007FD6E0 /* MJRefreshAutoFooter.m in Sources */,
+				5FBA39B91CBE5F21002F90C0 /* NSObject+LKModel.m in Sources */,
 				848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */,
 				84ECDBED1CACBB4D007FD6E0 /* MBProgressHUD+MJ.m in Sources */,
 				847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */,
@@ -1159,7 +1150,7 @@
 				84ECDBC41CACBAA0007FD6E0 /* MJRefreshHeader.m in Sources */,
 				84AF69E11CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m in Sources */,
 				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,
-				5F3D0E5F1CBC852500B5A698 /* NSObject+LKDBHelper.m in Sources */,
+				5FBA39B81CBE5F21002F90C0 /* NSObject+LKDBHelper.m in Sources */,
 				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84E4D9661CB2AA5F00910C91 /* QMRecorderDBManager.m in Sources */,
@@ -1183,19 +1174,21 @@
 				84ECDBEF1CACBB4D007FD6E0 /* MBProgressHUD.m in Sources */,
 				84ECDBE91CACBB4D007FD6E0 /* FMDatabasePool.m in Sources */,
 				84E345CF1CAC0358007A41A2 /* QMNavigationController.m in Sources */,
+				A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */,
 				84E3457B1CABFA87007A41A2 /* main.m in Sources */,
 				5F3D0E5D1CBC852500B5A698 /* LKDBHelper.m in Sources */,
 				84B815031CBE32D80078755E /* QMRememberButton.m in Sources */,
 				5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */,
+				5FBA39B51CBE5F21002F90C0 /* LKDB+Mapping.m in Sources */,
 				84ECDB911CACB7BA007FD6E0 /* AFURLResponseSerialization.m in Sources */,
 				84A21B4C1CB0D4D400440905 /* amrFileCodec.mm in Sources */,
 				5F3D0E601CBC852500B5A698 /* NSObject+LKModel.m in Sources */,
 				84ECDBD21CACBAA0007FD6E0 /* UIView+MJExtension.m in Sources */,
+				5FBA39B61CBE5F21002F90C0 /* LKDBHelper.m in Sources */,
 				84ECDBCC1CACBAA0007FD6E0 /* MJRefreshNormalHeader.m in Sources */,
 				84ECDBEB1CACBB4D007FD6E0 /* FMResultSet.m in Sources */,
 				84ECDBC11CACBAA0007FD6E0 /* MJRefreshBackFooter.m in Sources */,
 				84ECDB8D1CACB7BA007FD6E0 /* AFHTTPSessionManager.m in Sources */,
-				5F3D0E5E1CBC852500B5A698 /* LKDBUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

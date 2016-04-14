@@ -15,18 +15,19 @@
 #import "PlanModel.h"
 #import "CommonUI.h"
 #import "AFNetworking.h"
+#import "CustomTextView.h"
+
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
 
 #define pathToService @"114.112.100.68:8020"
 
-@interface NewPlanVC () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, DatePickViewDelegate, TimePickViewDelegate, CustomPickViewDelegate>
+@interface NewPlanVC () <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate, DatePickViewDelegate, TimePickViewDelegate, CustomPickViewDelegate, CustomTextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSArray *itemsArray;
 @property (nonatomic, strong) UIAlertView *subjectAlert;
-@property (nonatomic, strong) UIAlertView *contentAlert;
 @property (nonatomic, strong) UIPickerView *planTimePicker;
 @property (nonatomic, strong) DatePickView *datePicker;
 @property (nonatomic, strong) TimePickView *timePicker;
@@ -42,6 +43,7 @@
 @property (nonatomic, strong) UIBarButtonItem *saveItem;
 @property (nonatomic, strong) UIBarButtonItem *editItem;
 @property (nonatomic, strong) UIAlertView *sendAlert;
+@property (nonatomic, strong) CustomTextView *textView;
 
 
 @property (nonatomic, assign) BOOL canEdit;
@@ -57,6 +59,7 @@
     _canEdit = YES;
     if (self.planModel == nil) {
         _planModel = [[PlanModel alloc] init];
+        _planModel.isSendToServer = NO;
     }
     
 }
@@ -248,13 +251,7 @@
         }
         
         if ([model.title isEqualToString:@"策划内容"]) {
-            _contentAlert = [[UIAlertView alloc] initWithTitle:@"请输入内容" message:nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            _contentAlert.delegate = self;
-            _contentAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
-            [_contentAlert show];
-            //输入框
-            UITextField *tf = [_contentAlert textFieldAtIndex:0];
-            tf.text = model.detail;
+            [self addTextViewWithDetail:model.detail];
         }
         
         if ([model.title isEqualToString:@"策划日期"]) {
@@ -278,6 +275,8 @@
         if ([model.title isEqualToString:@"发稿栏目"]) {
             [self addColumePickerWithArray:_columeArray];
         }
+        
+        
     }
     
     // 发送策划到服务器
@@ -289,6 +288,7 @@
     }
     
 }
+
 
 #pragma mark --- 网络
 - (void)sendPlanToServer {
@@ -323,6 +323,8 @@
         
         NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
         NSLog(@"result: %@", result);
+        _planModel.isSendToServer = YES;
+        [_planModel updateToDB];
         [CommonUI showTextOnly:@"上传成功"];
         [self.navigationController popViewControllerAnimated:YES];
         
@@ -333,6 +335,33 @@
     }];
     
 }
+
+#pragma mark   --CustomTextView
+
+- (void)addTextViewWithDetail:(NSString *)detail {
+    _textView = [[CustomTextView alloc] initWithFrame:[UIScreen mainScreen].bounds andText:detail];
+    _textView.delegate = self;
+    [[UIApplication sharedApplication].keyWindow addSubview:_textView];
+}
+- (void)customTextViewDelegateCancle {
+    [_textView resignFirstResponder];
+    [_textView removeFromSuperview];
+}
+
+- (void)customTextViewDelegateConfirm:(NSString *)text {
+    [_textView resignFirstResponder];
+    [_textView removeFromSuperview];
+    // 更新模型 , 更新 tabelView
+    for (PlanItemModel *model in self.itemsArray) {
+        if ([model.title isEqualToString:@"策划内容"]) {
+            if (text) {
+                model.detail = text;
+            }
+        }
+    }
+    [self.tableView reloadData];
+}
+
 
 #pragma  mark  --DatePickView日期选择
 - (void)addDatePicker {
@@ -460,23 +489,6 @@
             // 更新模型 , 更新 tabelView
             for (PlanItemModel *model in self.itemsArray) {
                 if ([model.title isEqualToString:@"采访主题"]) {
-                    if (tf.text) {
-                        model.detail = tf.text;
-                    }
-                }
-            }
-            [self.tableView reloadData];
-        }
-    }
-   
-    // 策划内容
-    if (alertView == _contentAlert) {
-        // 确定
-        if (buttonIndex == 1) {
-            UITextField *tf = [alertView textFieldAtIndex:0];
-            // 更新模型 , 更新 tabelView
-            for (PlanItemModel *model in self.itemsArray) {
-                if ([model.title isEqualToString:@"策划内容"]) {
                     if (tf.text) {
                         model.detail = tf.text;
                     }

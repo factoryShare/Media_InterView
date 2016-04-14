@@ -17,7 +17,7 @@
 
 @interface CustomPickView : UIView
 @property (nonatomic, strong) NSArray *dataArray;
-@property (nonatomic, strong) id<CustomPickViewDelegate> delegate;
+@property (nonatomic, weak) id<CustomPickViewDelegate> delegate;
 
 - (instancetype)initWithFrame:(CGRect)frame WithData:(NSArray *)dataArray;
 

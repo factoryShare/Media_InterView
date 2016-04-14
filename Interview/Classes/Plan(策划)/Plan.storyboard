@@ -157,7 +157,7 @@
         <!--Plan ListVC-->
         <scene sceneID="dx3-SL-y4p">
             <objects>
-                <viewController id="0i4-kp-9WW" customClass="PlanListVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlanListVC" id="0i4-kp-9WW" customClass="PlanListVC" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mWx-mo-dLH"/>
                         <viewControllerLayoutGuide type="bottom" id="jjB-nL-RZF"/>
