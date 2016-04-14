@@ -56,9 +56,6 @@ token, EventTitle, EventDate,OccurTime,ReportType,MainDesign,WorkAttendance,Send
  
 
 
-
-
-
 上传音频、视频、图片
 地址: http://path-to-service/story/UploadMedias
 方式: POST

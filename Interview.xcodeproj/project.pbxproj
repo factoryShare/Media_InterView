@@ -1042,6 +1042,11 @@
 					84E345751CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = G9GWY6T6FF;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					84E3458E1CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;

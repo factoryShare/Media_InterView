@@ -43,7 +43,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
             QMLog(@"%@",@"菜单创建表格失败");
         }
     }];
-    
 }
 #pragma mark 外部方法
 /**
