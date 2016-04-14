@@ -9,6 +9,7 @@
 #import "CustomTextView.h"
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
+#define textViewHeight 150
 
 @interface CustomTextView()
 @property (nonatomic, strong) UIView *translucentView;
@@ -31,13 +32,13 @@
         [self addSubview:_translucentView];
         
         // 白色底层
-        _backView = [[UIView alloc] initWithFrame:CGRectMake(0, screenHeight-216-44, screenWidth, 216+44)];
+        _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, screenWidth, textViewHeight+44)];
         _backView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_backView];
         
         // 取消 按钮
         _cancleBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        _cancleBtn.frame = CGRectMake(0, 0, 60, 44);
+        _cancleBtn.frame = CGRectMake(0, textViewHeight, 100, 44);
         [_cancleBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [_cancleBtn setTitle:@"取消" forState:UIControlStateNormal];
         [_cancleBtn addTarget:self action:@selector(cancleBtnClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -47,12 +48,17 @@
         _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [_confirmBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [_confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
-        _confirmBtn.frame = CGRectMake(screenWidth-60, 0, 60, 44);
+        _confirmBtn.frame = CGRectMake(screenWidth-100, textViewHeight, 100, 44);
         [_confirmBtn addTarget:self action:@selector(setConfirmBtnClicked) forControlEvents:UIControlEventTouchUpInside];
         [_backView addSubview:_confirmBtn];
         
-        _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 44, screenWidth, 216)];
-        _textView.text = text;
+        _textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, textViewHeight)];
+        if (text.length > 0) {
+            _textView.text = text;
+        } else {
+            [_textView becomeFirstResponder];
+        }
+        
         [_backView addSubview:_textView];
     }
     return self;
@@ -61,12 +67,14 @@
 
 - (void)cancleBtnClicked {
     if ([self.delegate respondsToSelector:@selector(customTextViewDelegateCancle)]) {
+        [self.textView resignFirstResponder];
         [self.delegate customTextViewDelegateCancle];
     }
 }
 
 - (void)setConfirmBtnClicked {
     if ([self.delegate respondsToSelector:@selector(customTextViewDelegateConfirm:)]) {
+        [self.textView resignFirstResponder];
         [self.delegate customTextViewDelegateConfirm:self.textView.text];
     }
 }

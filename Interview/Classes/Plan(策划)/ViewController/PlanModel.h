@@ -12,6 +12,7 @@
 
 // EventTitle, EventDate,OccurTime,ReportType,MainDesign,WorkAttendance,SendPackets,EventDescribe
 @interface PlanModel : NSObject
+@property (nonatomic, copy) NSString *planId;
 @property (nonatomic, copy) NSString *EventTitle;
 @property (nonatomic, copy) NSString *EventDate;
 @property (nonatomic, copy) NSString *OccurTime;
@@ -20,6 +21,6 @@
 @property (nonatomic, copy) NSString *WorkAttendance;
 @property (nonatomic, copy) NSString *SendPackets;
 @property (nonatomic, copy) NSString *EventDescribe;
-@property (nonatomic, assign) BOOL isSendToServer;
+@property (nonatomic, copy) NSString *isSendToServer;
 @end
 
