@@ -57,71 +57,91 @@
     [self initUI];
     [self loadData];
     _canEdit = YES;
-    if (self.planModel == nil) {
-        _planModel = [[PlanModel alloc] init];
-        _planModel.isSendToServer = NO;
-    }
+   
     
 }
 
 // 初始化模型
 - (void)loadData {
-    // 新建模型
+    
+    // 策划模型
     if (self.planModel == nil) {
-        PlanItemModel *model0 =[[PlanItemModel alloc] init];
-        model0.identifier = @"EventTitle";
-        model0.title = @"采访主题";
-        model0.detail = @"";
-        
-        PlanItemModel *model1 =[[PlanItemModel alloc] init];
-        model1.identifier = @"EventDate";
-        model1.title = @"策划日期";
-        model1.detail = @"";
-        
-        PlanItemModel *model2 =[[PlanItemModel alloc] init];
-        model2.identifier = @"OccurTime";
-        model2.title = @"发生时间";
-        model2.detail = @"";
-        
-        PlanItemModel *model3 =[[PlanItemModel alloc] init];
-        model3.identifier = @"ReportType";
-        model3.title = @"报道形式";
-        model3.detail = @"";
-        
-        PlanItemModel *model4 =[[PlanItemModel alloc] init];
-        model4.identifier = @"MainDesign";
-        model4.title = @"主题策划";
-        model4.detail = @"";
-        
-        PlanItemModel *model5 =[[PlanItemModel alloc] init];
-        model5.identifier = @"WorkAttendance";
-        model5.title = @"工作出勤";
-        model5.detail = @"";
-        
-        PlanItemModel *model6 =[[PlanItemModel alloc] init];
-        model6.identifier = @"SendPackets";
-        model6.title = @"发稿栏目";
-        model6.detail = @"";
-        
-        PlanItemModel *model7 =[[PlanItemModel alloc] init];
-        model7.identifier = @"EventDescribe";
-        model7.title = @"策划内容";
-        model7.detail = @"";
-        
-        _itemsArray = @[model0,
-                        model1,
-                        model2,
-                        model3,
-                        model4,
-                        model5,
-                        model6,
-                        model7];
+        _planModel = [[PlanModel alloc] init];
+        NSDateFormatter *df = [[NSDateFormatter alloc]init];
+        //    设置日期转换格式
+        df.dateFormat = @"yyyyMMddHHmmss";
+        NSDate *date = [NSDate date];
+        _planModel.planId = [NSString stringWithFormat:@"plan%@",[df stringFromDate:date]];
+        _planModel.EventTitle = @"";
+        _planModel.EventDate = @"";
+        _planModel.OccurTime = @"";
+        _planModel.ReportType = @"";
+        _planModel.MainDesign = @"";
+        _planModel.WorkAttendance = @"";
+        _planModel.SendPackets = @"";
+        _planModel.EventDescribe = @"";
+        _planModel.isSendToServer = @"0";
     }
+    
+    // 策划 item 模型
+    
+    PlanItemModel *model0 =[[PlanItemModel alloc] init];
+    model0.identifier = @"EventTitle";
+    model0.title = @"采访主题";
+    model0.detail = _planModel.EventTitle;
+    
+    PlanItemModel *model1 =[[PlanItemModel alloc] init];
+    model1.identifier = @"EventDate";
+    model1.title = @"策划日期";
+    model1.detail = _planModel.EventDate;
+    
+    PlanItemModel *model2 =[[PlanItemModel alloc] init];
+    model2.identifier = @"OccurTime";
+    model2.title = @"发生时间";
+    model2.detail = _planModel.OccurTime;
+    
+    PlanItemModel *model3 =[[PlanItemModel alloc] init];
+    model3.identifier = @"ReportType";
+    model3.title = @"报道形式";
+    model3.detail = _planModel.ReportType;
+    
+    PlanItemModel *model4 =[[PlanItemModel alloc] init];
+    model4.identifier = @"MainDesign";
+    model4.title = @"主题策划";
+    model4.detail = _planModel.MainDesign;
+    
+    PlanItemModel *model5 =[[PlanItemModel alloc] init];
+    model5.identifier = @"WorkAttendance";
+    model5.title = @"工作出勤";
+    model5.detail = _planModel.WorkAttendance;
+    
+    PlanItemModel *model6 =[[PlanItemModel alloc] init];
+    model6.identifier = @"SendPackets";
+    model6.title = @"发稿栏目";
+    model6.detail = _planModel.SendPackets;
+    
+    PlanItemModel *model7 =[[PlanItemModel alloc] init];
+    model7.identifier = @"EventDescribe";
+    model7.title = @"策划内容";
+    model7.detail = _planModel.EventDescribe;
+    
+    _itemsArray = @[model0,
+                    model1,
+                    model2,
+                    model3,
+                    model4,
+                    model5,
+                    model6,
+                    model7];
+    
     
     _reportFormArray = @[@"现场", @"录音", @"评论", @"口头", @"消息", @"专题"];
     _planSubjectArray = @[@"整点连线", @"突发及追踪连线", @"主题直播策划"];
     _attendanceArray = @[@"早加班", @"晚加班", @"双休日", @"法定假日", @"休假", @"请假", @"请事假", @"请病假", @"秀年假"];
     _columeArray = @[@"编辑",@"品质车生活",@"经典正流行",@"政务监督热线",@"小说连播",@"1066城市爱生活",@"整点新闻2",@"女人花",@"家住济南",@"健康园地1",@"整点新闻1",@"整点新闻6",@"深夜故事",@"体育大世界",@"四点有话说（重播）",@"以案说法（重播）",@"含笑时间（重播）",@"以案说法",@"健康广场4点半",@"健康广场5点半",@"健康早班车",@"转中央台新闻报纸摘要",@"经广新闻网",@"846传真",@"第一时间",@"听说很好看",@"非想非非想",@"流行小说城",@"大力幻想秀",@"小罗罗崩木根重播",@"长书连播",@"健康广场14点",@"四点有话说",@"闲话闲说",@"财富直通车",@"健康广场22点",@"方言客栈",@"闲话闲说（重播）",@"健康广场20点半",@"刘成故事重播",@"含笑时间",@"闲话闲说23点",@"健康广场23点半-1",@"历史上的今天",@"汽车服务热线重播",@"刘敏热线重播",@"汽车音乐CD重播",@"在清华听演讲重播",@"交通雷达网",@"交广听吧2",@"汽车音乐CD",@"刘敏热线",@"一路领先",@"交广周末合家欢（周日",@"流行纪念册",@"汽车服务热线",@"小罗罗崩木跟",@"怀旧音乐时间晚间",@"都市顺风车",@"司机俱乐部",@"在清华听演讲",@"半点资讯9:30",@"半点资讯10：30",@"半点气象9：30",@"天天说事(重播)",@"女人花(重播)",@"泉城气象",@"转中央《新闻和报纸》",@"早安泉城",@"新闻六十分",@"Music",@"娱乐短讯",@"广告001",@"健康广场0点",@"博闻天下",@"国学天天学",@"健康广场23点半",@"政务监督热线（重播）",@"法理人生",@"怀旧音乐时间重播",@"半点气象10：30",@"半点气象15：30",@"半点气象16：30",@"半点气象17：30",@"半点气象18：30",@"怀旧音乐时间（周末）",@"小说连播（重播）",@"法理人生(重播)",@"爱情1+1",@"1066娱乐满天星",@"健康园地2",@"天天健康",@"整点新闻3",@"整点新闻4",@"整点新闻5",@"美食乐翻天",@"天天说事儿",@"八点聊天室",@"健康园地",@"金山夜话（第一时段）",@"金山夜话（第一重播）",@"综艺广告",@"金山夜话（第二时段）",@"济南新闻",@"我能赢",@"资讯全知道",@"抬杠",@"心理热线",@"恭喜发财",@"下一站幸福",@"天天养生",@"1",@"幸福歌会",@"小说连播午间版",@"曲山艺海",@"11",@"戏曲大舞台",@"聆听老歌",@"111",@"健康新生活",@"午夜收音机",@"非常记录",@"听书俱乐部",@"健康百分百",@"编辑",@"私家车听天下",@"顺风顺水私家车",@"00",@"0000",@"0000000",@"娱乐九号线",@"私家车爱音乐",@"私家车N0.1",@"私家车最动听",@"私家车爱兜风",@"我要去旅行",@"叮咚FM主播征集"];
+    
+    
+    
 }
 
 - (void)initUI {
@@ -174,10 +194,21 @@
     
     if (canSaveToDB) {
         // 保存到数据库
-        [_planModel saveToDB];
+        [PlanModel insertWhenNotExists:_planModel];
+        [PlanModel updateToDB:_planModel where:nil];
         _canEdit = NO;
         self.navigationItem.rightBarButtonItem = _editItem;
         [self.tableView reloadData];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"DBUpdated" object:nil];
+        
+        
+        // 测试数据库有没有保存成功
+//        NSMutableArray *array = [NSMutableArray array];
+//        array = [PlanModel searchWithWhere:nil orderBy:nil offset:0 count:0];
+//        for (PlanModel *model in array) {
+//            NSLog(@"db back EventTitle : %@",model.EventTitle);
+//        }
         
     } else {
         [CommonUI showTextOnly:@"请填写完整信息"];
@@ -296,43 +327,48 @@
     // 请求的参数
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
-    [parameters setObject: token forKey:@"token"];
-    [parameters setObject:_planModel.EventTitle forKey:@"EventTitle"];
-    [parameters setObject:_planModel.EventDate  forKey:@"EventDate"];
-    [parameters setObject:_planModel.OccurTime forKey:@"OccurTime"];
-    [parameters setObject:_planModel.ReportType forKey:@"ReportType"];
-    [parameters setObject:_planModel.MainDesign forKey:@"MainDesign"];
-    [parameters setObject:_planModel.WorkAttendance forKey:@"WorkAttendance"];
-    [parameters setObject:_planModel.SendPackets forKey:@"SendPackets"];
-    [parameters setObject:_planModel.EventDescribe forKey:@"EventDescribe"];
-    
-    // 初始化Manager
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    // 不加上这句话，会报“Request failed: unacceptable content-type: text/plain”错误，因为我们要获取text/plain类型数据
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    // post请求
-    [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id  _Nonnull formData) {
-        // 拼接data到请求体，这个block的参数是遵守AFMultipartFormData协议的。
+    if (token.length > 0) {
+         [parameters setObject: token forKey:@"token"];
+        [parameters setObject:_planModel.EventTitle forKey:@"EventTitle"];
+        [parameters setObject:_planModel.EventDate  forKey:@"EventDate"];
+        [parameters setObject:_planModel.OccurTime forKey:@"OccurTime"];
+        [parameters setObject:_planModel.ReportType forKey:@"ReportType"];
+        [parameters setObject:_planModel.MainDesign forKey:@"MainDesign"];
+        [parameters setObject:_planModel.WorkAttendance forKey:@"WorkAttendance"];
+        [parameters setObject:_planModel.SendPackets forKey:@"SendPackets"];
+        [parameters setObject:_planModel.EventDescribe forKey:@"EventDescribe"];
         
-    } progress:^(NSProgress * _Nonnull uploadProgress) {
-        // 这里可以获取到目前的数据请求的进度
+        // 初始化Manager
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        // 不加上这句话，会报“Request failed: unacceptable content-type: text/plain”错误，因为我们要获取text/plain类型数据
+        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
         
-        NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-        NSLog(@"result: %@", result);
-        _planModel.isSendToServer = YES;
-        [_planModel updateToDB];
-        [CommonUI showTextOnly:@"上传成功"];
-        [self.navigationController popViewControllerAnimated:YES];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
-        // 请求失败
-        NSLog(@"error: %@", [error localizedDescription]);
-    }];
+        // post请求
+        [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id  _Nonnull formData) {
+            // 拼接data到请求体，这个block的参数是遵守AFMultipartFormData协议的。
+            
+        } progress:^(NSProgress * _Nonnull uploadProgress) {
+            // 这里可以获取到目前的数据请求的进度
+            
+        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            
+            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"result: %@", result);
+#warning 这里需要判断 error , 之后来添加
+            _planModel.isSendToServer = @"1";
+            [_planModel updateToDB];
+            [CommonUI showTextOnly:@"上传成功"];
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            
+            // 请求失败
+            NSLog(@"error: %@", [error localizedDescription]);
+        }];
+    } else {
+        [CommonUI showTextOnly:@"请登录"];
+    }
     
 }
 
@@ -344,12 +380,10 @@
     [[UIApplication sharedApplication].keyWindow addSubview:_textView];
 }
 - (void)customTextViewDelegateCancle {
-    [_textView resignFirstResponder];
     [_textView removeFromSuperview];
 }
 
 - (void)customTextViewDelegateConfirm:(NSString *)text {
-    [_textView resignFirstResponder];
     [_textView removeFromSuperview];
     // 更新模型 , 更新 tabelView
     for (PlanItemModel *model in self.itemsArray) {
