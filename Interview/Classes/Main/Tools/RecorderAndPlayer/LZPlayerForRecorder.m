@@ -20,12 +20,14 @@
 - (void)startPlay {
     if (![self.player isPlaying]) {
         [self.player play];
+        self.isPlaying = YES;
     }
 }
 
 - (void)pause {
     if ([self.player isPlaying]) {
         [self.player pause];
+        self.isPlaying = NO;
     }
 }
 
@@ -55,4 +57,5 @@
     }
     return _player;
 }
+
 @end

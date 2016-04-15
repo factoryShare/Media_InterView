@@ -56,6 +56,15 @@
     [self createBottomView];
 
 }
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+//    if ([keyPath isEqualToString:@"isPlaying"]) {
+//        self.tableView = ![change[@"new"] boolValue];
+//    }
+//}
+//- (void)dealloc
+//{
+//    [self.player removeObserver:self forKeyPath:@"isPlaying"];
+//}
 
 #pragma mark - 删除音频文件
 - (void)rightItemClick:(UIButton *)buttonItem {
@@ -334,6 +343,9 @@
 - (LZPlayerForRecorder *)player {
     if (_player == nil) {
         _player = [[LZPlayerForRecorder alloc]init];
+        _player.isPlaying = NO;
+//        [self.player addObserver:self forKeyPath:@"isPlaying" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
+
     }
     return _player;
 }
@@ -355,6 +367,7 @@
     _progressView.width += _timerValue;
     self.thumbBtn.centerX += _timerValue;
     if (_progressBgView.width <= _progressView.width) {
+        self.player.isPlaying = NO;
         [self getInitial];
     }
 }
@@ -363,6 +376,7 @@
  */
 - (void)getInitial {
     _progressView.width = 0;
+//    [self.player removeObserver:self forKeyPath:@"isPlaying"];
     self.player = nil;
     self.playBtn.selected = NO;
 
@@ -376,21 +390,5 @@
     _timer = nil;
 
 }
-
-//- (QMRecorderListBottomView *)bottomView {
-//    if (_bottomView == nil) {
-//        _bottomView = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([QMRecorderListBottomView class]) owner:self options:nil] lastObject];
-//        _bottomView.frame = CGRectMake(0, self.view.height - 90, self.view.width, 50);
-//        _bottomView.progressView.width = 0;
-//        [_bottomView layoutIfNeeded];
-//    }
-//    return _bottomView;
-//}
-
-//地址: http://path-to-service/story/UploadMedias
-//方式: POST
-//参数:string token, string fileIDs, string fileTypes, string title, string author, string caption, long channelID
-//说明：channelID=1    author=登录用户名  fileIDs多个文件用，号隔开  fileTypes多个用逗号隔开
-//fileTypes 图片=2   音频=1
 
 @end

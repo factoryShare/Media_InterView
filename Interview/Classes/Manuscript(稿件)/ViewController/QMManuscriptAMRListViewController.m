@@ -123,7 +123,7 @@
             NSDictionary *error = dic[@"Error"];
             QMLog(@"%@",error[@"Message"]);
             [MBProgressHUD showError:error[@"Message"]];
-        } else { // 有数据返回
+        } else if(![dic[@"Data"] isKindOfClass:[NSNull class]]){ // 有数据返回
             NSDictionary *dataDic = dic[@"Data"];
             _fileID = dataDic[@"FileID"];
             [self upLoadFileWithFileID:dataDic[@"FileID"]];
@@ -159,7 +159,7 @@
             NSDictionary *error = dic[@"Error"];
             QMLog(@"%@",error[@"Message"]);
             [MBProgressHUD showError:error[@"Message"]];
-        } else { // 有数据返回
+        } else if(![dic[@"Data"] isKindOfClass:[NSNull class]]){ // 有数据返回
             
             NSDictionary *dataDic = dic[@"Data"];
             [self upLoadFileDataWithFileID:_fileID blockIndex:dataDic[@"BlockIndex"] blockSize:dataDic[@"BlockSize"] Blockdata:[GTMBase64 encodeData:_fileData]];
@@ -197,7 +197,7 @@
             NSDictionary *error = dic[@"Error"];
             QMLog(@"%@",error[@"Message"]);
             [MBProgressHUD showError:error[@"Message"]];
-        } else { // 有数据返回
+        } else if(![dic[@"Data"] isKindOfClass:[NSNull class]]){ // 有数据返回
 #warning 前三步 ok
             [self upLoadAudio];
         }
@@ -242,15 +242,16 @@
             NSDictionary *error = dic[@"Error"];
             QMLog(@"%@",error[@"Message"]);
             [MBProgressHUD showError:error[@"Message"]];
-        } else { // 有数据返回
+        } else if(![dic[@"Data"] isKindOfClass:[NSNull class]]){ // 有数据返回
             [MBProgressHUD showSuccess:@"上传成功"];
+        } else {
+            [MBProgressHUD showError:@"上传失败,请联系服务商"];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         QMLog(@"%@",[error localizedDescription]);
         [MBProgressHUD showError:@"请求失败"];
     }];
-
 }
 
 #pragma mark - 初始化

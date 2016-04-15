@@ -12,7 +12,7 @@
 #import "QMRecorderDBManager.h"
 #import "QMRecorderListViewController.h"
 #import "QMRecorderListBottomView.h"
-
+#import "QMWaveView.h"
 
 @interface QMRecorderViewController () <LZRecorderDeleagte,UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -20,12 +20,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *lockBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *powerIndicaterIm;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet QMWaveView *waveView;
 
 @property(nonatomic,strong) NSTimer *timer;
 @property(nonatomic,assign) int timerValue;
 @property(nonatomic,assign) int timerLong;
 @property(nonatomic,strong) UIView *coverView;
 @property(nonatomic,strong) LZRecorderTool *recorder;
+@property(nonatomic,assign) long waveTime;
+@property(nonatomic,assign) BOOL isWaveShow;
 /** 录音默认文件名 */
 @property(nonatomic,copy) NSString *fileName;
 /** 录音存储地址(amr) */
@@ -48,10 +51,13 @@
     _timerValue = 0;
     _timerLong = 0;
     
+    _waveTime = 0;
+    _isWaveShow = NO;
+    
     
     self.view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.7];
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(showList) normalImage:@"nav_list"];
-
+    
 }
 /**
  *  显示已经录制的音频
@@ -73,9 +79,11 @@
         [self.recorder startRecorde];
         
         isRecording = NO;
+        _isWaveShow = YES;
     } else { // 结束录制
         _timerLong = _timerValue;
         _timerValue = 0;
+        _waveTime = 0;
         
         self.timer.fireDate = [NSDate distantFuture];
         if (self.timer.isValid) {
@@ -99,6 +107,7 @@
         self.recorder = nil;
         
         isRecording = YES;
+        _isWaveShow = NO;
     }
 }
 /**
@@ -151,13 +160,28 @@
 #pragma mark - LZRecorderDeleagte 
 - (void)getaudioPower:(float)power {
     int character = power / 160 * 26;
+    character -= 10;
     if (character > 26) {
         character = 26;
+    } else if (character < 0) {
+        character = 0;
     }
-    
     NSString *imageName = [NSString stringWithFormat:@"vu%C",(unichar)(character + 97)];
     
     self.powerIndicaterIm.image = [UIImage imageNamed:imageName];
+    
+    if (_isWaveShow) {
+        self.waveView.isWaveShow = _isWaveShow;
+        static int i = 0;
+        if (i >= 3) {
+            self.waveView.powerPotint = CGPointMake(_waveTime++, character);
+            i = 0;
+        } else {
+            i++;
+        }
+    } else {
+        self.waveView.isWaveShow = _isWaveShow;
+    }
 }
 
 #pragma mark - UIAlertViewDelegate
@@ -173,7 +197,8 @@
         [self.recorderDBManager insertModel:model];
         
         self.powerIndicaterIm.image = [UIImage imageNamed:@"vu"];
-
+        
+        self.waveView.isWaveShow = NO;
     }
 }
 #pragma mark - 初始化

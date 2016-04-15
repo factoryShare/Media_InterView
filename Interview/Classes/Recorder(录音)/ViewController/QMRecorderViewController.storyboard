@@ -66,6 +66,26 @@
                                     <constraint firstItem="hKz-cj-TWg" firstAttribute="centerY" secondItem="H2w-f4-P2j" secondAttribute="centerY" id="nAb-IT-Zne"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiO-pm-afM" customClass="QMWaveView">
+                                <rect key="frame" x="150" y="230" width="300" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flI-3T-yhe" userLabel="中线">
+                                        <rect key="frame" x="0.0" y="39" width="300" height="2"/>
+                                        <color key="backgroundColor" white="1" alpha="0.62288851351351349" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="2" id="v4S-tc-irq"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="0.55347339527027029" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="flI-3T-yhe" firstAttribute="centerY" secondItem="IiO-pm-afM" secondAttribute="centerY" id="MTj-uD-xf4"/>
+                                    <constraint firstAttribute="trailing" secondItem="flI-3T-yhe" secondAttribute="trailing" id="Of8-8i-xWL"/>
+                                    <constraint firstAttribute="width" constant="300" id="XIs-kI-tct"/>
+                                    <constraint firstAttribute="height" constant="80" id="glI-Me-M51"/>
+                                    <constraint firstItem="flI-3T-yhe" firstAttribute="leading" secondItem="IiO-pm-afM" secondAttribute="leading" id="sJq-F7-mu0"/>
+                                </constraints>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vu" translatesAutoresizingMaskIntoConstraints="NO" id="Gc7-Ot-F8o" userLabel="音量指示器">
                                 <rect key="frame" x="140" y="120" width="320" height="80"/>
                                 <constraints>
@@ -77,16 +97,22 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="H2w-f4-P2j" secondAttribute="trailing" id="8Bx-T5-ldn"/>
+                            <constraint firstItem="IiO-pm-afM" firstAttribute="centerX" secondItem="Gc7-Ot-F8o" secondAttribute="centerX" id="AP5-Km-o4t"/>
                             <constraint firstItem="Gc7-Ot-F8o" firstAttribute="top" secondItem="AKq-sA-CKg" secondAttribute="bottom" constant="30" id="BBa-yb-Cfr"/>
                             <constraint firstItem="RR5-G8-RNX" firstAttribute="top" secondItem="H2w-f4-P2j" secondAttribute="bottom" constant="50" id="Bx7-el-SRS"/>
                             <constraint firstAttribute="trailing" secondItem="AKq-sA-CKg" secondAttribute="trailing" constant="20" id="Ghe-Xm-IcX"/>
                             <constraint firstItem="AKq-sA-CKg" firstAttribute="top" secondItem="OIp-Ir-cAg" secondAttribute="bottom" constant="20" id="J2D-l2-Sda"/>
                             <constraint firstItem="Gc7-Ot-F8o" firstAttribute="centerX" secondItem="TO3-Mb-dEp" secondAttribute="centerX" id="Jfi-kw-AA4"/>
                             <constraint firstItem="AKq-sA-CKg" firstAttribute="leading" secondItem="Gc7-Ot-F8o" secondAttribute="trailing" constant="30" id="SpE-JH-rFa"/>
+                            <constraint firstItem="IiO-pm-afM" firstAttribute="height" secondItem="Gc7-Ot-F8o" secondAttribute="height" id="XoW-fu-CmM"/>
+                            <constraint firstItem="IiO-pm-afM" firstAttribute="width" secondItem="Gc7-Ot-F8o" secondAttribute="width" id="ZcK-Sn-6Wg"/>
+                            <constraint firstItem="IiO-pm-afM" firstAttribute="top" secondItem="Gc7-Ot-F8o" secondAttribute="bottom" constant="30" id="b6t-z1-LNy"/>
                             <constraint firstItem="H2w-f4-P2j" firstAttribute="leading" secondItem="TO3-Mb-dEp" secondAttribute="leading" id="pBj-LW-Y6t"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="XoW-fu-CmM"/>
+                                <exclude reference="ZcK-Sn-6Wg"/>
                                 <exclude reference="SpE-JH-rFa"/>
                             </mask>
                         </variation>
@@ -97,6 +123,7 @@
                         <outlet property="lockBtn" destination="P2y-QW-pc1" id="DId-51-Q8g"/>
                         <outlet property="powerIndicaterIm" destination="Gc7-Ot-F8o" id="S5m-4t-hWN"/>
                         <outlet property="timeLabel" destination="AKq-sA-CKg" id="1nH-ap-lrR"/>
+                        <outlet property="waveView" destination="IiO-pm-afM" id="31n-kl-lEI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7X-VN-5tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
