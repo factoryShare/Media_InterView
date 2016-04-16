@@ -8,14 +8,14 @@ path-to-service： 114.112.100.68:8020
 登录接口
  地址: http://path-to-service/account/login
  方式: POST
- 参数: userName, password, deviceID
+ 参数: userName, password, deviceID (UUID)
  返回: status, token  及策划部分数据
   
 新闻策划配置                
  地址: http://path-to-service/accouts/getConfigs
  方式: POST
  参数: token,
- 返回: status, 报告类型, 栏目类型
+ 返回: status, 报告类型, 栏目类型  (先调用 , 再上传新闻策划)
 
 新闻策划上传
  地址: http://path-to-service/eventDesign/uploadEventDesign
@@ -34,7 +34,7 @@ token, EventTitle, EventDate,OccurTime,ReportType,MainDesign,WorkAttendance,Send
 
 
 
-新建上传文件
+新建上传文件 first step
  地址: http://path-to-service/story/newUploadFile
  方式: POST
  参数: token, fileSize（文件大小）, fileName（文件名）, fileFormat（后缀比如amr）

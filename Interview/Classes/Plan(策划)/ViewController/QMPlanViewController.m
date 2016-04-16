@@ -46,7 +46,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     // 新建策划
     if (indexPath.row == 0) {
         NewPlanVC *newPlanVC = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"NewPlanVC"];
@@ -60,8 +59,8 @@
         }
         [self.navigationController pushViewController:listVC animated:YES];
     }
-
 }
+
 
 
 @end

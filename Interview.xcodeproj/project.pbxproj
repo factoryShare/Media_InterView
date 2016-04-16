@@ -10,6 +10,23 @@
 		5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E491CBBA6B900B5A698 /* TimePickView.m */; };
 		5F3D0E501CBBC89200B5A698 /* CustomPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */; };
 		5F3D0E661CBCB50700B5A698 /* CommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E651CBCB50700B5A698 /* CommonUI.m */; };
+		5FA7F5121CC2030B004CB38C /* AttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F5111CC2030B004CB38C /* AttachmentCell.m */; };
+		5FA7F5151CC23F40004CB38C /* AttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F5141CC23F40004CB38C /* AttachmentModel.m */; };
+		5FD8B65A1CC0D01B0067DCD1 /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */; };
+		5FD8B65C1CC0D0490067DCD1 /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */; };
+		5FD8B65F1CC0D6AC0067DCD1 /* NewManuscriptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8B65E1CC0D6AC0067DCD1 /* NewManuscriptVC.m */; };
+		5FD8B6621CC0D7D60067DCD1 /* ManuscriptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8B6611CC0D7D60067DCD1 /* ManuscriptModel.m */; };
+		5FD8B66F1CC0EBBE0067DCD1 /* 切换键盘@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6641CC0EBBE0067DCD1 /* 切换键盘@2x.png */; };
+		5FD8B6701CC0EBBE0067DCD1 /* 切换附件@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6651CC0EBBE0067DCD1 /* 切换附件@2x.png */; };
+		5FD8B6711CC0EBBE0067DCD1 /* 删除附件@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6661CC0EBBE0067DCD1 /* 删除附件@2x.png */; };
+		5FD8B6721CC0EBBE0067DCD1 /* 发送@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6671CC0EBBE0067DCD1 /* 发送@2x.png */; };
+		5FD8B6731CC0EBBE0067DCD1 /* 已添加的图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6681CC0EBBE0067DCD1 /* 已添加的图片@2x.png */; };
+		5FD8B6741CC0EBBE0067DCD1 /* 已添加的录音@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6691CC0EBBE0067DCD1 /* 已添加的录音@2x.png */; };
+		5FD8B6751CC0EBBE0067DCD1 /* 效果1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66A1CC0EBBE0067DCD1 /* 效果1.png */; };
+		5FD8B6761CC0EBBE0067DCD1 /* 效果2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66B1CC0EBBE0067DCD1 /* 效果2.png */; };
+		5FD8B6771CC0EBBE0067DCD1 /* 效果3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66C1CC0EBBE0067DCD1 /* 效果3.png */; };
+		5FD8B6781CC0EBBE0067DCD1 /* 数字背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66D1CC0EBBE0067DCD1 /* 数字背景@2x.png */; };
+		5FD8B6791CC0EBBE0067DCD1 /* 添加附件@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */; };
 		840E80BF1CBE0D560049EE51 /* QMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E80BE1CBE0D560049EE51 /* QMUserModel.m */; };
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
@@ -131,6 +148,27 @@
 		5F3D0E4F1CBBC89200B5A698 /* CustomPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomPickView.m; path = "Interview/Classes/Plan(策划)/CustomPickView.m"; sourceTree = SOURCE_ROOT; };
 		5F3D0E641CBCB50700B5A698 /* CommonUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUI.h; sourceTree = "<group>"; };
 		5F3D0E651CBCB50700B5A698 /* CommonUI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUI.m; sourceTree = "<group>"; };
+		5FA7F5101CC2030B004CB38C /* AttachmentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachmentCell.h; path = "Interview/Classes/Manuscript(稿件)/AttachmentCell.h"; sourceTree = SOURCE_ROOT; };
+		5FA7F5111CC2030B004CB38C /* AttachmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachmentCell.m; path = "Interview/Classes/Manuscript(稿件)/AttachmentCell.m"; sourceTree = SOURCE_ROOT; };
+		5FA7F5131CC23F40004CB38C /* AttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachmentModel.h; path = "Interview/Classes/Manuscript(稿件)/AttachmentModel.h"; sourceTree = SOURCE_ROOT; };
+		5FA7F5141CC23F40004CB38C /* AttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachmentModel.m; path = "Interview/Classes/Manuscript(稿件)/AttachmentModel.m"; sourceTree = SOURCE_ROOT; };
+		5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Manuscript.storyboard; path = "../Manuscript(稿件)/Manuscript.storyboard"; sourceTree = "<group>"; };
+		5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manuscript.storyboard; sourceTree = "<group>"; };
+		5FD8B65D1CC0D6AC0067DCD1 /* NewManuscriptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewManuscriptVC.h; sourceTree = "<group>"; };
+		5FD8B65E1CC0D6AC0067DCD1 /* NewManuscriptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewManuscriptVC.m; sourceTree = "<group>"; };
+		5FD8B6601CC0D7D60067DCD1 /* ManuscriptModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManuscriptModel.h; path = "Interview/Classes/Manuscript(稿件)/ViewController/ManuscriptModel.h"; sourceTree = SOURCE_ROOT; };
+		5FD8B6611CC0D7D60067DCD1 /* ManuscriptModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ManuscriptModel.m; path = "Interview/Classes/Manuscript(稿件)/ViewController/ManuscriptModel.m"; sourceTree = SOURCE_ROOT; };
+		5FD8B6641CC0EBBE0067DCD1 /* 切换键盘@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "切换键盘@2x.png"; sourceTree = "<group>"; };
+		5FD8B6651CC0EBBE0067DCD1 /* 切换附件@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "切换附件@2x.png"; sourceTree = "<group>"; };
+		5FD8B6661CC0EBBE0067DCD1 /* 删除附件@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "删除附件@2x.png"; sourceTree = "<group>"; };
+		5FD8B6671CC0EBBE0067DCD1 /* 发送@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "发送@2x.png"; sourceTree = "<group>"; };
+		5FD8B6681CC0EBBE0067DCD1 /* 已添加的图片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已添加的图片@2x.png"; sourceTree = "<group>"; };
+		5FD8B6691CC0EBBE0067DCD1 /* 已添加的录音@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已添加的录音@2x.png"; sourceTree = "<group>"; };
+		5FD8B66A1CC0EBBE0067DCD1 /* 效果1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "效果1.png"; sourceTree = "<group>"; };
+		5FD8B66B1CC0EBBE0067DCD1 /* 效果2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "效果2.png"; sourceTree = "<group>"; };
+		5FD8B66C1CC0EBBE0067DCD1 /* 效果3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "效果3.png"; sourceTree = "<group>"; };
+		5FD8B66D1CC0EBBE0067DCD1 /* 数字背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字背景@2x.png"; sourceTree = "<group>"; };
+		5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加附件@2x.png"; sourceTree = "<group>"; };
 		840E80BD1CBE0D560049EE51 /* QMUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUserModel.h; sourceTree = "<group>"; };
 		840E80BE1CBE0D560049EE51 /* QMUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUserModel.m; sourceTree = "<group>"; };
 		840F1CCC1CB397B0006F38B1 /* QMRecorderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListViewController.h; sourceTree = "<group>"; };
@@ -369,6 +407,24 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		5FD8B6631CC0EBBE0067DCD1 /* 稿件 */ = {
+			isa = PBXGroup;
+			children = (
+				5FD8B6641CC0EBBE0067DCD1 /* 切换键盘@2x.png */,
+				5FD8B6651CC0EBBE0067DCD1 /* 切换附件@2x.png */,
+				5FD8B6661CC0EBBE0067DCD1 /* 删除附件@2x.png */,
+				5FD8B6671CC0EBBE0067DCD1 /* 发送@2x.png */,
+				5FD8B6681CC0EBBE0067DCD1 /* 已添加的图片@2x.png */,
+				5FD8B6691CC0EBBE0067DCD1 /* 已添加的录音@2x.png */,
+				5FD8B66A1CC0EBBE0067DCD1 /* 效果1.png */,
+				5FD8B66B1CC0EBBE0067DCD1 /* 效果2.png */,
+				5FD8B66C1CC0EBBE0067DCD1 /* 效果3.png */,
+				5FD8B66D1CC0EBBE0067DCD1 /* 数字背景@2x.png */,
+				5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */,
+			);
+			path = "稿件";
+			sourceTree = "<group>";
+		};
 		846D36F21CBB6F0000EF7254 /* LZCode */ = {
 			isa = PBXGroup;
 			children = (
@@ -511,6 +567,7 @@
 		84E345791CABFA87007A41A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FD8B6631CC0EBBE0067DCD1 /* 稿件 */,
 				84E345851CABFA87007A41A2 /* Assets.xcassets */,
 				84E345AD1CAC01A9007A41A2 /* PrefixHeader.pch */,
 				84E345871CABFA87007A41A2 /* LaunchScreen.storyboard */,
@@ -639,6 +696,7 @@
 		84E345D11CAC04AD007A41A2 /* Manuscript(稿件) */ = {
 			isa = PBXGroup;
 			children = (
+				5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */,
 				84E345D21CAC04AD007A41A2 /* Model */,
 				84E345D31CAC04AD007A41A2 /* View */,
 				84E345D41CAC04AD007A41A2 /* ViewController */,
@@ -649,6 +707,10 @@
 		84E345D21CAC04AD007A41A2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5FD8B6601CC0D7D60067DCD1 /* ManuscriptModel.h */,
+				5FD8B6611CC0D7D60067DCD1 /* ManuscriptModel.m */,
+				5FA7F5131CC23F40004CB38C /* AttachmentModel.h */,
+				5FA7F5141CC23F40004CB38C /* AttachmentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -656,6 +718,8 @@
 		84E345D31CAC04AD007A41A2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5FA7F5101CC2030B004CB38C /* AttachmentCell.h */,
+				5FA7F5111CC2030B004CB38C /* AttachmentCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -667,6 +731,8 @@
 				847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */,
 				841F30A71CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.h */,
 				841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */,
+				5FD8B65D1CC0D6AC0067DCD1 /* NewManuscriptVC.h */,
+				5FD8B65E1CC0D6AC0067DCD1 /* NewManuscriptVC.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -729,6 +795,7 @@
 		84E345D91CAC04AD007A41A2 /* Recorder(录音) */ = {
 			isa = PBXGroup;
 			children = (
+				5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */,
 				84E345DA1CAC04AD007A41A2 /* Model */,
 				84E345DB1CAC04AD007A41A2 /* View */,
 				84E345DC1CAC04AD007A41A2 /* ViewController */,
@@ -1056,7 +1123,7 @@
 				TargetAttributes = {
 					84E345751CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = G9GWY6T6FF;
+						DevelopmentTeam = X448TB9G2B;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1101,14 +1168,27 @@
 				A5D6B5B31CB2342F00B6E845 /* Plan.storyboard in Resources */,
 				84E345891CABFA87007A41A2 /* LaunchScreen.storyboard in Resources */,
 				84E345861CABFA87007A41A2 /* Assets.xcassets in Resources */,
+				5FD8B66F1CC0EBBE0067DCD1 /* 切换键盘@2x.png in Resources */,
 				8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */,
 				84ECDBEE1CACBB4D007FD6E0 /* MBProgressHUD.bundle in Resources */,
 				84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */,
+				5FD8B6741CC0EBBE0067DCD1 /* 已添加的录音@2x.png in Resources */,
+				5FD8B65A1CC0D01B0067DCD1 /* Manuscript.storyboard in Resources */,
+				5FD8B6751CC0EBBE0067DCD1 /* 效果1.png in Resources */,
+				5FD8B6771CC0EBBE0067DCD1 /* 效果3.png in Resources */,
 				84ECDBEC1CACBB4D007FD6E0 /* 数据库.rtf in Resources */,
+				5FD8B65C1CC0D0490067DCD1 /* Manuscript.storyboard in Resources */,
+				5FD8B6761CC0EBBE0067DCD1 /* 效果2.png in Resources */,
 				84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */,
+				5FD8B6701CC0EBBE0067DCD1 /* 切换附件@2x.png in Resources */,
 				8478648C1CB3A15600F66CC7 /* QMRecorderListCell.xib in Resources */,
 				84B80F501CB00319002E3870 /* QMRecorderViewController.storyboard in Resources */,
+				5FD8B6781CC0EBBE0067DCD1 /* 数字背景@2x.png in Resources */,
+				5FD8B6721CC0EBBE0067DCD1 /* 发送@2x.png in Resources */,
+				5FD8B6711CC0EBBE0067DCD1 /* 删除附件@2x.png in Resources */,
 				84CE48391CAEC5D60012B584 /* QMUserInfoViewController.xib in Resources */,
+				5FD8B6731CC0EBBE0067DCD1 /* 已添加的图片@2x.png in Resources */,
+				5FD8B6791CC0EBBE0067DCD1 /* 添加附件@2x.png in Resources */,
 				84ECDBCE1CACBAA0007FD6E0 /* MJRefresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1142,6 +1222,7 @@
 				A5D6B5C51CB2570A00B6E845 /* PlanItemModel.m in Sources */,
 				84ECDB8F1CACB7BA007FD6E0 /* AFSecurityPolicy.m in Sources */,
 				84CE48321CAEC29A0012B584 /* QMSettingViewController.m in Sources */,
+				5FA7F5121CC2030B004CB38C /* AttachmentCell.m in Sources */,
 				5F3D0E501CBBC89200B5A698 /* CustomPickView.m in Sources */,
 				84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */,
 				84CE48381CAEC5D60012B584 /* QMUserInfoViewController.m in Sources */,
@@ -1179,6 +1260,7 @@
 				841F30A91CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m in Sources */,
 				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,
 				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
+				5FD8B65F1CC0D6AC0067DCD1 /* NewManuscriptVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84E4D9661CB2AA5F00910C91 /* QMRecorderDBManager.m in Sources */,
 				A5975F181CBB715E005D2C3B /* DatePickView.m in Sources */,
@@ -1198,6 +1280,7 @@
 				847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */,
 				8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */,
 				A5568A8C1CBF2C3200CCC984 /* NSObject+LKDBHelper.m in Sources */,
+				5FA7F5151CC23F40004CB38C /* AttachmentModel.m in Sources */,
 				84ECDBC61CACBAA0007FD6E0 /* MJRefreshAutoNormalFooter.m in Sources */,
 				84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */,
 				84ECDBEF1CACBB4D007FD6E0 /* MBProgressHUD.m in Sources */,
@@ -1206,6 +1289,7 @@
 				A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */,
 				84E3457B1CABFA87007A41A2 /* main.m in Sources */,
 				84B815031CBE32D80078755E /* QMRememberButton.m in Sources */,
+				5FD8B6621CC0D7D60067DCD1 /* ManuscriptModel.m in Sources */,
 				5F3D0E4A1CBBA6B900B5A698 /* TimePickView.m in Sources */,
 				84ECDB911CACB7BA007FD6E0 /* AFURLResponseSerialization.m in Sources */,
 				84A21B4C1CB0D4D400440905 /* amrFileCodec.mm in Sources */,
