@@ -27,6 +27,7 @@
     [self initUI];
     [self initData];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"DBUpdated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"SendPlanSuccess" object:nil];
 }
 
 - (void)refresh {
@@ -36,6 +37,7 @@
 
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"DBUpdated" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SendPlanSuccess" object:nil];
 }
 
 - (void)didReceiveMemoryWarning {

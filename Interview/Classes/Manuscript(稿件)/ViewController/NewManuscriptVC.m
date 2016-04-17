@@ -9,7 +9,8 @@
 #import "NewManuscriptVC.h"
 #import "AttachmentCell.h"
 #import "AttachmentModel.h"
-#import "QMRecorderListViewController.h"
+#import "QMManuscriptAMRListViewController.h"
+#import "QMRecoderDBModel.h"
 #define marginX 10.0
 #define numPerLine 3
 #define itemWidth ([UIScreen mainScreen].bounds.size.width - (numPerLine+1) * marginX) / numPerLine
@@ -35,7 +36,11 @@
     [super viewDidLoad];
     [self initData];
     [self initUI];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successGetRecordFile:) name:@"SelectAMRFile" object:nil];
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -87,7 +92,7 @@
         model.isEdit = _isEdit;
         model.attachmentType = AttachmentTypeNo;
         model.image = nil;
-        model.amrPath = nil;
+        model.recordModel = nil;
         model.index = i;
         [_attachmentArray addObject:model];
     }
@@ -198,14 +203,23 @@
     [self.collectionView reloadData];
 }
 
-- (void)showRecoderList {
-    QMRecorderListViewController *listVC = [[QMRecorderListViewController alloc]init];
-    [self.navigationController pushViewController:listVC animated:YES];
+// 成功获得 录音模型
+- (void)successGetRecordFile:(NSNotification *)notification{
+    QMRecoderDBModel *recordModel = notification.userInfo[@"fileModel"];
+    // 更新附件模型
+    for (AttachmentModel *model  in _attachmentArray) {
+        if (model.index == _attachmentIndex) {
+            model.recordModel = recordModel;
+            model.attachmentType = AttachmentTypeRecord;
+        }
+    }
+    [self.collectionView reloadData];
 }
 
-// 成功获得录音
-- (void)successGetRecord:(NSString *)recordPath {
-    
+
+- (void)showRecoderList {
+    QMManuscriptAMRListViewController *vc = [[QMManuscriptAMRListViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 

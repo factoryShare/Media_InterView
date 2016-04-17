@@ -87,7 +87,13 @@
     _fileName = [self.recorderDBModel.recorderName stringByReplacingOccurrencesOfString:@".wav" withString:@""];
     _customName = self.recorderDBModel.CustomName;
     // 开始上传 - 1.新建上传文件
-    [self newUpLoadFileWithFilePath:amrFileSavePath fileName:_fileName fileFormat:@"amr"];
+//    [self newUpLoadFileWithFilePath:amrFileSavePath fileName:_fileName fileFormat:@"amr"];
+    
+  // 发通知
+    NSDictionary *dict = @{@"fileName":_fileName,@"amrFileSavePath":amrFileSavePath};
+    NSNotification * notice = [NSNotification notificationWithName:@"SelectAMRFile" object:nil userInfo:dict];
+    [[NSNotificationCenter defaultCenter] postNotification:notice];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
