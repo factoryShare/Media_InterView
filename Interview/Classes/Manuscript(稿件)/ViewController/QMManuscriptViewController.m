@@ -8,6 +8,8 @@
 
 #import "QMManuscriptViewController.h"
 #import "NewManuscriptVC.h"
+#import "QMManuscriptListViewController.h"
+
 
 @interface QMManuscriptViewController ()
 @property (nonatomic, strong) NSArray *titleArray;
@@ -60,6 +62,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) { // 新建稿件
         NewManuscriptVC *vc = [[UIStoryboard storyboardWithName:@"Manuscript" bundle:nil] instantiateViewControllerWithIdentifier:@"NewManuscriptVC"];
+        [self.navigationController pushViewController:vc animated:YES];
+    } else {
+        QMManuscriptListViewController *vc = [[UIStoryboard storyboardWithName:@"Manuscript" bundle:nil] instantiateViewControllerWithIdentifier:@"QMManuscriptListViewController"];
+        if (indexPath.section == 1) {
+            vc.isSendToServer = NO;
+        } else {
+            vc.isSendToServer = YES;
+        }
         [self.navigationController pushViewController:vc animated:YES];
     }
 }

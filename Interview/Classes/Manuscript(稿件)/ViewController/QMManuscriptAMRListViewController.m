@@ -78,19 +78,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     self.recorderDBModel = self.dataSource[indexPath.row];
-    NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    // wav 地址
-    NSString *path = [tempDir stringByAppendingPathComponent: self.recorderDBModel.recorderName];
-    // amr 地址
-    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
-    // amr 文件名
-    _fileName = [self.recorderDBModel.recorderName stringByReplacingOccurrencesOfString:@".wav" withString:@""];
-    _customName = self.recorderDBModel.CustomName;
+//    NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//    // wav 地址
+//    NSString *path = [tempDir stringByAppendingPathComponent: self.recorderDBModel.recorderName];
+//    // amr 地址
+//    NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
+//    // amr 文件名
+//    _fileName = [self.recorderDBModel.recorderName stringByReplacingOccurrencesOfString:@".wav" withString:@""];
+//    _customName = self.recorderDBModel.CustomName;
     // 开始上传 - 1.新建上传文件
 //    [self newUpLoadFileWithFilePath:amrFileSavePath fileName:_fileName fileFormat:@"amr"];
     
   // 发通知
-    NSDictionary *dict = @{@"fileName":_fileName,@"amrFileSavePath":amrFileSavePath};
+    NSDictionary *dict = @{@"recordName":_recorderDBModel.recorderName};
     NSNotification * notice = [NSNotification notificationWithName:@"SelectAMRFile" object:nil userInfo:dict];
     [[NSNotificationCenter defaultCenter] postNotification:notice];
     [self.navigationController popViewControllerAnimated:YES];

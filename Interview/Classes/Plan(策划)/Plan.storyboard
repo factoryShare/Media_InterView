@@ -119,7 +119,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_send" translatesAutoresizingMaskIntoConstraints="NO" id="SX1-qV-PEd">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="icon_send" translatesAutoresizingMaskIntoConstraints="NO" id="SX1-qV-PEd">
                                                     <rect key="frame" x="145" y="10" width="30" height="30"/>
                                                 </imageView>
                                             </subviews>

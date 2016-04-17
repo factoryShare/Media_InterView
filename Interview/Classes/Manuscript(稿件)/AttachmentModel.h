@@ -13,6 +13,6 @@
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic,assign) BOOL isEdit;
 @property (nonatomic,copy) NSString *attachmentType;
-@property (nonatomic, strong) UIImage *image;
-@property (nonatomic,copy) QMRecoderDBModel *recordModel;
+@property (nonatomic, strong) NSString *imageName;
+@property (nonatomic,copy) NSString *recordName;
 @end

@@ -55,7 +55,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    [self getConfigs];
+//    [self getConfigs];
     [self loadData];
     _canEdit = YES;
    //获取新闻策划配置存在本地

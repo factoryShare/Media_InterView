@@ -202,6 +202,35 @@
             </objects>
             <point key="canvasLocation" x="349" y="86"/>
         </scene>
+        <!--Manuscript List View Controller-->
+        <scene sceneID="htn-Vf-DFC">
+            <objects>
+                <tableViewController storyboardIdentifier="QMManuscriptListViewController" id="azb-DR-ndZ" customClass="QMManuscriptListViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="crj-zV-7Q5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Manuscript" id="pcj-t4-2qA">
+                                <rect key="frame" x="0.0" y="28" width="320" height="59"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pcj-t4-2qA" id="aqw-KM-n1i">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="azb-DR-ndZ" id="K5B-YG-hp0"/>
+                            <outlet property="delegate" destination="azb-DR-ndZ" id="J0t-yK-yAg"/>
+                        </connections>
+                    </tableView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bFu-xi-Qzx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="64" y="720"/>
+        </scene>
     </scenes>
     <resources>
         <image name="删除附件.png" width="25" height="25"/>

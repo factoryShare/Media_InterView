@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "LKDBHelper.h"
 @interface ManuscriptModel : NSObject
-
+@property (nonatomic, copy) NSString *scriptTitle;
+@property (nonatomic, copy) NSString *scriptContent;
+@property (nonatomic, strong) NSArray *attachmentArray;
+@property (nonatomic,copy) NSString *isSendToServer;
 @end
 
 
