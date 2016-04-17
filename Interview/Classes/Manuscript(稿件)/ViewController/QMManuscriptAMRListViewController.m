@@ -23,8 +23,6 @@
 @property(nonatomic,copy) NSString *fileName;
 @property(nonatomic,copy) NSString *customName;
 
-
-
 // 请求返回参数保存
 @property(nonatomic,copy) NSString *fileID;
 

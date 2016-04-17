@@ -326,9 +326,9 @@
     NSString *urlString = [NSString stringWithFormat:@"http://%@/eventDesign/uploadEventDesign",pathToService];
     // 请求的参数
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"Token"];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     if (token.length > 0) {
-         [parameters setObject: token forKey:@"token"];
+        [parameters setObject: token forKey:@"token"];
         [parameters setObject:_planModel.EventTitle forKey:@"EventTitle"];
         [parameters setObject:_planModel.EventDate  forKey:@"EventDate"];
         [parameters setObject:_planModel.OccurTime forKey:@"OccurTime"];
@@ -354,20 +354,24 @@
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-            NSLog(@"result: %@", result);
+            QMLog(@"result: %@", result);
+            if ((![result[@"Data"] isKindOfClass:[NSNull class]] && [result[@"Error"] isKindOfClass:[NSNull class]])) {
 #warning 这里需要判断 error , 之后来添加
-            _planModel.isSendToServer = @"1";
-            [_planModel updateToDB];
-            [CommonUI showTextOnly:@"上传成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-            
+                _planModel.isSendToServer = @"1";
+                [_planModel updateToDB];
+                [CommonUI showTextOnly:@"上传成功"];
+                [self.navigationController popViewControllerAnimated:YES];
+
+            } else {
+                [CommonUI showTextOnly:@"请登录"];
+            }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
             // 请求失败
             NSLog(@"error: %@", [error localizedDescription]);
         }];
     } else {
-        [CommonUI showTextOnly:@"请登录"];
+        [CommonUI showTextOnly:@"token 失效请重新登录"];
     }
     
 }

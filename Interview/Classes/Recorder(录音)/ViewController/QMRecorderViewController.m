@@ -80,34 +80,44 @@
         
         isRecording = NO;
         _isWaveShow = YES;
-    } else { // 结束录制
-        _timerLong = _timerValue;
-        _timerValue = 0;
-        _waveTime = 0;
-        
-        self.timer.fireDate = [NSDate distantFuture];
-        if (self.timer.isValid) {
-            [_timer invalidate];
+    } else {
+        if (_timerValue <= 15) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"录音不足15秒请继续录制" message: nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            
+            [alert setAlertViewStyle:(UIAlertViewStyleDefault)];
+            
+            [alert show];
+            return;
+        } else {
+            // 结束录制
+            _timerLong = _timerValue;
+            _timerValue = 0;
+            _waveTime = 0;
+            
+            self.timer.fireDate = [NSDate distantFuture];
+            if (self.timer.isValid) {
+                [_timer invalidate];
+            }
+            _timer = nil;
+            [self timeChanged];
+            
+            // 存储文件名
+            self.fileName = self.recorder.fileName;
+            self.amrFileSavePath  =self.recorder.amrFileSavePath;
+            
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"请输入录音名" message: nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            
+            [alert setAlertViewStyle:(UIAlertViewStylePlainTextInput)];
+            
+            [alert show];
+            // 结束录制
+            [self.recorder stopRecorde];
+            
+            self.recorder = nil;
+            
+            isRecording = YES;
+            _isWaveShow = NO;
         }
-        _timer = nil;
-        [self timeChanged];
-        
-        // 存储文件名
-        self.fileName = self.recorder.fileName;
-        self.amrFileSavePath  =self.recorder.amrFileSavePath;
-        
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"请输入录音名" message: nil delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        
-        [alert setAlertViewStyle:(UIAlertViewStylePlainTextInput)];
-        
-        [alert show];
-        // 结束录制
-        [self.recorder stopRecorde];
-        
-        self.recorder = nil;
-        
-        isRecording = YES;
-        _isWaveShow = NO;
     }
 }
 /**
