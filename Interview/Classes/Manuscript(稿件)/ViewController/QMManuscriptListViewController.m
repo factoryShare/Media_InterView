@@ -46,7 +46,7 @@
 - (void)initUI {
     _canEdit = YES;
     self.navigationController.title = _isSendToServer ? @"已发稿件":@"未发稿件";
-    _editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editItemClicked)];
+    _editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_delete"] style:UIBarButtonItemStylePlain target:self action:@selector(editItemClicked)];
     _editItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = _editItem;
 }
@@ -54,6 +54,7 @@
     _canEdit = !_canEdit;
     NSString *imageName = _canEdit ? @"icon_edit" : @"nav_delete";
     _editItem.image = [UIImage imageNamed:imageName];
+    [self.tableView setEditing:!_canEdit animated:YES];
 }
 
 - (void)initData {
@@ -99,7 +100,15 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
-
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        ManuscriptModel *scriptModel = _dataArray[indexPath.section];
+        [self.dataArray removeObject:scriptModel];
+        // 删除本地数据库
+        [ManuscriptModel deleteToDB:scriptModel];
+        [self.tableView reloadData];
+    }
+}
 
 
 
