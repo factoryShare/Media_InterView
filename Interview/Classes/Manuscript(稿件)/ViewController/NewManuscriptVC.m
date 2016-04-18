@@ -52,7 +52,6 @@
     _rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_save"] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClicked)];
     _rightItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = _rightItem;
-    _isEdit = _manuscriptModel==nil ? YES:NO;
     NSString *imageName = _isEdit ? @"icon_save":@"icon_edit";
     _rightItem.image = [UIImage imageNamed:imageName];
     [self setControlsStatus];
@@ -69,6 +68,40 @@
         model.isEdit = _isEdit;
     }
     [self.collectionView reloadData];
+    
+    // 更新稿件模型 保存到数据库
+    if (!_isEdit) {
+        _manuscriptModel.scriptTitle = self.titleTextField.text;
+        _manuscriptModel.scriptContent = self.textView.text;
+        NSMutableArray *array = [NSMutableArray array];
+        for (AttachmentModel *attachModel in _attachmentArray) {
+            NSDictionary *dict = @{@"AttachmentTyp":attachModel.attachmentType,
+                                   @"imageName":attachModel.imageName,
+                                   @"recordName":attachModel.recordName};
+            [array addObject:dict];
+            
+        }
+        NSArray *attachs = [array copy];
+        _manuscriptModel.attachmentArray = attachs;
+        [ManuscriptModel insertWhenNotExists:_manuscriptModel];
+        [ManuscriptModel updateToDB:_manuscriptModel where:nil];
+    }
+    
+//     测试数据库有没有保存成功
+    NSMutableArray *array = [NSMutableArray array];
+    array = [ManuscriptModel searchWithWhere:nil orderBy:nil offset:0 count:0];
+    for (ManuscriptModel *scriptModel in array) {
+        NSLog(@"title: %@",scriptModel.scriptTitle);
+        NSArray *array = scriptModel.attachmentArray;
+        for (NSDictionary *dict in array) {
+            NSString *imageName = dict[@"imageName"];
+            NSString *recordName = dict[@"recordName"];
+            if (dict[@"imageName"]) {
+                NSLog(@"imageName: %@ recordName: %@", imageName, recordName);
+            }
+        }
+    }
+    
 }
 
 - (void)setControlsStatus {
@@ -79,26 +112,74 @@
 
 
 - (void)initData {
-    
-    if (self.manuscriptModel) {
-        _isEdit = NO;
-    } else {
-        _isEdit = YES;
-    }
-    
+    _isEdit = _manuscriptModel==nil ? YES:NO;
     _attachmentArray = [NSMutableArray array];
-    for (int i = 0; i < 6; i++) {
-        AttachmentModel *model = [[AttachmentModel alloc] init];
-        model.isEdit = _isEdit;
-        model.attachmentType = AttachmentTypeNo;
-        model.image = nil;
-        model.recordModel = nil;
-        model.index = i;
-        [_attachmentArray addObject:model];
+    if (_manuscriptModel) {
+        _scriptTitle = _manuscriptModel.scriptTitle;
+        _scriptContent = _manuscriptModel.scriptContent;
+        NSArray *attachsArray = _manuscriptModel.attachmentArray;
+        for (int i = 0; i < attachsArray.count ; i ++) {
+            NSDictionary *dict = attachsArray[i];
+            AttachmentModel *model = [[AttachmentModel alloc] init];
+            model.isEdit = _isEdit;
+            model.index = i;
+            NSString *type = dict[@"AttachmentTyp"];
+            if ([type isEqualToString:AttachmentTypeNo]) {
+                model.attachmentType = AttachmentTypeNo;
+                model.imageName = @"";
+                model.recordName = @"";
+            }
+            
+            if ([type isEqualToString:AttachmentTypeImage]) {
+                model.attachmentType = AttachmentTypeImage;
+                NSString *imageName = dict[@"imageName"];
+                if (imageName) {
+                    model.imageName = imageName;
+                }
+                model.recordName = @"";
+            }
+            
+            if ([type isEqualToString:AttachmentTypeRecord]) {
+                model.attachmentType = AttachmentTypeRecord;
+                NSString *recordName = dict[@"recordName"];
+                if (recordName) {
+                    model.recordName = recordName;
+                }
+                model.imageName = @"";
+            }
+            [_attachmentArray addObject:model];
+        }
+        
+    } else {
+        for (int i = 0; i < 6; i++) {
+            AttachmentModel *model = [[AttachmentModel alloc] init];
+            model.isEdit = _isEdit;
+            model.attachmentType = AttachmentTypeNo;
+            model.imageName = @"";
+            model.recordName = @"";
+            model.index = i;
+            [_attachmentArray addObject:model];
+        }
+        _manuscriptModel = [[ManuscriptModel alloc] init];
+        _manuscriptModel.isSendToServer = @"0";
     }
 }
 
 
+//图片转字符串
+-(NSString *)UIImageToBase64Str:(UIImage *) image
+{
+    NSData *data = UIImageJPEGRepresentation(image, 1.0f);
+    NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+    return encodedImageStr;
+}
+// 图片解码
+-(UIImage *)Base64StrToUIImage:(NSString *)_encodedImageStr
+{
+    NSData *_decodedImageData   = [[NSData alloc] initWithBase64Encoding:_encodedImageStr];
+    UIImage *_decodedImage      = [UIImage imageWithData:_decodedImageData];
+    return _decodedImage;
+}
 #pragma mark ----UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.titleTextField) {
@@ -191,25 +272,14 @@
     
 }
 
-// 成功获得图片
-- (void)successGetPhoto:(UIImage *)image {
-    //更新附件模型
-    for (AttachmentModel *model in _attachmentArray) {
-        if (model.index == _attachmentIndex) {
-            model.image = image;
-            model.attachmentType = AttachmentTypeImage;
-        }
-    }
-    [self.collectionView reloadData];
-}
 
 // 成功获得 录音模型
 - (void)successGetRecordFile:(NSNotification *)notification{
-    QMRecoderDBModel *recordModel = notification.userInfo[@"fileModel"];
+    NSString *recordName = notification.userInfo[@"recordName"];
     // 更新附件模型
     for (AttachmentModel *model  in _attachmentArray) {
         if (model.index == _attachmentIndex) {
-            model.recordModel = recordModel;
+            model.recordName = recordName;
             model.attachmentType = AttachmentTypeRecord;
         }
     }
@@ -227,16 +297,35 @@
 -(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
     UIImage *image=[info objectForKey:@"UIImagePickerControllerOriginalImage"];
     if (picker.sourceType == UIImagePickerControllerSourceTypePhotoLibrary) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        
     }
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
-        //压缩图片
-        image = [self imageCompressForWidth:image targetWidth:480];
         //写入到本地相册
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-        [self dismissViewControllerAnimated:YES completion:nil];
+        
     }
-    [self successGetPhoto:image];
+    //压缩图片
+    image = [self imageCompressForWidth:image targetWidth:480];
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    //  设置日期转换格式
+    df.dateFormat = @"yyyyMMddHHmmss";
+    NSDate *date = [NSDate date];
+    NSString *imageName = [NSString stringWithFormat:@"image_%@.png",[df stringFromDate:date]];
+    [self saveImage:image withName:imageName];
+    [self successGetPhotoWithImageName:imageName];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+// 成功获得图片
+- (void)successGetPhotoWithImageName:(NSString *)imageName {
+    //更新附件模型
+    for (AttachmentModel *model in _attachmentArray) {
+        if (model.index == _attachmentIndex) {
+            model.imageName = imageName;
+            model.attachmentType = AttachmentTypeImage;
+        }
+    }
+    [self.collectionView reloadData];
 }
 
 //压缩图片
@@ -286,6 +375,17 @@
     return newImage;
 }
 
+
+// 保存图片到本地
+-(void)saveImage:(UIImage *)tempImage withName:(NSString *)imageName{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSData *imageData=UIImagePNGRepresentation(tempImage);
+        NSString *fullPath=[NSString stringWithFormat:@"%@/Documents/Images/%@",NSHomeDirectory(),imageName];
+        [imageData writeToFile:fullPath atomically:YES];
+        NSLog(@"写入沙盒成功");
+    });
+    
+}
 
 
 

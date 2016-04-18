@@ -10,6 +10,8 @@
 
 @implementation ManuscriptModel
 
-
++ (NSString *)getTableName {
+    return @"ManuscriptModel";
+}
 
 @end

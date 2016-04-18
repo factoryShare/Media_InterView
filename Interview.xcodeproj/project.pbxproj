@@ -12,6 +12,7 @@
 		5F3D0E661CBCB50700B5A698 /* CommonUI.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F3D0E651CBCB50700B5A698 /* CommonUI.m */; };
 		5FA7F5121CC2030B004CB38C /* AttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F5111CC2030B004CB38C /* AttachmentCell.m */; };
 		5FA7F5151CC23F40004CB38C /* AttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F5141CC23F40004CB38C /* AttachmentModel.m */; };
+		5FAA52A51CC3E8FE006E2AA7 /* QMManuscriptListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA52A41CC3E8FE006E2AA7 /* QMManuscriptListViewController.m */; };
 		5FD8B65A1CC0D01B0067DCD1 /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */; };
 		5FD8B65C1CC0D0490067DCD1 /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */; };
 		5FD8B65F1CC0D6AC0067DCD1 /* NewManuscriptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8B65E1CC0D6AC0067DCD1 /* NewManuscriptVC.m */; };
@@ -155,6 +156,8 @@
 		5FA7F5111CC2030B004CB38C /* AttachmentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachmentCell.m; path = "Interview/Classes/Manuscript(稿件)/AttachmentCell.m"; sourceTree = SOURCE_ROOT; };
 		5FA7F5131CC23F40004CB38C /* AttachmentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AttachmentModel.h; path = "Interview/Classes/Manuscript(稿件)/AttachmentModel.h"; sourceTree = SOURCE_ROOT; };
 		5FA7F5141CC23F40004CB38C /* AttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachmentModel.m; path = "Interview/Classes/Manuscript(稿件)/AttachmentModel.m"; sourceTree = SOURCE_ROOT; };
+		5FAA52A31CC3E8FE006E2AA7 /* QMManuscriptListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMManuscriptListViewController.h; sourceTree = "<group>"; };
+		5FAA52A41CC3E8FE006E2AA7 /* QMManuscriptListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptListViewController.m; sourceTree = "<group>"; };
 		5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Manuscript.storyboard; path = "../Manuscript(稿件)/Manuscript.storyboard"; sourceTree = "<group>"; };
 		5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manuscript.storyboard; sourceTree = "<group>"; };
 		5FD8B65D1CC0D6AC0067DCD1 /* NewManuscriptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewManuscriptVC.h; sourceTree = "<group>"; };
@@ -746,6 +749,8 @@
 				841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */,
 				5FD8B65D1CC0D6AC0067DCD1 /* NewManuscriptVC.h */,
 				5FD8B65E1CC0D6AC0067DCD1 /* NewManuscriptVC.m */,
+				5FAA52A31CC3E8FE006E2AA7 /* QMManuscriptListViewController.h */,
+				5FAA52A41CC3E8FE006E2AA7 /* QMManuscriptListViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1261,6 +1266,7 @@
 				84ECDBC01CACBAA0007FD6E0 /* MJRefreshAutoFooter.m in Sources */,
 				848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */,
 				84ECDBED1CACBB4D007FD6E0 /* MBProgressHUD+MJ.m in Sources */,
+				5FAA52A51CC3E8FE006E2AA7 /* QMManuscriptListViewController.m in Sources */,
 				847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */,
 				84E345C91CAC0358007A41A2 /* UIBarButtonItem+Extension.m in Sources */,
 				84E4D9691CB2AD5400910C91 /* QMRecoderDBModel.m in Sources */,
