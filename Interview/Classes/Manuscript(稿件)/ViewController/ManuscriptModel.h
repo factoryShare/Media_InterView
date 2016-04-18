@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *scriptContent;
 @property (nonatomic, strong) NSArray *attachmentArray;
 @property (nonatomic,copy) NSString *isSendToServer;
+@property (nonatomic, copy) NSString *scriptId;
 @end
 
 

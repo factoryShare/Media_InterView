@@ -11,11 +11,13 @@
 #import "AttachmentModel.h"
 #import "QMManuscriptAMRListViewController.h"
 #import "QMRecoderDBModel.h"
+#import "CommonUI.h"
+#import "MBProgressHUD.h"
 #define marginX 10.0
 #define numPerLine 3
 #define itemWidth ([UIScreen mainScreen].bounds.size.width - (numPerLine+1) * marginX) / numPerLine
 
-@interface NewManuscriptVC () <UINavigationControllerDelegate,UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate>
+@interface NewManuscriptVC () <UINavigationControllerDelegate,UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate, AttachmentCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -28,6 +30,7 @@
 @property (nonatomic, strong) UIBarButtonItem *rightItem;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, assign) NSInteger attachmentIndex;
+@property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 @end
 
 @implementation NewManuscriptVC
@@ -48,6 +51,11 @@
 
 - (void)initUI {
     self.title = @"新建稿件";
+    _titleTextField.text = _scriptTitle;
+    _textView.text = _scriptContent;
+    if (_scriptContent.length > 0) {
+        self.holderLabel.hidden = YES;
+    }
     _textView.layoutManager.allowsNonContiguousLayout=NO;
     _rightItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_save"] style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClicked)];
     _rightItem.tintColor = [UIColor whiteColor];
@@ -58,6 +66,14 @@
 }
 
 - (void)rightItemClicked{
+    
+    if (_isEdit) { // 假如当前处于编辑状态
+        if (self.titleTextField.text.length <= 0) {
+            [CommonUI showTextOnly:@"标题不能为空"];
+            return;
+        }
+    }
+    
     _isEdit = !_isEdit;
     NSString *imageName = _isEdit ? @"icon_save":@"icon_edit";
     _rightItem.image = [UIImage imageNamed:imageName];
@@ -71,23 +87,38 @@
     
     // 更新稿件模型 保存到数据库
     if (!_isEdit) {
-        _manuscriptModel.scriptTitle = self.titleTextField.text;
-        _manuscriptModel.scriptContent = self.textView.text;
-        NSMutableArray *array = [NSMutableArray array];
-        for (AttachmentModel *attachModel in _attachmentArray) {
-            NSDictionary *dict = @{@"AttachmentTyp":attachModel.attachmentType,
-                                   @"imageName":attachModel.imageName,
-                                   @"recordName":attachModel.recordName};
-            [array addObject:dict];
+        if (self.titleTextField.text.length > 0) {
+            _manuscriptModel.scriptTitle = self.titleTextField.text;
+            _manuscriptModel.scriptContent = self.textView.text;
+            NSMutableArray *array = [NSMutableArray array];
+            for (AttachmentModel *attachModel in _attachmentArray) {
+                NSDictionary *dict = @{@"attachmentTyp":attachModel.attachmentType,
+                                       @"imageName":attachModel.imageName,
+                                       @"recordName":attachModel.recordName};
+                [array addObject:dict];
+                
+            }
+            NSArray *attachs = [array copy];
+            _manuscriptModel.attachmentArray = attachs;
+            [ManuscriptModel insertWhenNotExists:_manuscriptModel];
+            [ManuscriptModel updateToDB:_manuscriptModel where:nil];
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"manuscriptDbUpdated" object:nil];
+            
+            
+        } else {
+            [CommonUI showTextOnly:@"标题不能为空"];
         }
-        NSArray *attachs = [array copy];
-        _manuscriptModel.attachmentArray = attachs;
-        [ManuscriptModel insertWhenNotExists:_manuscriptModel];
-        [ManuscriptModel updateToDB:_manuscriptModel where:nil];
+       
     }
     
 //     测试数据库有没有保存成功
+//    [self testDB];
+    
+}
+
+
+- (void)testDB {
     NSMutableArray *array = [NSMutableArray array];
     array = [ManuscriptModel searchWithWhere:nil orderBy:nil offset:0 count:0];
     for (ManuscriptModel *scriptModel in array) {
@@ -101,6 +132,39 @@
             }
         }
     }
+}
+
+// 发送到服务器
+- (IBAction)sendBtnClicked:(id)sender {
+    if (_isEdit) { // 如果在编辑状态 , 不做操作
+        return;
+    }
+    // 发送到服务器成功的通知
+    // [[NSNotificationCenter defaultCenter] postNotificationName:@"SendManuscriptSuccess" object:nil];
+    NSString * pathToService = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+    _scriptTitle = self.titleTextField.text; // 标题
+    _scriptContent = self.textView.text;     // 内容
+    
+    for (AttachmentModel *attachModel in _attachmentArray) {
+        if ([attachModel.attachmentType isEqualToString:AttachmentTypeImage]) {
+            NSString *imagePath = [NSString stringWithFormat:@"%@/Documents/%@",NSHomeDirectory(),attachModel.imageName];
+            UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
+            NSString *imageBase64 = [self UIImageToBase64Str:image];
+            NSLog(@"imageStringLength: %i bytes",imageBase64.length);
+        }
+        
+        if ([attachModel.attachmentType isEqualToString:AttachmentTypeRecord]) {
+            NSLog(@"recordName: %@",attachModel.recordName);
+        }
+        
+    }
+    
+    if (token.length > 0 && pathToService.length > 0) {
+        
+    } else {
+        [CommonUI showTextOnly:@"token 失效请重新登录"];
+    }
     
 }
 
@@ -108,6 +172,8 @@
     self.titleTextField.userInteractionEnabled = _isEdit;
     self.textView.userInteractionEnabled = _isEdit;
     self.collectionView.userInteractionEnabled = _isEdit;
+    NSString *imageName = _isEdit ? @"切换键盘" : @"发送";
+    [self.sendBtn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
 }
 
 
@@ -123,7 +189,7 @@
             AttachmentModel *model = [[AttachmentModel alloc] init];
             model.isEdit = _isEdit;
             model.index = i;
-            NSString *type = dict[@"AttachmentTyp"];
+            NSString *type = dict[@"attachmentTyp"];
             if ([type isEqualToString:AttachmentTypeNo]) {
                 model.attachmentType = AttachmentTypeNo;
                 model.imageName = @"";
@@ -151,6 +217,8 @@
         }
         
     } else {
+        _scriptTitle = @"";
+        _scriptContent = @"";
         for (int i = 0; i < 6; i++) {
             AttachmentModel *model = [[AttachmentModel alloc] init];
             model.isEdit = _isEdit;
@@ -162,24 +230,24 @@
         }
         _manuscriptModel = [[ManuscriptModel alloc] init];
         _manuscriptModel.isSendToServer = @"0";
+        NSDateFormatter *df = [[NSDateFormatter alloc]init];
+        //  设置日期转换格式
+        df.dateFormat = @"yyyyMMddHHmmss";
+        NSDate *date = [NSDate date];
+        NSString *scriptId = [NSString stringWithFormat:@"manuscript%@",[df stringFromDate:date]];
+        _manuscriptModel.scriptId = scriptId;
     }
 }
 
 
 //图片转字符串
--(NSString *)UIImageToBase64Str:(UIImage *) image
+- (NSString *)UIImageToBase64Str:(UIImage *)image
 {
     NSData *data = UIImageJPEGRepresentation(image, 1.0f);
     NSString *encodedImageStr = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     return encodedImageStr;
 }
-// 图片解码
--(UIImage *)Base64StrToUIImage:(NSString *)_encodedImageStr
-{
-    NSData *_decodedImageData   = [[NSData alloc] initWithBase64Encoding:_encodedImageStr];
-    UIImage *_decodedImage      = [UIImage imageWithData:_decodedImageData];
-    return _decodedImage;
-}
+
 #pragma mark ----UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.titleTextField) {
@@ -211,6 +279,7 @@
     AttachmentCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"AttachmentCell" forIndexPath:indexPath];
     AttachmentModel *model = _attachmentArray[indexPath.row];
     cell.model = model;
+    cell.delegate = self;
     return cell;
     
 }
@@ -239,7 +308,6 @@
 }
 
 #pragma mark ----UIActionSheetDelegate
-#pragma mark UIActionSheetDelegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 //    NSLog(@"%i",(int)buttonIndex);
     // 相册
@@ -301,8 +369,9 @@
     }
     if (picker.sourceType == UIImagePickerControllerSourceTypeCamera) {
         //写入到本地相册
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-        
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+           UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        });
     }
     //压缩图片
     image = [self imageCompressForWidth:image targetWidth:480];
@@ -310,7 +379,7 @@
     //  设置日期转换格式
     df.dateFormat = @"yyyyMMddHHmmss";
     NSDate *date = [NSDate date];
-    NSString *imageName = [NSString stringWithFormat:@"image_%@.png",[df stringFromDate:date]];
+    NSString *imageName = [NSString stringWithFormat:@"image%@.png",[df stringFromDate:date]];
     [self saveImage:image withName:imageName];
     [self successGetPhotoWithImageName:imageName];
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -380,13 +449,20 @@
 -(void)saveImage:(UIImage *)tempImage withName:(NSString *)imageName{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSData *imageData=UIImagePNGRepresentation(tempImage);
-        NSString *fullPath=[NSString stringWithFormat:@"%@/Documents/Images/%@",NSHomeDirectory(),imageName];
+        NSString *fullPath=[NSString stringWithFormat:@"%@/Documents/%@",NSHomeDirectory(),imageName];
         [imageData writeToFile:fullPath atomically:YES];
         NSLog(@"写入沙盒成功");
     });
     
 }
 
+#pragma mark ----AttachmentCellDelegate
+- (void)attachmentCellDeleteItem:(AttachmentModel *)attachModel {
+    attachModel.attachmentType = AttachmentTypeNo;
+    attachModel.imageName = @"";
+    attachModel.recordName = @"";
+    [self.collectionView reloadData];
+}
 
 
 @end

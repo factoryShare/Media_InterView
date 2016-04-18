@@ -12,6 +12,7 @@
 
 
 - (void)setModel:(AttachmentModel *)model {
+    _model = model;
     NSString *type = model.attachmentType;
     if ([type isEqualToString:AttachmentTypeNo]) {
         self.imageView.image = [UIImage imageNamed:@"添加附件"];
@@ -36,7 +37,9 @@
 }
 
 - (IBAction)deleteBtnClicked:(id)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(attachmentCellDeleteItem:)]) {
+        [self.delegate attachmentCellDeleteItem:_model];
+    }
 }
 
 @end

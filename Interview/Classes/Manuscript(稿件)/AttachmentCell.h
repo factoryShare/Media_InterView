@@ -11,7 +11,7 @@
 @class AttachmentCell;
 
 @protocol AttachmentCellDelegate <NSObject>
-
+- (void)attachmentCellDeleteItem:(AttachmentModel *)attachModel;
 @end
 
 @interface AttachmentCell : UICollectionViewCell

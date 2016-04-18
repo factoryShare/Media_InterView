@@ -9,7 +9,7 @@
 #import "QMManuscriptListViewController.h"
 #import "ManuscriptModel.h"
 #import "LKDBHelper.h"
-
+#import "NewManuscriptVC.h"
 @interface QMManuscriptListViewController ()
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) UIBarButtonItem *editItem;
@@ -22,8 +22,22 @@
     [super viewDidLoad];
     [self initUI];
     [self initData];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"manuscriptDbUpdated" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refresh) name:@"SendManuscriptSuccess" object:nil];
+    
 }
 
+- (void)refresh {
+    [self initData];
+    [self.tableView reloadData];
+}
+
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"manuscriptDbUpdated" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SendManuscriptSuccess" object:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -77,5 +91,16 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 1.0;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    ManuscriptModel *scriptModel = _dataArray[indexPath.section];
+    NewManuscriptVC *vc = [[UIStoryboard storyboardWithName:@"Manuscript" bundle:nil] instantiateViewControllerWithIdentifier:@"NewManuscriptVC"];
+    vc.manuscriptModel = scriptModel;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+
+
+
 
 @end

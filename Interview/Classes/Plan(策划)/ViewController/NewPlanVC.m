@@ -63,6 +63,7 @@
 }
 
 // 获得新闻策划配置
+#warning 服务器接口有问题, 这里就不调用了
 - (void)getConfigs {
     
     NSString *urlString = [NSString stringWithFormat:@"http://%@/accouts/getConfigs",pathToService];
