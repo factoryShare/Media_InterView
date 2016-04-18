@@ -9,9 +9,7 @@
 #import "QMSettingViewController.h"
 #import "QMSettingTableViewCell.h"
 #import "QMUserInfoViewController.h"
-
-#import "QMManuscriptAMRListViewController.h"
-
+#import "QMPostFileTool.h"
 
 @interface QMSettingViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -83,9 +81,15 @@
 }
 
 #pragma mark - 瞎搞
-- (void)push {
-    QMManuscriptAMRListViewController *vc = [[QMManuscriptAMRListViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+- (void)push {// 20165715055704.amr  /Users/admin/Desktop/Project/Interview/Interview/posttest.png
+    QMPostFileTool *tool = [[QMPostFileTool alloc]init];
+    
+    NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    // amr 文件名
+    NSString *audioTestPath = [tempDir stringByAppendingPathComponent:@"20165715055704.amr"];
+    NSString *imageTestPath = @"/Users/admin/Desktop/Project/Interview/Interview/posttest.png";
+    
+    [tool newUpLoadFileWithFilePath:audioTestPath fileName:@"sadas"fileFormat:@"amr"];
 }
 
 @end

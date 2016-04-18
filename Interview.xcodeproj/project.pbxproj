@@ -32,6 +32,9 @@
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
 		8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */; };
 		841F30A91CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */; };
+		84281EEB1CC3CCF80003583C /* QMPostFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84281EEA1CC3CCF80003583C /* QMPostFileTool.m */; };
+		84281EEE1CC3D0B30003583C /* QMPostParamterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84281EED1CC3D0B30003583C /* QMPostParamterModel.m */; };
+		84281EF21CC3D4330003583C /* posttest.png in Resources */ = {isa = PBXBuildFile; fileRef = 84281EF11CC3D4330003583C /* posttest.png */; };
 		842FC1561CC08F14002EE18D /* QMWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC1551CC08F14002EE18D /* QMWaveView.m */; };
 		846D36F51CBB6F0000EF7254 /* LZCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D36F41CBB6F0000EF7254 /* LZCode.m */; };
 		8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847864891CB3A15600F66CC7 /* QMRecorderListCell.m */; };
@@ -178,6 +181,11 @@
 		8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListBottomView.m; sourceTree = "<group>"; };
 		841F30A71CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMManuscriptAMRListViewController.h; sourceTree = "<group>"; };
 		841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptAMRListViewController.m; sourceTree = "<group>"; };
+		84281EE91CC3CCF80003583C /* QMPostFileTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPostFileTool.h; sourceTree = "<group>"; };
+		84281EEA1CC3CCF80003583C /* QMPostFileTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPostFileTool.m; sourceTree = "<group>"; };
+		84281EEC1CC3D0B30003583C /* QMPostParamterModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPostParamterModel.h; sourceTree = "<group>"; };
+		84281EED1CC3D0B30003583C /* QMPostParamterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPostParamterModel.m; sourceTree = "<group>"; };
+		84281EF11CC3D4330003583C /* posttest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = posttest.png; sourceTree = "<group>"; };
 		842FC1541CC08F14002EE18D /* QMWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMWaveView.h; sourceTree = "<group>"; };
 		842FC1551CC08F14002EE18D /* QMWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMWaveView.m; sourceTree = "<group>"; };
 		846D36F31CBB6F0000EF7254 /* LZCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCode.h; sourceTree = "<group>"; };
@@ -567,6 +575,7 @@
 		84E345791CABFA87007A41A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				84281EF11CC3D4330003583C /* posttest.png */,
 				5FD8B6631CC0EBBE0067DCD1 /* 稿件 */,
 				84E345851CABFA87007A41A2 /* Assets.xcassets */,
 				84E345AD1CAC01A9007A41A2 /* PrefixHeader.pch */,
@@ -644,6 +653,8 @@
 			children = (
 				840E80BD1CBE0D560049EE51 /* QMUserModel.h */,
 				840E80BE1CBE0D560049EE51 /* QMUserModel.m */,
+				84281EEC1CC3D0B30003583C /* QMPostParamterModel.h */,
+				84281EED1CC3D0B30003583C /* QMPostParamterModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -665,6 +676,8 @@
 				84ECDB761CACB26C007FD6E0 /* URLHeader.h */,
 				84ECDB751CACB25C007FD6E0 /* FontTool.h */,
 				84E4D9631CB28AAF00910C91 /* SynthesizeSingleton.h */,
+				84281EE91CC3CCF80003583C /* QMPostFileTool.h */,
+				84281EEA1CC3CCF80003583C /* QMPostFileTool.m */,
 				84B815041CBE36F40078755E /* KeychainItemWrapper */,
 				846D36F21CBB6F0000EF7254 /* LZCode */,
 				84C81BB51CB6674B0053FF3B /* LZFileHandle */,
@@ -1189,6 +1202,7 @@
 				84CE48391CAEC5D60012B584 /* QMUserInfoViewController.xib in Resources */,
 				5FD8B6731CC0EBBE0067DCD1 /* 已添加的图片@2x.png in Resources */,
 				5FD8B6791CC0EBBE0067DCD1 /* 添加附件@2x.png in Resources */,
+				84281EF21CC3D4330003583C /* posttest.png in Resources */,
 				84ECDBCE1CACBAA0007FD6E0 /* MJRefresh.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1259,6 +1273,7 @@
 				84AF69E11CB3B9CF00A0FEC1 /* LZPlayerForRecorder.m in Sources */,
 				841F30A91CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m in Sources */,
 				A5D6B5BF1CB244AB00B6E845 /* PlanModel.m in Sources */,
+				84281EEB1CC3CCF80003583C /* QMPostFileTool.m in Sources */,
 				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
 				5FD8B65F1CC0D6AC0067DCD1 /* NewManuscriptVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
@@ -1272,6 +1287,7 @@
 				84B80F571CB01725002E3870 /* LZRecorderTool.m in Sources */,
 				84ECDBCB1CACBAA0007FD6E0 /* MJRefreshGifHeader.m in Sources */,
 				84ECDBEA1CACBB4D007FD6E0 /* FMDatabaseQueue.m in Sources */,
+				84281EEE1CC3D0B30003583C /* QMPostParamterModel.m in Sources */,
 				A5D6B5C21CB2565100B6E845 /* PlanItemCell.m in Sources */,
 				A5D6B5B91CB2360600B6E845 /* PlanListVC.m in Sources */,
 				84ECDBC21CACBAA0007FD6E0 /* MJRefreshComponent.m in Sources */,

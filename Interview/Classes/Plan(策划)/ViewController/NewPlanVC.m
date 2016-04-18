@@ -64,7 +64,7 @@
 
 // 获得新闻策划配置
 - (void)getConfigs {
-   
+    
     NSString *urlString = [NSString stringWithFormat:@"http://%@/accouts/getConfigs",pathToService];
     // 请求的参数
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
