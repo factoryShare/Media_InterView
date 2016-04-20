@@ -42,9 +42,27 @@
     [self initUI];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successGetRecordFile:) name:@"SelectAMRFile" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successGetRecordFile:) name:@"wosai_success" object:nil];
     
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"SelectAMRFile" object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"wosai_success" object:nil];
+}
+
+- (void)didSendSuccess:(NSNotification *)noti{
+    
+    NSString *status = noti.userInfo[@"status"];
+    if ([status isEqualToString:@"0"]) { // 成功
+        _manuscriptModel.isSendToServer = @"1";
+        [_manuscriptModel updateToDB];
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [CommonUI showTextOnly:@"发送失败"];
+    }
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -175,7 +193,7 @@
         }
         
     }
-    
+
     if (token.length > 0 && pathToService.length > 0) {
         NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:@{@"fileDic":filesMutableArray,@"title":_scriptTitle,@"content":_scriptContent}];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"postFileByArray" object:nil userInfo:mDic];
