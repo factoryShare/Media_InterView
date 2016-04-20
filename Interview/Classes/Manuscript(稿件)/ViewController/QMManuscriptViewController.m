@@ -10,9 +10,11 @@
 #import "NewManuscriptVC.h"
 #import "QMManuscriptListViewController.h"
 
+#import "RevelationManager.h"
+
 
 @interface QMManuscriptViewController ()
-@property (nonatomic, strong) NSArray *titleArray;
+@property (nonatomic, retain) NSArray *titleArray;
 @end
 
 @implementation QMManuscriptViewController
@@ -22,12 +24,6 @@
     _titleArray = @[@"新建稿件", @"未发稿件", @"已发稿件"];
     
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 #pragma mark - Table view  Delegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
    return  _titleArray.count;
@@ -73,7 +69,5 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
 }
-
-
 
 @end

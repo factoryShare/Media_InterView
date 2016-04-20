@@ -44,6 +44,7 @@
     
     UIStoryboard *settingSB = [UIStoryboard storyboardWithName:@"QMSettingViewController" bundle:nil];
     QMSettingViewController *settingVC = [settingSB instantiateViewControllerWithIdentifier:@"QMSettingViewController"];
+    settingVC.view.backgroundColor = [UIColor whiteColor];
     [self setupChildVc:settingVC title:@"设置" image:@"tabbar_Setting" selectedImage:@"tabbar_Setting_click"];
 }
 

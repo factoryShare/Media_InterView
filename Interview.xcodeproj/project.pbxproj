@@ -39,7 +39,7 @@
 		846D36F51CBB6F0000EF7254 /* LZCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D36F41CBB6F0000EF7254 /* LZCode.m */; };
 		8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847864891CB3A15600F66CC7 /* QMRecorderListCell.m */; };
 		8478648C1CB3A15600F66CC7 /* QMRecorderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */; };
-		847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */; };
+		847DEB901CAE76180041BAE3 /* QMManuscriptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB8F1CAE76180041BAE3 /* QMManuscriptViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB921CAE76420041BAE3 /* QMPlanViewController.m */; };
 		848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E18651CAF46DB0097C487 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E186A1CAF4CC50097C487 /* NetWorking.m */; };

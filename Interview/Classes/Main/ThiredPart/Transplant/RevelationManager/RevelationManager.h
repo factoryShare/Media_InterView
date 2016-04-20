@@ -16,7 +16,6 @@ typedef NS_ENUM(NSInteger, RevelationManagerResult) {
 };
 
 @protocol RevelationManagerDelegate <NSObject>
-@required
 - (void)uploadFileResult:(RevelationManagerResult)result;
 
 @end

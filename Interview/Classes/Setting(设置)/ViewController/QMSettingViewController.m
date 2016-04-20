@@ -32,6 +32,9 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"push" style:(UIBarButtonItemStyleDone) target:self action:@selector(push)];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadFile:) name:@"postFileByArray" object:nil];
+
 }
 
 #pragma mark - Table view data source
@@ -85,9 +88,30 @@
 
 }
 
+- (void)uploadFile:(NSNotification *)no {
+    QMLog(@"%@",no.userInfo);
+    
+    NSMutableArray *fileArr = [no.userInfo objectForKey:@"fileDic"];
+    
+    NSString *scriptTitle = [no.userInfo objectForKey:@"title"];
+    NSString *scriptContent = [no.userInfo objectForKey:@"content"];
+//    NSString *audioPath = @"/Users/admin/Desktop/外包项目/Interview/Interview/20164220024258.amr";
+//    NSMutableArray *imageArr = [NSMutableArray array];
+//    
+//    [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
+
+    
+
+    RevelationManager *manager = [[RevelationManager alloc]init];
+    __block  QMSettingViewController *vc = self;
+    manager.delegate  = vc;
+    [manager SendRequset:fileArr :scriptTitle :scriptContent];
+
+}
+
 #pragma mark - 瞎搞
 - (void)push {
-    NSString *audioPath = @"/Users/admin/Desktop/采访项目移植/Interview/Interview/20164220024258.amr";
+    NSString *audioPath = @"/Users/admin/Desktop/外包项目/Interview/Interview/20164220024258.amr";
     NSMutableArray *imageArr = [NSMutableArray array];
     
     [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
@@ -101,7 +125,7 @@
 
 #pragma mark -RevelationManagerDelegate
 - (void)uploadFileResult:(RevelationManagerResult)result {
-    NSLog(@"%ld",(long)result);
+    QMLog(@"%ld",(long)result);
 }
 
 @end

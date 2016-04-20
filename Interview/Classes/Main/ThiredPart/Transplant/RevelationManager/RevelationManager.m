@@ -225,7 +225,7 @@
     }
     mCaption = [[NSString alloc] initWithString:caption];
     mTitle = [[NSString alloc] initWithString:title];
-
+    
     [MBProgressHUD showMessage:@"上传中请稍后"];
     
     [self sendBaoliaoLoginRequset];
@@ -257,7 +257,7 @@
     }
     
     NSString *urlString = [NSString stringWithFormat:@"http://%@/Account/Login",service];
-
+    
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
     request.tag = 9998;
@@ -368,7 +368,7 @@
 - (void)requestFinished:(ASIHTTPRequest *)_request {
     NSData *data = [_request responseData];
     NSString *responseContent = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]autorelease];
-//    NSLog(@"responseContent baoliao %d is %@", _request.tag, responseContent);
+    //    NSLog(@"responseContent baoliao %d is %@", _request.tag, responseContent);
     if (_request.tag == 9999) {
         [self sendBaoliaoLoginRequset:responseContent];
     }
@@ -390,11 +390,11 @@
             if (errordict && ![errordict isKindOfClass:[NSNull class]]) {
                 msg = [errordict objectForKey:@"Message"];
             }
-//            if (delegate && OnLoadFail) {
-//                [delegate performSelector:OnLoadFail withObject:msg];
-//            }
+            //            if (delegate && OnLoadFail) {
+            //                [delegate performSelector:OnLoadFail withObject:msg];
+            //            }
             [MBProgressHUD showError:msg];
-
+            
         }
     }
     else if(_request.tag == 9997) {//爆料发送的第二步：新建上传文件请求;
@@ -406,8 +406,12 @@
         }
         fileIDString = [[NSString alloc] initWithString:fileID];
         
-        NSMutableDictionary *dict = [mFileArray objectAtIndex:miIndex];
+        NSMutableDictionary *dict1 = [mFileArray objectAtIndex:miIndex];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setObject:dict1[@"filename"] forKey:@"filename"];
+        [dict setObject:dict1[@"filetype"] forKey:@"filetype"];
         [dict setObject:fileID forKey:@"fileID"];
+        [mFileArray replaceObjectAtIndex:miIndex withObject:dict];
         [self sendBaoliaoFileuploadRequset:fileID];
     }
     else if(_request.tag == 9996) {
@@ -436,7 +440,7 @@
     else if(_request.tag == 9994) {
         QMLog(@"responseContent baoliao %ld is %@", (long)_request.tag, responseContent);
         [MBProgressHUD hideHUD];
-
+        
         NSMutableDictionary *tempDic = [responseContent JSONValue];
         if (![tempDic[@"Error"] isKindOfClass:[NSNull class]]) {// 发生错误
             NSDictionary *error = tempDic[@"Error"];

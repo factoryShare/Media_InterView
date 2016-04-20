@@ -10,5 +10,5 @@
 #import "ManuscriptModel.h"
 @interface NewManuscriptVC : UIViewController
 @property (nonatomic, assign) BOOL isEdit;
-@property (nonatomic, strong) ManuscriptModel *manuscriptModel;
+@property (nonatomic, retain) ManuscriptModel *manuscriptModel;
 @end

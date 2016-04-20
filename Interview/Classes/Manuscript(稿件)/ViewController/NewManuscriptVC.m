@@ -112,10 +112,6 @@
         }
        
     }
-    
-//     测试数据库有没有保存成功
-//    [self testDB];
-    
 }
 
 
@@ -181,11 +177,12 @@
     }
     
     if (token.length > 0 && pathToService.length > 0) {
-        
-        RevelationManager *manager = [[RevelationManager alloc]init];
-         __unsafe_unretained NewManuscriptVC *vc = self;
-        manager.delegate  = vc;
-        [manager SendRequset:filesMutableArray :_scriptTitle :_scriptContent];
+        NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:@{@"fileDic":filesMutableArray,@"title":_scriptTitle,@"content":_scriptContent}];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"postFileByArray" object:nil userInfo:mDic];
+//        RevelationManager *manager = [[RevelationManager alloc]init];
+//         __unsafe_unretained NewManuscriptVC *vc = self;
+////        manager.delegate  = vc;
+//        [manager SendRequset:filesMutableArray :_scriptTitle :_scriptContent];
         
     } else {
         [CommonUI showTextOnly:@"token 失效请重新登录"];
