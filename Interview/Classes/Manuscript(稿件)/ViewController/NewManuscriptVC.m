@@ -13,11 +13,12 @@
 #import "QMRecoderDBModel.h"
 #import "CommonUI.h"
 #import "MBProgressHUD.h"
+#import "RevelationManager.h"
 #define marginX 10.0
 #define numPerLine 3
 #define itemWidth ([UIScreen mainScreen].bounds.size.width - (numPerLine+1) * marginX) / numPerLine
 
-@interface NewManuscriptVC () <UINavigationControllerDelegate,UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate, AttachmentCellDelegate>
+@interface NewManuscriptVC () <UINavigationControllerDelegate,UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate, AttachmentCellDelegate, RevelationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -135,6 +136,19 @@
 }
 
 // 发送到服务器
+/*
+ 
+ NSString *audioPath = @"/Users/admin/Desktop/采访项目移植/Interview/Interview/20164220024258.amr";
+ NSMutableArray *imageArr = [NSMutableArray array];
+ 
+ [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
+ 
+ RevelationManager *manager = [[RevelationManager alloc]init];
+ __block QMSettingViewController *vc = self;
+ manager.delegate  = vc;
+ [manager SendRequset:imageArr :@"test" :@"gg"];
+ 
+ */
 - (IBAction)sendBtnClicked:(id)sender {
     if (_isEdit) { // 如果在编辑状态 , 不做操作
         return;
@@ -145,28 +159,58 @@
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     _scriptTitle = self.titleTextField.text; // 标题
     _scriptContent = self.textView.text;     // 内容
-    
+    NSMutableArray *filesMutableArray = [NSMutableArray array];
     for (AttachmentModel *attachModel in _attachmentArray) {
         if ([attachModel.attachmentType isEqualToString:AttachmentTypeImage]) {
             NSString *imagePath = [NSString stringWithFormat:@"%@/Documents/%@",NSHomeDirectory(),attachModel.imageName];
-            UIImage *image = [UIImage imageWithContentsOfFile:imagePath];
-            NSString *imageBase64 = [self UIImageToBase64Str:image];
-            NSLog(@"imageStringLength: %i bytes",imageBase64.length);
+            NSDictionary *dict = @{@"filename":imagePath, @"filetype":@"2"};
+            [filesMutableArray addObject:dict];
         }
         
         if ([attachModel.attachmentType isEqualToString:AttachmentTypeRecord]) {
-            NSLog(@"recordName: %@",attachModel.recordName);
+            NSString *recordName = attachModel.recordName;
+            NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+                // wav 地址
+            NSString *path = [tempDir stringByAppendingPathComponent:recordName];
+                // amr 地址
+            NSString *amrFileSavePath = [path stringByReplacingOccurrencesOfString:@".wav" withString:@".amr"];
+            NSDictionary *dict = @{@"filename":amrFileSavePath, @"filetype":@"1"};
+            [filesMutableArray addObject:dict];
         }
         
     }
     
     if (token.length > 0 && pathToService.length > 0) {
         
+        RevelationManager *manager = [[RevelationManager alloc]init];
+         __unsafe_unretained NewManuscriptVC *vc = self;
+        manager.delegate  = vc;
+        [manager SendRequset:filesMutableArray :_scriptTitle :_scriptContent];
+        
     } else {
         [CommonUI showTextOnly:@"token 失效请重新登录"];
     }
     
 }
+
+#pragma mark RevelationManagerDelegate
+- (void)uploadFileResult:(RevelationManagerResult)result {
+    /*
+     RevelationManagerResultSuccess = 0,
+     RevelationManagerResultError = 1,
+     RevelationManagerResultCancle = 2
+     */
+    if (result == RevelationManagerResultSuccess) {
+        _manuscriptModel.isSendToServer = @"1";
+        [_manuscriptModel updateToDB];
+        [CommonUI showTextOnly:@"发送成功"];
+        // 发送到服务器成功的通知
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"SendManuscriptSuccess" object:nil];
+    } else {
+        [CommonUI showTextOnly:@"发送失败"];
+    }
+}
+
 
 - (void)setControlsStatus {
     self.titleTextField.userInteractionEnabled = _isEdit;

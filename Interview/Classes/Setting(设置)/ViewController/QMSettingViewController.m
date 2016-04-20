@@ -93,7 +93,7 @@
     [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
     
     RevelationManager *manager = [[RevelationManager alloc]init];
-    __block QMSettingViewController *vc = self;
+    __block  QMSettingViewController *vc = self;
     manager.delegate  = vc;
     [manager SendRequset:imageArr :@"test" :@"gg"];
     
