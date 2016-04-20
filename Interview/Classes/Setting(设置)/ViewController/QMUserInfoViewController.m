@@ -25,8 +25,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"用户信息";
-    
-    self.serviceTextField.text = @"114.112.100.68:8020";
 
 }
 

@@ -30,6 +30,8 @@
     
     [self startMonitoringNetWorking];
     
+    NSLog(@"%@",NSHomeDirectory());
+    
     return YES;
 }
 

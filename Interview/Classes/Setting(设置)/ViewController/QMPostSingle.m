@@ -1,17 +1,17 @@
 //
-//  QMPostFileTool.m
+//  QMPostSingle.m
 //  Interview
 //
-//  Created by Mr.Right on 16/4/17.
+//  Created by Mr.Right on 16/4/18.
 //  Copyright © 2016年 yonganbo. All rights reserved.
 //
 
-#import "QMPostFileTool.h"
+#import "QMPostSingle.h"
 #import "AFNetworking.h"
 #import "GTMBase64.h"
 #import "QMPostParamterModel.h"
 
-@interface QMPostFileTool ()
+@interface QMPostSingle ()
 
 @property(nonatomic,strong) NSData *fileData;
 @property(nonatomic,copy) NSString *fileTypes;
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation QMPostFileTool
+@implementation QMPostSingle
 
 - (instancetype)init {
     if (self = [super init]) {
@@ -72,7 +72,7 @@
             _fileID = dataDic[@"FileID"];
             _BlockSize = dataDic[@"BlockSize"];
             _BlockCount = dataDic[@"BlockCount"];
-
+            
             [self upLoadFileWithFileID:dataDic[@"FileID"] andBlockCount:_BlockCount];
         } else {
             [MBProgressHUD showError:@"请重新登陆"];
@@ -113,17 +113,7 @@
             NSDictionary *dataDic = dic[@"Data"];
             _BlockIndex = dataDic[@"BlockIndex"];
             
-                if ([blockCount intValue] == 1) {
-                    NSData *data = [_fileData subdataWithRange:(NSRange){0,_fileData.length}];
-                    [self upLoadFileDataWithFileID:_fileID blockIndex:@"0" blockSize:dataDic[@"BlockSize"] Blockdata:[self base64Encode:data] BlockCount:_BlockCount];
-                } else if([blockCount intValue] == 0){
-                    [self upLoadFileDataWithFileID:_fileID blockIndex:dataDic[@"BlockIndex"] blockSize: [NSString stringWithFormat:@"%ld",_fileData.length] Blockdata:[self base64Encode:_fileData] BlockCount:_BlockCount];
-                } else {
-                    
-                    NSData *data = [_fileData subdataWithRange:(NSRange){0,[_BlockSize intValue]}];
-                    [self upLoadFileDataWithFileID:_fileID blockIndex:@"0" blockSize:dataDic[@"BlockSize"] Blockdata:[self base64Encode:data] BlockCount:_BlockCount];
-                    [self.pngData appendData:data];
-                }
+            [self upLoadFileDataWithFileID:_fileID blockIndex:@"0" blockSize:[NSString stringWithFormat:@"%ld",_fileData.length]  Blockdata:[_fileData base64Encoding] BlockCount:_BlockCount];
         } else {
             [MBProgressHUD showError:@"请重新登陆"];
         }
@@ -132,7 +122,7 @@
         QMLog(@"%@",[error localizedDescription]);
         [MBProgressHUD showError:@"请求失败"];
     }];
-
+    
 }
 /**
  *  3.上传文件数据
@@ -165,37 +155,8 @@
             [MBProgressHUD showError:error[@"Message"]];
         } else if(![dic[@"Data"] isKindOfClass:[NSNull class]]){ // 有数据返回
 #warning 前三步 ok
-//            NSDictionary *dataDic = dic[@"Data"];
-        
-            for (; _postCount < [BlockCount intValue]; _postCount++) {
-                if (_postCount == [BlockCount intValue] - 1) {
-                    int rangL = _fileData.length % [_BlockSize intValue];
-                    NSData *data = [_fileData subdataWithRange:(NSRange){_postCount * [_BlockSize intValue],rangL}];
-                    [self.pngData appendData:data];
-
-                    _BlockIndex = [NSString stringWithFormat:@"%d",_postCount];
-                    [self upLoadFileDataWithFileID:_fileID blockIndex:_BlockIndex  blockSize:[NSString stringWithFormat:@"%d",rangL] Blockdata:[self base64Encode:data] BlockCount:_BlockCount];
-                } else {
-                    NSData *data = [_fileData subdataWithRange:(NSRange){_postCount * [_BlockSize intValue],[_BlockSize intValue]}];
-                    [self.pngData appendData:data];
-
-                    _BlockIndex = [NSString stringWithFormat:@"%d",_postCount];
-
-                    [self upLoadFileDataWithFileID:_fileID blockIndex:_BlockIndex blockSize:_BlockSize Blockdata:[self base64Encode:data] BlockCount:_BlockCount];
-                }
-            }
-            
-            if (_postCount == [BlockCount intValue] + 1) {
-                static dispatch_once_t onceToken;
-                dispatch_once(&onceToken, ^{
-                    [self upLoadAudio];
-                    _postCount = 1;
-                });
-            }
-            if (_postCount == [BlockCount intValue]) {
-                _postCount++;
-            }
-            
+            //            NSDictionary *dataDic = dic[@"Data"];
+            [self upLoadAudio];
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -219,9 +180,9 @@
     [parameters setObject:[[NSUserDefaults standardUserDefaults]objectForKey:@"token"] forKey:@"token"];
     [parameters setObject:[NSString stringWithFormat:@"%@",_fileID] forKey:@"fileIDs"];
     [parameters setObject:@"2" forKey:@"fileTypes"];
-    [parameters setObject:@"filename16" forKey:@"title"];
-    [parameters setObject:[[NSUserDefaults standardUserDefaults]objectForKey:kUserName] forKey:@"author"];
-    [parameters setObject:@"customName16" forKey:@"caption"];
+    [parameters setObject:@"axiba" forKey:@"title"]; // [[NSUserDefaults standardUserDefaults]objectForKey:kUserName]
+    [parameters setObject:@"007" forKey:@"author"];
+    [parameters setObject:@"rest" forKey:@"caption"];
     [parameters setObject:@"1" forKey:@"channelID"];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -233,7 +194,7 @@
         UIImage *image = [UIImage imageWithData:self.pngData];
         
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES);
-        NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"sms.gif"]];   // 保存文件的名称
+        NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:[NSString stringWithFormat:@"sms.png"]];   // 保存文件的名称
         BOOL result = [UIImagePNGRepresentation(image)writeToFile: filePath    atomically:YES]; // 保存成功会返回YES
         QMLog(@"%d",result);
         
@@ -257,8 +218,7 @@
     }];
 }
 
-- (NSString*) base64Encode:(NSData *)data
-{
+- (NSString*) base64Encode:(NSData *)data {
     static char base64EncodingTable[64] = {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
         'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f',

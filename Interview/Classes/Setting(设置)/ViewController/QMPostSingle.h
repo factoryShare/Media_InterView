@@ -1,17 +1,16 @@
 //
-//  QMPostFileTool.h
+//  QMPostSingle.h
 //  Interview
 //
-//  Created by Mr.Right on 16/4/17.
+//  Created by Mr.Right on 16/4/18.
 //  Copyright © 2016年 yonganbo. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 
-@interface QMPostFileTool : NSObject
+@interface QMPostSingle : NSObject
 /**
  *  1.新建上传文件
  */
 - (void)newUpLoadFileWithFilePath:(NSString *)filePath fileName:(NSString *)fileName fileFormat:(NSString *)fileFormat;
-
 @end
