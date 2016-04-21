@@ -57,6 +57,8 @@
     if ([status isEqualToString:@"0"]) { // 成功
         _manuscriptModel.isSendToServer = @"1";
         [_manuscriptModel updateToDB];
+        // 发送到服务器成功的通知
+         [[NSNotificationCenter defaultCenter] postNotificationName:@"SendManuscriptSuccess" object:nil];
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         [CommonUI showTextOnly:@"发送失败"];
@@ -167,8 +169,6 @@
     if (_isEdit) { // 如果在编辑状态 , 不做操作
         return;
     }
-    // 发送到服务器成功的通知
-    // [[NSNotificationCenter defaultCenter] postNotificationName:@"SendManuscriptSuccess" object:nil];
     NSString * pathToService = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
     _scriptTitle = self.titleTextField.text; // 标题
