@@ -55,8 +55,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _canEdit = _planModel==nil ? YES:NO;
+    [self singnInWithAFN];
     [self initUI];
     [self loadData];
+
 }
 
 // 初始化模型
@@ -213,7 +215,7 @@
 //        NSMutableArray *array = [NSMutableArray array];
 //        array = [PlanModel searchWithWhere:nil orderBy:nil offset:0 count:0];
 //        for (PlanModel *model in array) {
-//            NSLog(@"db back EventTitle : %@",model.EventTitle);
+//            QMLog(@"db back EventTitle : %@",model.EventTitle);
 //        }
         
     } else {
@@ -375,7 +377,7 @@
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
             // 请求失败
-            NSLog(@"error: %@", [error localizedDescription]);
+            QMLog(@"error: %@", [error localizedDescription]);
         }];
     } else {
         [CommonUI showTextOnly:@"token 失效请重新登录"];
@@ -419,7 +421,7 @@
     _datePicker.hidden = YES;
 }
 - (void)datePickViewDelegateConfirm:(NSString *)dateString {
-    NSLog(@"dateString:%@",dateString);
+    QMLog(@"dateString:%@",dateString);
     [_datePicker removeFromSuperview];
     _datePicker.hidden = YES;
     
@@ -444,7 +446,7 @@
     _timePicker.hidden = YES;
 }
 - (void)timePickViewDelegateConfirm:(NSString *)timeString {
-    NSLog(@"timeString:%@",timeString);
+    QMLog(@"timeString:%@",timeString);
     [_timePicker removeFromSuperview];
     _timePicker.hidden = YES;
     
@@ -487,7 +489,7 @@
 }
 
 - (void)customPickViewConfirm:(NSString *)selectedString pickView:(CustomPickView *)pickView {
-    NSLog(@"selected string : %@",selectedString);
+    QMLog(@"selected string : %@",selectedString);
     [pickView removeFromSuperview];
     if (pickView == _reportFormPicker) {
         for (PlanItemModel *model in self.itemsArray) {
@@ -550,6 +552,61 @@
     }
     
     
+}
+
+
+#pragma mark -登陆
+- (void)singnInWithAFN {
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/Account/Login",kPathToService];
+    // 请求的参数
+    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
+    [parameters setObject: kUserName forKey:@"userName"];
+    [parameters setObject: kPassword forKey:@"password"];
+    [parameters setObject: [self mAppUUID] forKey:@"deviceID"];
+    // 初始化Manager
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    // 不加上这句话，会报“Request failed: unacceptable content-type: text/plain”错误，因为我们要获取text/plain类型数据
+    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+    
+    // post请求
+    [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSError *error = nil;
+        NSDictionary * returnDataDic = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableContainers) error:&error];
+        if ([returnDataDic[@"Error"] isKindOfClass:[NSNull class]]) {
+            NSDictionary *dataDic = returnDataDic[@"Data"];
+            [[NSUserDefaults standardUserDefaults] setObject:dataDic[@"Token"] forKey:@"token"];
+            
+        } else {
+//            NSDictionary *errorDic = returnDataDic[@"Error"];
+            QMLog(@"登陆错误");
+        }
+        
+        if (error) {
+            QMLog(@"登陆数据解析错误:%@",[error description]);
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            QMLog(@"%@",[error description]);
+        }
+    }];
+}
+
+- (NSString *)mAppUUID {
+    NSUserDefaults *UserDef = [NSUserDefaults standardUserDefaults];
+    NSString *deviceIdStr = [UserDef valueForKey:@"deviceId"];
+    if (!deviceIdStr) {
+        CFUUIDRef deviceId = CFUUIDCreate (NULL);
+        CFStringRef deviceIdStrRef = CFUUIDCreateString(NULL,deviceId);
+        CFRelease(deviceId);
+        deviceIdStr = [NSString stringWithString:(__bridge NSString *)deviceIdStrRef];
+        [UserDef setValue:deviceIdStr forKey:@"deviceId"];
+        [UserDef synchronize];
+    }
+    NSMutableString *str = [NSMutableString stringWithString:deviceIdStr];
+    [str replaceOccurrencesOfString:@"-" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, str.length)];
+    return str;
 }
 
 

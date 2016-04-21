@@ -17,6 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recoid_bg" translatesAutoresizingMaskIntoConstraints="NO" id="UTr-mn-yYa" userLabel="bg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AKq-sA-CKg">
                                 <rect key="frame" x="500" y="40" width="80" height="50"/>
                                 <constraints>
@@ -28,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2w-f4-P2j" userLabel="BottomView">
-                                <rect key="frame" x="0.0" y="450" width="600" height="100"/>
+                                <rect key="frame" x="0.0" y="300" width="600" height="100"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EcO-bV-K7M" userLabel="中线">
                                         <rect key="frame" x="299" y="0.0" width="1" height="100"/>
@@ -37,7 +40,7 @@
                                             <constraint firstAttribute="width" constant="1" id="gcF-gt-PLD"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-cj-TWg" userLabel="录音控制按钮">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hKz-cj-TWg" userLabel="录音控制按钮">
                                         <rect key="frame" x="225" y="18" width="64" height="64"/>
                                         <state key="normal" image="Recorder_start"/>
                                         <state key="selected" image="Recorder_pause"/>
@@ -67,7 +70,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IiO-pm-afM" customClass="QMWaveView">
-                                <rect key="frame" x="150" y="230" width="300" height="80"/>
+                                <rect key="frame" x="150" y="200" width="300" height="80"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flI-3T-yhe" userLabel="中线">
                                         <rect key="frame" x="0.0" y="39" width="300" height="2"/>
@@ -87,7 +90,7 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vu" translatesAutoresizingMaskIntoConstraints="NO" id="Gc7-Ot-F8o" userLabel="音量指示器">
-                                <rect key="frame" x="140" y="120" width="320" height="80"/>
+                                <rect key="frame" x="140" y="105" width="320" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="M9K-Uz-fUx"/>
                                     <constraint firstAttribute="width" constant="320" id="Scb-bD-lWo"/>
@@ -98,22 +101,36 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="H2w-f4-P2j" secondAttribute="trailing" id="8Bx-T5-ldn"/>
                             <constraint firstItem="IiO-pm-afM" firstAttribute="centerX" secondItem="Gc7-Ot-F8o" secondAttribute="centerX" id="AP5-Km-o4t"/>
-                            <constraint firstItem="Gc7-Ot-F8o" firstAttribute="top" secondItem="AKq-sA-CKg" secondAttribute="bottom" constant="30" id="BBa-yb-Cfr"/>
-                            <constraint firstItem="RR5-G8-RNX" firstAttribute="top" secondItem="H2w-f4-P2j" secondAttribute="bottom" constant="50" id="Bx7-el-SRS"/>
+                            <constraint firstItem="Gc7-Ot-F8o" firstAttribute="top" secondItem="AKq-sA-CKg" secondAttribute="bottom" constant="15" id="BBa-yb-Cfr"/>
+                            <constraint firstItem="RR5-G8-RNX" firstAttribute="top" secondItem="H2w-f4-P2j" secondAttribute="bottom" constant="10" id="Bx7-el-SRS"/>
+                            <constraint firstAttribute="trailing" secondItem="UTr-mn-yYa" secondAttribute="trailing" id="Cog-JG-rNP"/>
                             <constraint firstAttribute="trailing" secondItem="AKq-sA-CKg" secondAttribute="trailing" constant="20" id="Ghe-Xm-IcX"/>
                             <constraint firstItem="AKq-sA-CKg" firstAttribute="top" secondItem="OIp-Ir-cAg" secondAttribute="bottom" constant="20" id="J2D-l2-Sda"/>
                             <constraint firstItem="Gc7-Ot-F8o" firstAttribute="centerX" secondItem="TO3-Mb-dEp" secondAttribute="centerX" id="Jfi-kw-AA4"/>
                             <constraint firstItem="AKq-sA-CKg" firstAttribute="leading" secondItem="Gc7-Ot-F8o" secondAttribute="trailing" constant="30" id="SpE-JH-rFa"/>
                             <constraint firstItem="IiO-pm-afM" firstAttribute="height" secondItem="Gc7-Ot-F8o" secondAttribute="height" id="XoW-fu-CmM"/>
+                            <constraint firstItem="RR5-G8-RNX" firstAttribute="top" secondItem="UTr-mn-yYa" secondAttribute="bottom" id="ZIG-pu-ybg"/>
                             <constraint firstItem="IiO-pm-afM" firstAttribute="width" secondItem="Gc7-Ot-F8o" secondAttribute="width" id="ZcK-Sn-6Wg"/>
-                            <constraint firstItem="IiO-pm-afM" firstAttribute="top" secondItem="Gc7-Ot-F8o" secondAttribute="bottom" constant="30" id="b6t-z1-LNy"/>
+                            <constraint firstItem="IiO-pm-afM" firstAttribute="top" secondItem="Gc7-Ot-F8o" secondAttribute="bottom" constant="15" id="b6t-z1-LNy"/>
+                            <constraint firstItem="H2w-f4-P2j" firstAttribute="top" secondItem="IiO-pm-afM" secondAttribute="bottom" constant="20" id="bKu-i9-ZI0"/>
+                            <constraint firstAttribute="bottom" secondItem="UTr-mn-yYa" secondAttribute="bottom" id="hla-j2-XEq"/>
+                            <constraint firstItem="UTr-mn-yYa" firstAttribute="top" secondItem="TO3-Mb-dEp" secondAttribute="top" id="p86-HN-euw"/>
                             <constraint firstItem="H2w-f4-P2j" firstAttribute="leading" secondItem="TO3-Mb-dEp" secondAttribute="leading" id="pBj-LW-Y6t"/>
+                            <constraint firstItem="UTr-mn-yYa" firstAttribute="top" secondItem="Gc7-Ot-F8o" secondAttribute="bottom" id="qHp-qJ-Rb7"/>
+                            <constraint firstItem="UTr-mn-yYa" firstAttribute="leading" secondItem="TO3-Mb-dEp" secondAttribute="leading" id="qrS-yZ-C7z"/>
+                            <constraint firstItem="UTr-mn-yYa" firstAttribute="leading" secondItem="TO3-Mb-dEp" secondAttribute="leading" id="xXb-LO-eVk"/>
+                            <constraint firstAttribute="trailing" secondItem="UTr-mn-yYa" secondAttribute="trailing" id="zWC-bx-yXX"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Cog-JG-rNP"/>
+                                <exclude reference="qHp-qJ-Rb7"/>
+                                <exclude reference="qrS-yZ-C7z"/>
                                 <exclude reference="XoW-fu-CmM"/>
                                 <exclude reference="ZcK-Sn-6Wg"/>
                                 <exclude reference="SpE-JH-rFa"/>
+                                <exclude reference="Bx7-el-SRS"/>
+                                <exclude reference="ZIG-pu-ybg"/>
                             </mask>
                         </variation>
                     </view>
@@ -128,7 +145,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r7X-VN-5tt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="166" y="-37"/>
+            <point key="canvasLocation" x="-150" y="-139"/>
         </scene>
     </scenes>
     <resources>
@@ -136,6 +153,7 @@
         <image name="Recorder_lock_click" width="64" height="64"/>
         <image name="Recorder_pause" width="64" height="64"/>
         <image name="Recorder_start" width="64" height="64"/>
+        <image name="recoid_bg" width="640" height="1136"/>
         <image name="vu" width="640" height="160"/>
     </resources>
 </document>

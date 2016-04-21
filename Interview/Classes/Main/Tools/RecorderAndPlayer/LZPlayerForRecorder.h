@@ -18,6 +18,8 @@
 - (void)startPlay;
 
 - (void)pause;
+
+- (void)stop;
 /**
  *  从固定时间点进行播放
  *

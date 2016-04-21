@@ -56,15 +56,12 @@
     [self createBottomView];
 
 }
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-//    if ([keyPath isEqualToString:@"isPlaying"]) {
-//        self.tableView = ![change[@"new"] boolValue];
-//    }
-//}
-//- (void)dealloc
-//{
-//    [self.player removeObserver:self forKeyPath:@"isPlaying"];
-//}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    self.thumbBtn.centerX += _timerValue;
+}
 
 #pragma mark - 删除音频文件
 - (void)rightItemClick:(UIButton *)buttonItem {
@@ -283,7 +280,8 @@
         tableViewH = self.dataSource.count * 60;
         self.tableView.height = tableViewH;
         [self.tableView setScrollEnabled:NO];
-    }}
+    }
+}
 
 - (NSMutableArray *)dataSource {
     if (_dataSource == nil) {
@@ -378,6 +376,7 @@
     _progressView.width = 0;
 //    [self.player removeObserver:self forKeyPath:@"isPlaying"];
     self.player = nil;
+    [self.player stop];
     self.playBtn.selected = NO;
 
     self.thumbBtn.centerX = self.progressBgView.x;
@@ -388,7 +387,7 @@
         [_timer invalidate];
     }
     _timer = nil;
-
+    
 }
 
 @end

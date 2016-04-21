@@ -31,6 +31,12 @@
     }
 }
 
+- (void)stop {
+    if ([self.player isPlaying]) {
+        [self.player stop];
+    }
+}
+
 - (void)setFilePath:(NSString *)filePath {
     _filePath = filePath;
 }
