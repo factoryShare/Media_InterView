@@ -55,10 +55,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self singnInWithAFN];
-    
+    _canEdit = _planModel==nil ? YES:NO;
     [self initUI];
-//    [self getConfigs];
     [self loadData];
     _canEdit = YES;
    //获取新闻策划配置存在本地
@@ -104,9 +102,7 @@
     } else {
         [CommonUI showTextOnly:@"token 失效请重新登录"];
     }
-    
 }
-
 
 // 初始化模型
 - (void)loadData {
@@ -197,10 +193,18 @@
     // 保存按钮
     _saveItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_save"] style:UIBarButtonItemStylePlain target:self action:@selector(saveItemClicked)];
     _saveItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = _saveItem;
+    
     
     _editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editItemClicked)];
     _editItem.tintColor = [UIColor whiteColor];
+    
+    
+    if (_canEdit) {
+        self.navigationItem.rightBarButtonItem = _saveItem;
+    } else {
+        self.navigationItem.rightBarButtonItem = _editItem;
+    }
+    
     
 }
 
@@ -592,62 +596,6 @@
     
     
 }
-
-
-#pragma mark -登陆
-- (void)singnInWithAFN {
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/Account/Login",kPathToService];
-    // 请求的参数
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    [parameters setObject: kUserName forKey:@"userName"];
-    [parameters setObject: kPassword forKey:@"password"];
-    [parameters setObject: [self mAppUUID] forKey:@"deviceID"];
-    // 初始化Manager
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    // 不加上这句话，会报“Request failed: unacceptable content-type: text/plain”错误，因为我们要获取text/plain类型数据
-    manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    
-    // post请求
-    [manager POST:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSError *error = nil;
-        NSDictionary * returnDataDic = [NSJSONSerialization JSONObjectWithData:responseObject options:(NSJSONReadingMutableContainers) error:&error];
-        if ([returnDataDic[@"Error"] isKindOfClass:[NSNull class]]) {
-            NSDictionary *dataDic = returnDataDic[@"Data"];
-            [[NSUserDefaults standardUserDefaults] setObject:dataDic[@"Token"] forKey:@"token"];
-            
-        } else {
-//            NSDictionary *errorDic = returnDataDic[@"Error"];
-            QMLog(@"登陆错误");
-        }
-        
-        if (error) {
-            QMLog(@"登陆数据解析错误:%@",[error description]);
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (error) {
-            QMLog(@"%@",[error description]);
-        }
-    }];
-}
-
-- (NSString *)mAppUUID {
-    NSUserDefaults *UserDef = [NSUserDefaults standardUserDefaults];
-    NSString *deviceIdStr = [UserDef valueForKey:@"deviceId"];
-    if (!deviceIdStr) {
-        CFUUIDRef deviceId = CFUUIDCreate (NULL);
-        CFStringRef deviceIdStrRef = CFUUIDCreateString(NULL,deviceId);
-        CFRelease(deviceId);
-        deviceIdStr = [NSString stringWithString:(__bridge NSString *)deviceIdStrRef];
-        [UserDef setValue:deviceIdStr forKey:@"deviceId"];
-        [UserDef synchronize];
-    }
-    NSMutableString *str = [NSMutableString stringWithString:deviceIdStr];
-    [str replaceOccurrencesOfString:@"-" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, str.length)];
-    return str;
-}
-
 
 
 @end

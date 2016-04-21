@@ -55,13 +55,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) { // 新建稿件
         NewManuscriptVC *vc = [[UIStoryboard storyboardWithName:@"Manuscript" bundle:nil] instantiateViewControllerWithIdentifier:@"NewManuscriptVC"];
+        vc.title = @"新建稿件";
         [self.navigationController pushViewController:vc animated:YES];
     } else {
         QMManuscriptListViewController *vc = [[UIStoryboard storyboardWithName:@"Manuscript" bundle:nil] instantiateViewControllerWithIdentifier:@"QMManuscriptListViewController"];
         if (indexPath.section == 1) {
             vc.isSendToServer = NO;
+            vc.title = @"未发稿件";
+
         } else {
             vc.isSendToServer = YES;
+            vc.title = @"已发稿件";
+
         }
         [self.navigationController pushViewController:vc animated:YES];
     }

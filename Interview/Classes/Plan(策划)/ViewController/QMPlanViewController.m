@@ -49,18 +49,19 @@
     // 新建策划
     if (indexPath.row == 0) {
         NewPlanVC *newPlanVC = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"NewPlanVC"];
+        newPlanVC.title = @"新建策划";
         [self.navigationController pushViewController:newPlanVC animated:YES];
     } else {
         PlanListVC *listVC = [[UIStoryboard storyboardWithName:@"Plan" bundle:nil] instantiateViewControllerWithIdentifier:@"PlanListVC"];
         if (indexPath.row == 1) { // 未发策划
             listVC.isSendToServer = NO;
+            listVC.title = @"未发策划";
         } else { // 已发策划
             listVC.isSendToServer = YES;
+            listVC.title = @"已发策划";
         }
         [self.navigationController pushViewController:listVC animated:YES];
     }
 }
-
-
 
 @end
