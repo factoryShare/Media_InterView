@@ -131,7 +131,6 @@
 		84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDBF41CACBDB8007FD6E0 /* NSString+GetDeviceModel.m */; };
 		84ECDBF81CACBE16007FD6E0 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */; };
 		84ECDC011CACC4EF007FD6E0 /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = 84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */; };
-		84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */; };
 		A52990301CBE8D2C00BE46D8 /* CustomTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */; };
 		A5568A891CBF2C3200CCC984 /* LKDB+Mapping.m in Sources */ = {isa = PBXBuildFile; fileRef = A5568A801CBF2C3200CCC984 /* LKDB+Mapping.m */; };
 		A5568A8A1CBF2C3200CCC984 /* LKDBHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5568A821CBF2C3200CCC984 /* LKDBHelper.m */; };
@@ -210,7 +209,6 @@
 		84281EED1CC3D0B30003583C /* QMPostParamterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPostParamterModel.m; sourceTree = "<group>"; };
 		842FC1541CC08F14002EE18D /* QMWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMWaveView.h; sourceTree = "<group>"; };
 		842FC1551CC08F14002EE18D /* QMWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMWaveView.m; sourceTree = "<group>"; };
-		843A69681CC75F3300CA0D9D /* 20164220024258.amr */ = {isa = PBXFileReference; lastKnownFileType = file; path = 20164220024258.amr; sourceTree = "<group>"; };
 		846D36F31CBB6F0000EF7254 /* LZCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCode.h; sourceTree = "<group>"; };
 		846D36F41CBB6F0000EF7254 /* LZCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCode.m; sourceTree = "<group>"; };
 		847864881CB3A15600F66CC7 /* QMRecorderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListCell.h; sourceTree = "<group>"; };
@@ -404,7 +402,6 @@
 		84ECDBF71CACBE16007FD6E0 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		84ECDBFF1CACC4EF007FD6E0 /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
 		84ECDC001CACC4EF007FD6E0 /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
-		84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PreciNewsMobile.txt; sourceTree = "<group>"; };
 		A529902E1CBE8D2C00BE46D8 /* CustomTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomTextView.h; path = "Interview/Classes/Plan(策划)/CustomTextView.h"; sourceTree = SOURCE_ROOT; };
 		A529902F1CBE8D2C00BE46D8 /* CustomTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomTextView.m; path = "Interview/Classes/Plan(策划)/CustomTextView.m"; sourceTree = SOURCE_ROOT; };
 		A5568A7F1CBF2C3200CCC984 /* LKDB+Mapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LKDB+Mapping.h"; sourceTree = "<group>"; };
@@ -645,13 +642,11 @@
 		84E345791CABFA87007A41A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				843A69681CC75F3300CA0D9D /* 20164220024258.amr */,
 				5FD8B6631CC0EBBE0067DCD1 /* 稿件 */,
 				84E345851CABFA87007A41A2 /* Assets.xcassets */,
 				84E345AD1CAC01A9007A41A2 /* PrefixHeader.pch */,
 				84E345871CABFA87007A41A2 /* LaunchScreen.storyboard */,
 				84E3458A1CABFA87007A41A2 /* Info.plist */,
-				84F2277F1CB7B5260056082D /* PreciNewsMobile.txt */,
 				84E3457A1CABFA87007A41A2 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1282,7 +1277,7 @@
 				TargetAttributes = {
 					84E345751CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = X448TB9G2B;
+						DevelopmentTeam = G9GWY6T6FF;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1330,7 +1325,6 @@
 				5FD8B66F1CC0EBBE0067DCD1 /* 切换键盘@2x.png in Resources */,
 				8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */,
 				84ECDBEE1CACBB4D007FD6E0 /* MBProgressHUD.bundle in Resources */,
-				84F227801CB7B5260056082D /* PreciNewsMobile.txt in Resources */,
 				5FD8B6741CC0EBBE0067DCD1 /* 已添加的录音@2x.png in Resources */,
 				5FD8B65A1CC0D01B0067DCD1 /* Manuscript.storyboard in Resources */,
 				5FD8B6751CC0EBBE0067DCD1 /* 效果1.png in Resources */,

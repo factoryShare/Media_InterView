@@ -164,7 +164,7 @@
     }
     
     _timerValue++;
-
+    self.controlBtn.centerX = _timerValue;
 }
 
 #pragma mark - LZRecorderDeleagte 

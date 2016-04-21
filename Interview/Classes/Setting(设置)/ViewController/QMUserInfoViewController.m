@@ -32,17 +32,23 @@
     [super viewWillAppear:animated];
 
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:kRememberKey] isEqualToString:@"YES"]) {
+
         self.serviceTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
         self.accountTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
         self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
         
         self.rememberKeyBtn.selected = YES;
+        self.serviceTextField.text = @"114.112.100.68:8020";
+
     } else {
-        self.serviceTextField.text = nil;
+
+//        self.serviceTextField.text = nil;
         self.accountTextField.text = nil;
         self.passwordTextField.text = nil;
         
         self.rememberKeyBtn.selected = NO;
+        self.serviceTextField.text = @"114.112.100.68:8020";
+
     }
 }
 
@@ -53,11 +59,15 @@
         
         self.rememberKeyBtn.selected = YES;
          isSelect = NO;
+        self.serviceTextField.text = @"114.112.100.68:8020";
+
     } else {// 不记住密码
         [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"RememberKey"];
         
         self.rememberKeyBtn.selected = NO;
         isSelect = YES;
+        self.serviceTextField.text = @"114.112.100.68:8020";
+
     }
 }
 
@@ -118,7 +128,7 @@
 }
 
 - (void)logOutWithAFN {
-    _serviceTextField.text = nil;
+//    _serviceTextField.text = nil;
     _passwordTextField.text = nil;
     _accountTextField.text = nil;
     
@@ -147,7 +157,7 @@
 }
 
 - (void)logOut {
-    _serviceTextField.text = nil;
+//    _serviceTextField.text = nil;
     _passwordTextField.text = nil;
     _accountTextField.text = nil;
     NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
