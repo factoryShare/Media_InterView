@@ -209,22 +209,22 @@
 }
 
 #pragma mark RevelationManagerDelegate
-- (void)uploadFileResult:(RevelationManagerResult)result {
-    /*
-     RevelationManagerResultSuccess = 0,
-     RevelationManagerResultError = 1,
-     RevelationManagerResultCancle = 2
-     */
-    if (result == RevelationManagerResultSuccess) {
-        _manuscriptModel.isSendToServer = @"1";
-        [_manuscriptModel updateToDB];
-        [CommonUI showTextOnly:@"发送成功"];
-        // 发送到服务器成功的通知
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"SendManuscriptSuccess" object:nil];
-    } else {
-        [CommonUI showTextOnly:@"发送失败"];
-    }
-}
+//- (void)uploadFileResult:(RevelationManagerResult)result {
+//    /*
+//     RevelationManagerResultSuccess = 0,
+//     RevelationManagerResultError = 1,
+//     RevelationManagerResultCancle = 2
+//     */
+//    if (result == RevelationManagerResultSuccess) {
+//        _manuscriptModel.isSendToServer = @"1";
+//        [_manuscriptModel updateToDB];
+//        [CommonUI showTextOnly:@"发送成功"];
+//        // 发送到服务器成功的通知
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"SendManuscriptSuccess" object:nil];
+//    } else {
+//        [CommonUI showTextOnly:@"发送失败"];
+//    }
+//}
 
 
 - (void)setControlsStatus {

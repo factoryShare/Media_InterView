@@ -8,15 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, RevelationManagerResult) {
-
-    RevelationManagerResultSuccess = 0,
-    RevelationManagerResultError = 1,
-    RevelationManagerResultCancle = 2
-};
-
 @protocol RevelationManagerDelegate <NSObject>
-- (void)uploadFileResult:(RevelationManagerResult)result;
+
+- (void)uploadFileResult:(int)result;
+
+//- (void)uploadFileResult2:(NSString *)result;
 
 @end
 
