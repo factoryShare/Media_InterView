@@ -18,7 +18,7 @@
 #define numPerLine 3
 #define itemWidth ([UIScreen mainScreen].bounds.size.width - (numPerLine+1) * marginX) / numPerLine
 
-@interface NewManuscriptVC () <UINavigationControllerDelegate,UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate, AttachmentCellDelegate, RevelationManagerDelegate>
+@interface NewManuscriptVC () <UINavigationControllerDelegate,UITextFieldDelegate, UITextViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIActionSheetDelegate, UIImagePickerControllerDelegate, AttachmentCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -42,7 +42,7 @@
     [self initUI];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successGetRecordFile:) name:@"SelectAMRFile" object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successGetRecordFile:) name:@"wosai_success" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didSendSuccess:) name:@"wosai_success" object:nil];
     
 }
 
