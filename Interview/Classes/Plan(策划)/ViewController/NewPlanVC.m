@@ -54,56 +54,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _canEdit = _planModel==nil ? YES:NO;
     [self initUI];
-//    [self getConfigs];
     [self loadData];
-    _canEdit = YES;
-   //获取新闻策划配置存在本地
-    
 }
-
-// 获得新闻策划配置
-#warning 服务器接口有问题, 这里就不调用了
-- (void)getConfigs {
-    
-    NSString *urlString = [NSString stringWithFormat:@"http://%@/accouts/getConfigs",pathToService];
-    // 请求的参数
-    NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
-    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
-    NSString *path = pathToService;
-    if (token.length > 0 && path.length > 0) {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [parameters setObject: token forKey:@"token"];
-        // 初始化Manager
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        // post请求
-        [manager POST:urlString parameters:parameters constructingBodyWithBlock:^(id  _Nonnull formData) {
-            // 拼接data到请求体，这个block的参数是遵守AFMultipartFormData协议的。
-            
-        } progress:^(NSProgress * _Nonnull uploadProgress) {
-            // 这里可以获取到目前的数据请求的进度
-            
-        } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            NSDictionary *result = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves error:nil];
-            QMLog(@"result: %@", result);
-            if ((![result[@"Data"] isKindOfClass:[NSNull class]] && [result[@"Error"] isKindOfClass:[NSNull class]])) {
-                
-            } else {
-                [CommonUI showTextOnly:@"请登录"];
-            }
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            // 请求失败
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            NSLog(@"error: %@", [error localizedDescription]);
-        }];
-    } else {
-        [CommonUI showTextOnly:@"token 失效请重新登录"];
-    }
-    
-}
-
 
 // 初始化模型
 - (void)loadData {
@@ -194,10 +148,18 @@
     // 保存按钮
     _saveItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_save"] style:UIBarButtonItemStylePlain target:self action:@selector(saveItemClicked)];
     _saveItem.tintColor = [UIColor whiteColor];
-    self.navigationItem.rightBarButtonItem = _saveItem;
+    
     
     _editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"icon_edit"] style:UIBarButtonItemStylePlain target:self action:@selector(editItemClicked)];
     _editItem.tintColor = [UIColor whiteColor];
+    
+    
+    if (_canEdit) {
+        self.navigationItem.rightBarButtonItem = _saveItem;
+    } else {
+        self.navigationItem.rightBarButtonItem = _editItem;
+    }
+    
     
 }
 
