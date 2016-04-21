@@ -11,7 +11,6 @@
 #import "QMUserInfoViewController.h"
 
 #import "QMPostFileTool.h"
-#import "QMPostSingle.h"
 #import "AFNetworking.h"
 
 #import "RevelationManager.h"
@@ -31,9 +30,11 @@
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"push" style:(UIBarButtonItemStyleDone) target:self action:@selector(push)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"push" style:(UIBarButtonItemStyleDone) target:self action:@selector(push)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadFile:) name:@"postFileByArray" object:nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(MRC:) name:@"wosai_success" object:nil];
 
 }
 
@@ -95,19 +96,17 @@
     
     NSString *scriptTitle = [no.userInfo objectForKey:@"title"];
     NSString *scriptContent = [no.userInfo objectForKey:@"content"];
-//    NSString *audioPath = @"/Users/admin/Desktop/外包项目/Interview/Interview/20164220024258.amr";
-//    NSMutableArray *imageArr = [NSMutableArray array];
-//    
-//    [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
-
     
-
     RevelationManager *manager = [[RevelationManager alloc]init];
     __block  QMSettingViewController *vc = self;
     manager.delegate  = vc;
     [manager SendRequset:fileArr :scriptTitle :scriptContent];
 
 }
+//
+//- (void)MRC:(NSNotification *)no {
+//    QMLog(@"%@",no.userInfo);
+//}
 
 #pragma mark - 瞎搞
 - (void)push {
@@ -117,15 +116,15 @@
     [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
     
     RevelationManager *manager = [[RevelationManager alloc]init];
-    __block  QMSettingViewController *vc = self;
-    manager.delegate  = vc;
+//    __block  QMSettingViewController *vc = self;
+//    manager.delegate  = self;
     [manager SendRequset:imageArr :@"test" :@"gg"];
     
 }
 
-#pragma mark -RevelationManagerDelegate
-- (void)uploadFileResult:(RevelationManagerResult)result {
-    QMLog(@"%ld",(long)result);
-}
+//#pragma mark -RevelationManagerDelegate
+//- (void)uploadFileResult:(int)result{
+////    [[NSNotificationCenter defaultCenter] postNotificationName:@"wosai_success" object:nil userInfo:@{@"status":[NSString stringWithFormat:@"%d",result]}];
+//}
 
 @end

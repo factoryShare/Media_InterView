@@ -446,23 +446,27 @@
             NSDictionary *error = tempDic[@"Error"];
             QMLog(@"%@",error[@"Message"]);
             [MBProgressHUD showError:error[@"Message"]];
-            if (_delegate && [self.delegate performSelector:@selector(uploadFileResult:)]) {
-                [self.delegate uploadFileResult:RevelationManagerResultError];
+            if (_delegate && [self.delegate performSelector:@selector(uploadFileResult)]) {
+                [self.delegate uploadFileResult:1];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wosai_success" object:nil userInfo:@{@"status":@"1"}];
+
             }
         } else if(![tempDic[@"Data"] isKindOfClass:[NSNull class]]){ // 有数据返回
             [MBProgressHUD showSuccess:@"上传成功"];
             
             if (_delegate && [self.delegate performSelector:@selector(uploadFileResult:)]) {
-                [self.delegate uploadFileResult:RevelationManagerResultSuccess];
+                [self.delegate uploadFileResult:0];
+                
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wosai_success" object:nil userInfo:@{@"status":@"0"}];
             }
             
         } else {
             if (_delegate && [self.delegate performSelector:@selector(uploadFileResult:)]) {
-                [self.delegate uploadFileResult:RevelationManagerResultError];
+                [self.delegate uploadFileResult:1];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"wosai_success" object:nil userInfo:@{@"status":@"1"}];
             }
             [MBProgressHUD showError:@"请重新登陆"];
         }
-        
     }
 }
 
@@ -510,7 +514,8 @@
     [MBProgressHUD hideHUD];
     
     if (_delegate && [self.delegate performSelector:@selector(uploadFileResult:)]) {
-        [self.delegate uploadFileResult:RevelationManagerResultError];
+        [self.delegate uploadFileResult:1];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"wosai_success" object:nil userInfo:@{@"status":@"1"}];
     }
     
     [MBProgressHUD showError:@"上传超时"];

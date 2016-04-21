@@ -10,9 +10,6 @@
 #import "NewManuscriptVC.h"
 #import "QMManuscriptListViewController.h"
 
-#import "RevelationManager.h"
-
-
 @interface QMManuscriptViewController ()
 @property (nonatomic, retain) NSArray *titleArray;
 @end

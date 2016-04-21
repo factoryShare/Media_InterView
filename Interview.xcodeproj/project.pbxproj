@@ -43,7 +43,6 @@
 		847DEB931CAE76420041BAE3 /* QMPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 847DEB921CAE76420041BAE3 /* QMPlanViewController.m */; };
 		848E18671CAF46DB0097C487 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E18651CAF46DB0097C487 /* GTMBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		848E186B1CAF4CC50097C487 /* NetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 848E186A1CAF4CC50097C487 /* NetWorking.m */; };
-		849403BD1CC48C9F007D3E34 /* QMPostSingle.m in Sources */ = {isa = PBXBuildFile; fileRef = 849403BC1CC48C9F007D3E34 /* QMPostSingle.m */; };
 		84A21B4C1CB0D4D400440905 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84A21B3E1CB0D4D400440905 /* amrFileCodec.mm */; };
 		84A21B4D1CB0D4D400440905 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 84A21B401CB0D4D400440905 /* wav.mm */; };
 		84A21B4E1CB0D4D400440905 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A21B421CB0D4D400440905 /* libopencore-amrnb.a */; };
@@ -226,8 +225,6 @@
 		848E18661CAF46DB0097C487 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		848E18691CAF4CC50097C487 /* NetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorking.h; sourceTree = "<group>"; };
 		848E186A1CAF4CC50097C487 /* NetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorking.m; sourceTree = "<group>"; };
-		849403BB1CC48C9F007D3E34 /* QMPostSingle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMPostSingle.h; sourceTree = "<group>"; };
-		849403BC1CC48C9F007D3E34 /* QMPostSingle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPostSingle.m; sourceTree = "<group>"; };
 		84A21B3D1CB0D4D400440905 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		84A21B3E1CB0D4D400440905 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
 		84A21B3F1CB0D4D400440905 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
@@ -964,8 +961,6 @@
 				84CE48351CAEC5D60012B584 /* QMUserInfoViewController.h */,
 				84CE48361CAEC5D60012B584 /* QMUserInfoViewController.m */,
 				84CE48371CAEC5D60012B584 /* QMUserInfoViewController.xib */,
-				849403BB1CC48C9F007D3E34 /* QMPostSingle.h */,
-				849403BC1CC48C9F007D3E34 /* QMPostSingle.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1407,7 +1402,6 @@
 				84ECDBC51CACBAA0007FD6E0 /* MJRefreshAutoGifFooter.m in Sources */,
 				84ECDBF51CACBDB8007FD6E0 /* NSString+GetDeviceModel.m in Sources */,
 				A5D6B5BC1CB23B8000B6E845 /* PlanViewCell.m in Sources */,
-				849403BD1CC48C9F007D3E34 /* QMPostSingle.m in Sources */,
 				84ECDBC71CACBAA0007FD6E0 /* MJRefreshAutoStateFooter.m in Sources */,
 				84ECDB901CACB7BA007FD6E0 /* AFURLRequestSerialization.m in Sources */,
 				840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */,
