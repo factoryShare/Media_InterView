@@ -15,7 +15,7 @@
 
 #import "RevelationManager.h"
 
-@interface QMSettingViewController () <UITableViewDelegate,UITableViewDataSource,RevelationManagerDelegate>
+@interface QMSettingViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
 
@@ -98,8 +98,8 @@
     NSString *scriptContent = [no.userInfo objectForKey:@"content"];
     
     RevelationManager *manager = [[RevelationManager alloc]init];
-    __block  QMSettingViewController *vc = self;
-    manager.delegate  = vc;
+//    __block  QMSettingViewController *vc = self;
+//    manager.delegate  = vc;
     [manager SendRequset:fileArr :scriptTitle :scriptContent];
 
 }
