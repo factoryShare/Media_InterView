@@ -14,6 +14,7 @@
 @property(nonatomic,strong) NSString *filePath;
 @property(nonatomic,assign,readonly) NSTimeInterval MusicDuring;
 @property(nonatomic,assign) BOOL isPlaying;
+@property(nonatomic,assign,readonly) NSTimeInterval currentTime;
 
 - (void)startPlay;
 

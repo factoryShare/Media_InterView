@@ -252,6 +252,7 @@
 -(void)sendBaoliaoLoginRequset {
     NSString *service = [[NSUserDefaults standardUserDefaults]objectForKey:kPathToService];
     if (service.length<=0) {
+        [MBProgressHUD hideHUD];
         [MBProgressHUD showError:@"请重新登陆"];
         return;
     }
@@ -370,7 +371,7 @@
     NSString *responseContent = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]autorelease];
     //    NSLog(@"responseContent baoliao %d is %@", _request.tag, responseContent);
     if (_request.tag == 9999) {
-        [self sendBaoliaoLoginRequset:responseContent];
+//        [self sendBaoliaoLoginRequset:responseContent];
     }
     else if(_request.tag == 9998) {// 登陆返回 token
         NSMutableDictionary *tempDic = [responseContent JSONValue];
@@ -378,6 +379,7 @@
         if (dict && ![dict isKindOfClass:[NSNull class]]) {
             NSString *tokenstr = [dict objectForKey:@"Token"];
             tokenSString = [[NSString alloc] initWithString:tokenstr];
+            [[NSUserDefaults standardUserDefaults]setObject:tokenSString forKey:@"token"];
             miIndex = 0;
             if (![self NewFileUpload]) {
                 [self sendBaoliaoLastRequset];

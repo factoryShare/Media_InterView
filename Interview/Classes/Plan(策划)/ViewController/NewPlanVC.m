@@ -17,6 +17,7 @@
 #import "AFNetworking.h"
 #import "CustomTextView.h"
 #import "MBProgressHUD.h"
+#import "QMUserInfoViewController.h"
 
 #define screenWidth [UIScreen mainScreen].bounds.size.width
 #define screenHeight [UIScreen mainScreen].bounds.size.height
@@ -102,6 +103,11 @@
     } else {
         [CommonUI showTextOnly:@"token 失效请重新登录"];
     }
+    _canEdit = _planModel==nil ? YES:NO;
+//    [self singnInWithAFN];
+    [self initUI];
+    [self loadData];
+
 }
 
 // 初始化模型
@@ -415,7 +421,10 @@
                 [self.navigationController popViewControllerAnimated:YES];
 
             } else {
-                [CommonUI showTextOnly:@"请登录"];
+//                [CommonUI showTextOnly:@"请登录"];
+                [MBProgressHUD showError:@"请重新登录"];
+                QMUserInfoViewController *loginVC = [[QMUserInfoViewController alloc]init];
+                [self.navigationController pushViewController:loginVC animated:YES];
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             
@@ -423,7 +432,11 @@
             QMLog(@"error: %@", [error localizedDescription]);
         }];
     } else {
-        [CommonUI showTextOnly:@"token 失效请重新登录"];
+//        [CommonUI showTextOnly:@"token 失效请重新登录"];
+        [MBProgressHUD showError:@"请重新登录"];
+        QMUserInfoViewController *loginVC = [[QMUserInfoViewController alloc]init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+
     }
     
 }

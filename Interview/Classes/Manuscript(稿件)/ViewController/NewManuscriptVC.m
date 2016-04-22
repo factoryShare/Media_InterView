@@ -14,6 +14,8 @@
 #import "CommonUI.h"
 #import "MBProgressHUD.h"
 #import "RevelationManager.h"
+#import "QMUserInfoViewController.h"
+
 #define marginX 10.0
 #define numPerLine 3
 #define itemWidth ([UIScreen mainScreen].bounds.size.width - (numPerLine+1) * marginX) / numPerLine
@@ -60,6 +62,11 @@
         // 发送到服务器成功的通知
          [[NSNotificationCenter defaultCenter] postNotificationName:@"SendManuscriptSuccess" object:nil];
         [self.navigationController popViewControllerAnimated:YES];
+    } else if([status isEqualToString:@"3"]) {
+        
+        QMUserInfoViewController *loginVC = [[QMUserInfoViewController alloc]init];
+        [self.navigationController pushViewController:loginVC animated:YES];
+
     } else {
         [CommonUI showTextOnly:@"发送失败"];
     }
@@ -203,7 +210,11 @@
 //        [manager SendRequset:filesMutableArray :_scriptTitle :_scriptContent];
         
     } else {
-        [CommonUI showTextOnly:@"token 失效请重新登录"];
+//        [CommonUI showTextOnly:@"token 失效请重新登录"];
+        
+        [MBProgressHUD showError:@"请重新登录"];
+        QMUserInfoViewController *loginVC = [[QMUserInfoViewController alloc]init];
+        [self.navigationController pushViewController:loginVC animated:YES];
     }
     
 }

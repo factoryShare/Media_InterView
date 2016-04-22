@@ -32,7 +32,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"录音列表";
     self.recorderDBModel = nil;
     
     self.view.backgroundColor = QMColor(127, 127, 127);

@@ -48,7 +48,7 @@
 
 - (void)initUI {
     _canEdit = YES;
-    self.navigationController.title = _isSendToServer ? @"已发策划":@"未发策划";
+    self.title = _isSendToServer ? @"已发策划":@"未发策划";
     _editItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_delete"] style:UIBarButtonItemStylePlain target:self action:@selector(editItemClicked)];
     _editItem.tintColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = _editItem;

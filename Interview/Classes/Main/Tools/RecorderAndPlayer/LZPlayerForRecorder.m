@@ -16,11 +16,16 @@
 
 @implementation LZPlayerForRecorder
 
+- (void)dealloc {
+    QMLog(@"dealloc");
+}
+
 #pragma mark 外部方法
 - (void)startPlay {
     if (![self.player isPlaying]) {
         [self.player play];
         self.isPlaying = YES;
+        QMLog(@"startPlay");
     }
 }
 
@@ -28,17 +33,30 @@
     if ([self.player isPlaying]) {
         [self.player pause];
         self.isPlaying = NO;
+        QMLog(@"pause");
     }
 }
 
 - (void)stop {
     if ([self.player isPlaying]) {
         [self.player stop];
+        QMLog(@"stop");
     }
 }
 
 - (void)setFilePath:(NSString *)filePath {
     _filePath = filePath;
+    _player = nil;
+    NSError *error = nil;
+    self.player =  [[AVAudioPlayer alloc]initWithContentsOfURL:[NSURL fileURLWithPath:_filePath] error:&error];
+    _player.volume = 1.0;
+    if (error) {
+        QMLog(@"%@",error);
+    }
+}
+
+- (NSTimeInterval)currentTime {
+    return _player.currentTime;
 }
 
 - (NSTimeInterval)MusicDuring {
@@ -60,7 +78,9 @@
         if (error) {
             QMLog(@"%@",error);
         }
+        QMLog(@"创建_player%@",_player);
     }
+
     return _player;
 }
 

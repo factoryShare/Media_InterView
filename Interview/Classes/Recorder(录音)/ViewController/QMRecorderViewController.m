@@ -40,11 +40,6 @@
 
 @implementation QMRecorderViewController
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-        
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -63,6 +58,14 @@
  *  显示已经录制的音频
  */
 - (void)showList {
+    if (_isWaveShow) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"请录制完毕" message: nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        
+        [alert setAlertViewStyle:(UIAlertViewStyleDefault)];
+        
+        [alert show];
+        return;
+    }
     
     QMRecorderListViewController *listVC = [[QMRecorderListViewController alloc]init];
     
@@ -140,7 +143,7 @@
 
 }
 /**
- *  解锁 
+ *  解锁
  */
 - (void)lockBtnOnCoverClick:(UIButton *)btn {
     [self.coverView removeFromSuperview];
@@ -164,10 +167,9 @@
     }
     
     _timerValue++;
-    self.controlBtn.centerX = _timerValue;
 }
 
-#pragma mark - LZRecorderDeleagte 
+#pragma mark - LZRecorderDeleagte
 - (void)getaudioPower:(float)power {
     int character = power / 160 * 26;
     character -= 10;

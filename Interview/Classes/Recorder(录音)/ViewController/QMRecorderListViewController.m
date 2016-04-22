@@ -55,12 +55,15 @@
     
     [self createBottomView];
 
+    QMLog(@"%@",_player);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    self.thumbBtn.centerX += _timerValue;
+    if (_player) {
+        self.thumbBtn.centerX += self.player.currentTime / self.player.MusicDuring  * self.progressView.width;
+    }
 }
 
 #pragma mark - 删除音频文件
@@ -91,7 +94,6 @@
             NSLog(@"00000");
             return;
         }
-        
         _timerValue =  self.progressBgView.width / self.timeLong / 10.0;
     
     } else {
@@ -238,6 +240,8 @@
     // 音频播放
     LZFileHandle *handle = [[LZFileHandle alloc]init];
     self.player.filePath = path;
+    QMLog(@"%@",self.player.filePath);
+
     if ([handle isFileExisting:path]) {
         self.timeLong = self.player.MusicDuring;
         if (self.timeLong == 0) {
@@ -246,7 +250,6 @@
         }
         // 设置精度条步进值/0.1s
         _timerValue =  self.progressBgView.width / self.timeLong / 10.0;
-        
         // 点击播放按钮
         [self playBtnOnClick:self.playBtn];
     } else {
@@ -342,8 +345,7 @@
     if (_player == nil) {
         _player = [[LZPlayerForRecorder alloc]init];
         _player.isPlaying = NO;
-//        [self.player addObserver:self forKeyPath:@"isPlaying" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:nil];
-
+        QMLog(@"新建 player");
     }
     return _player;
 }
@@ -365,18 +367,15 @@
     _progressView.width += _timerValue;
     self.thumbBtn.centerX += _timerValue;
     if (_progressBgView.width <= _progressView.width) {
-        self.player.isPlaying = NO;
         [self getInitial];
     }
+
 }
 /**
  *  初始化播放设置
  */
 - (void)getInitial {
     _progressView.width = 0;
-//    [self.player removeObserver:self forKeyPath:@"isPlaying"];
-    self.player = nil;
-    [self.player stop];
     self.playBtn.selected = NO;
 
     self.thumbBtn.centerX = self.progressBgView.x;
@@ -389,5 +388,10 @@
     _timer = nil;
     
 }
+
+//if (self.player.isPlaying) {
+//    [self.player stop];
+//}
+
 
 @end
