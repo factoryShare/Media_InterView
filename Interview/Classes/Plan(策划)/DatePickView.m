@@ -49,16 +49,12 @@
         //    最小最大时间
         //    日期转换类
         NSDateFormatter *df = [[NSDateFormatter alloc]init];
-        NSString * dateStr = @"2000-01-01";
         //    设置日期转换格式
         df.dateFormat = @"yyyy-MM-dd";
         //    dateFromString从字符串转日期
-        NSDate * date = [df dateFromString:dateStr];
-        // 设置选择器的初始值
+         // 设置选择器的初始值
         _dateString = [df stringFromDate:_datePicker.date];
-        _datePicker.minimumDate = date;
-        //    设置最大时间
-        _datePicker.maximumDate=[NSDate date];
+        _datePicker.minimumDate = [NSDate date];
         [_datePicker addTarget:self action:@selector(datePickerViewChange:) forControlEvents:UIControlEventValueChanged];
         
         

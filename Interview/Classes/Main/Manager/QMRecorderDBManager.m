@@ -98,6 +98,21 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(QMRecorderDBManager);
     }];
 }
 
+- (void)deleteAllData {
+    [_dataBaseQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString *sqlDelegate = @"delete from AMRSaveTable";
+        BOOL isSuccess = [db executeUpdate:sqlDelegate];
+        if (isSuccess) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [MBProgressHUD hideHUD];
+            });
+            QMLog(@"AMRSaveTable 数据删除所有数据成功");
+        }
+    }];
+
+}
+
 /**
  *  获取当前数据库所有数据
  */

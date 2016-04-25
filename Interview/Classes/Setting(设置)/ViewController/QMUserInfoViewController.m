@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *accountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet QMRememberButton *rememberKeyBtn;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @end
 
 @implementation QMUserInfoViewController
@@ -25,6 +26,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = @"用户信息";
+
+    self.errorLabel.text = @"记住密码";
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    self.serviceTextField.text = @"114.112.100.68:8020";
+
+//    for (UIView *subView in self.view.subviews) {
+//        NSLog(@"%@",subView);
+//        
+//    }
+    
+    if ([[[NSUserDefaults standardUserDefaults] objectForKey:kRememberKey] isEqualToString:@"YES"]) {
+        
+        self.serviceTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
+        self.accountTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"userName"];
+        self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
+        
+        self.rememberKeyBtn.selected = YES;
+        self.serviceTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
+    } else {
+        self.serviceTextField.text = @"114.112.100.68:8020";
+        self.accountTextField.text = nil;
+        self.passwordTextField.text = nil;
+        
+        self.rememberKeyBtn.selected = NO;
+        self.serviceTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
+        
+    }
 
 }
 
@@ -38,16 +70,14 @@
         self.passwordTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"password"];
         
         self.rememberKeyBtn.selected = YES;
-        self.serviceTextField.text = @"114.112.100.68:8020";
-
+        self.serviceTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
     } else {
-
-//        self.serviceTextField.text = nil;
+        self.serviceTextField.text = @"114.112.100.68:8020";
         self.accountTextField.text = nil;
         self.passwordTextField.text = nil;
         
         self.rememberKeyBtn.selected = NO;
-        self.serviceTextField.text = @"114.112.100.68:8020";
+        self.serviceTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"pathToService"];
 
     }
 }
@@ -59,21 +89,22 @@
         
         self.rememberKeyBtn.selected = YES;
          isSelect = NO;
-        self.serviceTextField.text = @"114.112.100.68:8020";
-
+        
+        [[NSUserDefaults standardUserDefaults] setObject:_serviceTextField.text forKey:@"pathToService"];
+        [[NSUserDefaults standardUserDefaults] setObject:_accountTextField.text forKey:@"userName"];
+        [[NSUserDefaults standardUserDefaults] setObject:_passwordTextField.text forKey:@"password"];
     } else {// 不记住密码
         [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"RememberKey"];
         
         self.rememberKeyBtn.selected = NO;
         isSelect = YES;
-        self.serviceTextField.text = @"114.112.100.68:8020";
+//        self.serviceTextField.text = @"114.112.100.68:8020";
 
     }
 }
 
 - (IBAction)loginBtn:(UIButton*)sender {
     if ([sender.titleLabel.text isEqualToString:@"登陆"]) {
-//        [self signIn];
         [self singnInWithAFN];
         [sender setTitle:@"注销" forState:(UIControlStateNormal)];
     } else if ([sender.titleLabel.text isEqualToString:@"注销"]) {
@@ -155,45 +186,6 @@
     [str replaceOccurrencesOfString:@"-" withString:@"" options:NSCaseInsensitiveSearch range:NSMakeRange(0, str.length)];
     return str;
 }
-
-- (void)logOut {
-//    _serviceTextField.text = nil;
-    _passwordTextField.text = nil;
-    _accountTextField.text = nil;
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *signIn = @"losed";
-    [user setObject:signIn forKey:@"signIn"];
-    [user setObject:_passwordTextField.text forKey:@"password"];
-}
-
-- (void)signIn {   //@"http://114.112.100.68:8020/Account/Login"
-    NSString *path = [NSString stringWithFormat:@"http://%@/Account/Login",_serviceTextField.text];
-    
-    [[NetWorking shareNetWork]postURL:[NSURL URLWithString:path] loginName:_accountTextField.text loginPassWord:_passwordTextField.text];
-    
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(tokenTaking:) name:@"token" object:nil];
-}
-
-- (void)tokenTaking:(NSNotification *)notification {
-    UIAlertView *alertView;
-    if (notification.object){
-        alertView = [[UIAlertView alloc] initWithTitle:@"提示"
-                                               message:@"登陆成功"
-                                              delegate:nil
-                                     cancelButtonTitle:@"确定"
-                                     otherButtonTitles:nil
-                     , nil];
-    }
-    NSUserDefaults *user = [NSUserDefaults standardUserDefaults];
-    NSString *signIn = @"succeed";
-    [user setObject:signIn forKey:@"signIn"];
-    [user setObject:_serviceTextField.text forKey:@"address"];
-    [user setObject:_accountTextField.text forKey:@"userName"];
-    [user setObject:_passwordTextField.text forKey:@"password"];
-    
-    [alertView show];
-}
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];

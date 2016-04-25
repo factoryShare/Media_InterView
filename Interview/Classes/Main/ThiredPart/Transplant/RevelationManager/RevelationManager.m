@@ -9,10 +9,13 @@
 #import "RevelationManager.h"
 #import "ASIFormDataRequest.h"
 #import "NSString+SBJSON.h"
+
+#import "LZFileHandle.h"
 //#import "Encryption.h"
 //#import "GongYongData.h"
 @interface RevelationManager ()
 @property(nonatomic,assign) int StoryID;
+//@property(nonatomic,retain) LZFileHandle *handle;
 
 @end
 
@@ -272,10 +275,12 @@
     [request release];
 }
 
-//爆料发送的第二步：新建上传文件请求
+//爆料发送的第二步：新建上传文件请求  [[NSUserDefaults standardUserDefaults]objectForKey:kPathToService]
 -(void)sendBaoliaoUploadFileRequset:(NSString *)backSString :(int)iFileSize :(NSString *)fmt {
     NSString *filename = [self GetFileName:fmt];
-    NSString *urlString = @"http://114.112.100.68:8020/story/newUploadFile";
+
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/story/newUploadFile",[[NSUserDefaults standardUserDefaults]objectForKey:kPathToService]];
+    
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
     request.tag = 9997;
@@ -293,7 +298,8 @@
 //爆料发送的第三步：上传文件请求
 -(void)sendBaoliaoFileuploadRequset:(NSString *)backSString {
     //    NSLog(@"sendBaoliaoFileuploadRequset");
-    NSString *urlString = @"http://114.112.100.68:8020/story/uploadFile";
+//    NSString *urlString = @"http://114.112.100.68:8020/story/uploadFile";
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/story/uploadFile",[[NSUserDefaults standardUserDefaults]objectForKey:kPathToService]];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
     request.tag = 9996;
@@ -309,7 +315,8 @@
 //爆料发送的第四步：上传文件数据请求
 -(void)sendBaoliaoFileDataRequset:(NSData *)data {
     //    NSLog(@"sendBaoliaoFileDataRequset");
-    NSString *urlString = @"http://114.112.100.68:8020/story/uploadData";
+//    NSString *urlString = @"http://114.112.100.68:8020/story/uploadData";
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/story/uploadData",[[NSUserDefaults standardUserDefaults]objectForKey:kPathToService]];
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
     request.tag = 9995;
@@ -345,7 +352,9 @@
             fileIDs = [fileIDs stringByAppendingFormat:@",%@", fileID];
         }
     }
-    NSString *urlString = @"http://114.112.100.68:8020/story/UploadMedias";
+//    NSString *urlString = @"http://114.112.100.68:8020/story/UploadMedias";
+    NSString *urlString = [NSString stringWithFormat:@"http://%@/story/UploadMedias",[[NSUserDefaults standardUserDefaults]objectForKey:kPathToService]];
+    
     NSURL *url = [NSURL URLWithString:urlString];
     ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:url];
     request.tag = 9994;
@@ -354,9 +363,9 @@
     [request setPostValue:tokenSString forKey:@"token"];
     [request setPostValue:fileIDs forKey:@"fileIDs"];
     [request setPostValue:filetypes forKey:@"fileTypes"];
-    [request setPostValue:mTitle forKey:@"title"];
+    [request setPostValue:mCaption forKey:@"title"];
     [request setPostValue:autherSString forKey:@"author"];
-    [request setPostValue:mCaption forKey:@"caption"];
+    [request setPostValue:mTitle forKey:@"caption"];
     
     NSMutableArray *tempArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"OnlineChannelArray"];
     NSString *tempTagString = [[NSUserDefaults standardUserDefaults] objectForKey:@"SelectCellIndex"];
@@ -486,6 +495,8 @@
     NSString *filename = [dict objectForKey:@"filename"];
     NSRange range = [filename rangeOfString:@"." options:NSBackwardsSearch];
     NSString *filefmt = [filename substringFromIndex:range.location+range.length];
+#warning 上传数据
+    
     mData = [[NSData alloc] initWithContentsOfFile:filename];
     [self sendBaoliaoUploadFileRequset:tokenSString :mData.length :filefmt];
     [pool release];

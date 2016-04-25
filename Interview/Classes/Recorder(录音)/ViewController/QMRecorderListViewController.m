@@ -42,6 +42,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self createBarItem];
+
+    [[QMRecorderDBManager sharedQMRecorderDBManager] getAllModel:^(NSArray *array) {
+        self.dataSource = [NSMutableArray arrayWithArray:array];
+    }];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopAudio) name:@"enterBackground" object:nil];
+
     // 初始播放设置
     [self getInitial];
     
@@ -60,11 +67,16 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    
     if (_player) {
         self.thumbBtn.centerX += self.player.currentTime / self.player.MusicDuring  * self.progressView.width;
     }
 }
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [_player stop];    
+}
+
 
 #pragma mark - 删除音频文件
 - (void)rightItemClick:(UIButton *)buttonItem {
@@ -303,6 +315,7 @@
     
     // 创建底部视图
     UIView *bottomView = [[UIView alloc]initWithFrame:CGRectMake(0, _kScreenHeight - 100, _kScreenWidth, 100)];
+    bottomView.backgroundColor = [UIColor blackColor];
     self.bottomView = bottomView;
     [self.view addSubview: self.bottomView];
     
@@ -392,6 +405,44 @@
 //if (self.player.isPlaying) {
 //    [self.player stop];
 //}
+
+- (void)createBarItem {
+    
+    UIButton *button = [[UIButton alloc]init];
+
+    [button setBackgroundImage:[UIImage imageNamed:@"nav_back"] forState:(UIControlStateNormal)];
+    button.size = button.currentBackgroundImage.size;
+    // 让按钮内部的所有内容左对齐
+    button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    //        [button sizeToFit];
+    // 让按钮的内容往左边偏移10
+    button.contentEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
+    [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 修改导航栏左边的item
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+
+}
+
+- (void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)stopAudio{
+
+    [_player stop];
+    
+    [self getInitial];
+}
+
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 
 
 @end

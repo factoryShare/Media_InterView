@@ -20,12 +20,10 @@
                             <constraint firstAttribute="height" constant="25" id="G1R-qN-XSr"/>
                             <constraint firstAttribute="width" constant="29" id="Und-qj-OS9"/>
                         </constraints>
-                        <state key="normal" image="Recorder_List"/>
-                        <state key="selected" image="RecorderList_pause"/>
                         <state key="highlighted" image="Recorder_pause"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-tr-j2Z" userLabel="歌曲名">
-                        <rect key="frame" x="54" y="5" width="256" height="29.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="歌曲名" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTa-tr-j2Z" userLabel="歌曲名">
+                        <rect key="frame" x="134.5" y="11.5" width="51" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -37,7 +35,9 @@
                     <constraint firstItem="ZST-CS-Vj9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="7W2-yi-FYq"/>
                     <constraint firstItem="mTa-tr-j2Z" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8i4-aP-bxS"/>
                     <constraint firstAttribute="trailing" secondItem="mTa-tr-j2Z" secondAttribute="trailing" constant="10" id="E2N-ML-dit"/>
+                    <constraint firstItem="mTa-tr-j2Z" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ES5-QF-C83"/>
                     <constraint firstAttribute="bottom" secondItem="mTa-tr-j2Z" secondAttribute="bottom" constant="9" id="Mgz-46-bhr"/>
+                    <constraint firstItem="mTa-tr-j2Z" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="T5s-gt-lNv"/>
                     <constraint firstItem="mTa-tr-j2Z" firstAttribute="leading" secondItem="ZST-CS-Vj9" secondAttribute="trailing" constant="20" id="Upc-im-06N"/>
                     <constraint firstItem="ZST-CS-Vj9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="pRS-9c-Xf9"/>
                 </constraints>
@@ -45,6 +45,10 @@
                     <mask key="constraints">
                         <exclude reference="4qa-zu-kaj"/>
                         <exclude reference="14Y-G8-V1K"/>
+                        <exclude reference="8i4-aP-bxS"/>
+                        <exclude reference="E2N-ML-dit"/>
+                        <exclude reference="Mgz-46-bhr"/>
+                        <exclude reference="Upc-im-06N"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
@@ -53,12 +57,10 @@
                 <outlet property="cellPlayBtn" destination="ZST-CS-Vj9" id="HdP-4d-aCl"/>
                 <outlet property="musicName" destination="mTa-tr-j2Z" id="SxJ-hj-1FF"/>
             </connections>
-            <point key="canvasLocation" x="-206" y="227"/>
+            <point key="canvasLocation" x="-354" y="216"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="RecorderList_pause" width="29" height="25"/>
-        <image name="Recorder_List" width="29" height="25"/>
         <image name="Recorder_pause" width="64" height="64"/>
     </resources>
 </document>

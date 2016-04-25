@@ -20,5 +20,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(QMRecorderDBManager);
 /** 删 */
 - (void)deleteModel:(NSString *)title;
 
+- (void)deleteAllData;
+
 - (void)getAllModel:(GetRecListBlocks)listModel;
 @end

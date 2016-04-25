@@ -75,8 +75,9 @@
 
 - (IBAction)recorde:(UIButton *)sender {
     static BOOL isRecording = YES;
-    sender.selected = isRecording;
     if (isRecording) {// 开始录制
+        sender.selected = isRecording;
+
         self.timer.fireDate = [NSDate distantPast];
         
         [self.recorder startRecorde];
@@ -92,11 +93,13 @@
             [alert show];
             return;
         } else {
+            sender.selected = isRecording;
+
             // 结束录制
             _timerLong = _timerValue;
             _timerValue = 0;
             _waveTime = 0;
-            
+            NSLog(@"1");
             self.timer.fireDate = [NSDate distantFuture];
             if (self.timer.isValid) {
                 [_timer invalidate];
@@ -112,16 +115,25 @@
             
             [alert setAlertViewStyle:(UIAlertViewStylePlainTextInput)];
             
+            alert.delegate = self;
+            
+            UITextField *textField = [alert textFieldAtIndex:0];
+            textField.text = [self getCurrentTime];
+            textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+
             [alert show];
             // 结束录制
-            [self.recorder stopRecorde];
             
+            [self.recorder stopRecorde];
+
             self.recorder = nil;
             
             isRecording = YES;
             _isWaveShow = NO;
         }
     }
+    
+
 }
 /**
  *  锁定屏幕 */
@@ -153,7 +165,6 @@
  *  更新时间
  */
 - (void)timeChanged {
-    
     int minute = _timerValue / 60;
     int second = _timerValue % 60;
     switch (minute) {
@@ -198,9 +209,10 @@
 
 #pragma mark - UIAlertViewDelegate
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+
     if (buttonIndex == alertView.firstOtherButtonIndex) {
         UITextField *textField = [alertView textFieldAtIndex:0];
-        NSDictionary *dic = @{@"CustomName":[NSString stringWithFormat:@"录音:%@",textField.text],@"recorderName":self.fileName,@"recorderPath":self.amrFileSavePath,@"TimeLong":[NSString stringWithFormat:@"%d",_timerLong]};
+        NSDictionary *dic = @{@"CustomName":[NSString stringWithFormat:@"%@",textField.text],@"recorderName":self.fileName,@"recorderPath":self.amrFileSavePath,@"TimeLong":[NSString stringWithFormat:@"%d",_timerLong]};
         
         QMRecoderDBModel *model = [[QMRecoderDBModel alloc]init];
         [model setValuesForKeysWithDictionary:dic];
@@ -238,6 +250,37 @@
         _recorderDBManager = [QMRecorderDBManager sharedQMRecorderDBManager];
     }
     return  _recorderDBManager;
+}
+
+- (NSString *)getCurrentTime {
+    
+    NSDateFormatter *forma = [[NSDateFormatter alloc]init];
+    forma.dateFormat = @"yyyymmddhhmmss";
+    NSString *time = [forma stringFromDate:[NSDate date]];
+    
+    return time;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+
+{
+    
+    return (interfaceOrientation == UIInterfaceOrientationPortrait || interfaceOrientation == UIInterfaceOrientationMaskPortraitUpsideDown);
+    
+}
+
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+- (BOOL)shouldAutorotate {
+    return YES;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+
 }
 
 @end

@@ -50,7 +50,9 @@
         // 转化为 mp3格式
         //    [self audio_PCMtoMP3];
         // wav 转 amr∫
-        [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [VoiceConverter wavToAmr:self.audioFileSavePath amrSavePath:self.amrFileSavePath];
+        });
     }
 }
 /**

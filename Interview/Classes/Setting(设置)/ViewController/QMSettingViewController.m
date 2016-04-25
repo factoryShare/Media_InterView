@@ -9,6 +9,7 @@
 #import "QMSettingViewController.h"
 #import "QMSettingTableViewCell.h"
 #import "QMUserInfoViewController.h"
+#import "QMCacheViewController.h"
 
 #import "QMPostFileTool.h"
 #import "AFNetworking.h"
@@ -45,18 +46,21 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static  NSString  *cellIDE = nil;
     if (indexPath.row == 0) {
         cellIDE = @"settingcell1";
-    } else {
+    } else if (indexPath.row == 1) {
         cellIDE = @"settingcell2";
+    } else if (indexPath.row == 2) {
+        cellIDE = @"settingcell3";
     }
     
     QMSettingTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIDE];
+    
     
     return cell;
 }
@@ -75,14 +79,20 @@
     if (indexPath.row == 0) {
         QMUserInfoViewController *userInfoVC = [[QMUserInfoViewController alloc]init];
         [self.navigationController pushViewController:userInfoVC animated:YES];
-    } else {
+    } else if(indexPath.row == 1){
         UIViewController *bannerVC = [[UIViewController alloc]init];
         UIImageView *im = [[UIImageView alloc]initWithFrame:bannerVC.view.bounds];
         im.image = [UIImage imageNamed:@"Banner_bg"];
         [bannerVC.view addSubview:im];
+        bannerVC.title  = @"关于";
         
         [self.navigationController pushViewController:bannerVC animated:YES
          ];
+    } else if(indexPath.row == 2) {
+        QMCacheViewController *cacheVC = [[QMCacheViewController alloc]init];
+        [self.navigationController pushViewController:cacheVC animated:YES
+         ];
+
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];

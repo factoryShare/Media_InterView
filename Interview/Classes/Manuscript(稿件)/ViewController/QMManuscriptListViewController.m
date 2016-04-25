@@ -10,10 +10,14 @@
 #import "ManuscriptModel.h"
 #import "LKDBHelper.h"
 #import "NewManuscriptVC.h"
+
+#import "LZFileHandle.h"
+
 @interface QMManuscriptListViewController ()
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) UIBarButtonItem *editItem;
 @property (nonatomic, assign) BOOL canEdit;
+@property(nonatomic,strong) LZFileHandle *handle;
 @end
 
 @implementation QMManuscriptListViewController
@@ -104,12 +108,35 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         ManuscriptModel *scriptModel = _dataArray[indexPath.section];
         [self.dataArray removeObject:scriptModel];
+        // 删除图片
+        NSArray *array = scriptModel.attachmentArray;
+        /*
+         NSDictionary *dict = @{@"attachmentTyp":attachModel.attachmentType,
+         @"imageName":attachModel.imageName,
+         @"recordName":attachModel.recordName};
+         */
+        for (NSDictionary *attachment in array) {
+            if ([attachment[@"attachmentTyp"] isEqualToString:AttachmentTypeImage]) {
+                NSString *path = attachment[@"imageName"];
+                NSString *tempDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+                // 初始化格式地址
+                NSString *imagePath = [tempDir stringByAppendingPathComponent:path];
+                NSLog(@"%@",imagePath);
+                [self.handle removeFileAtPath:imagePath];
+            }
+        }
+        
         // 删除本地数据库
         [ManuscriptModel deleteToDB:scriptModel];
         [self.tableView reloadData];
     }
 }
 
-
+- (LZFileHandle *)handle {
+    if (!_handle) {
+        _handle = [[LZFileHandle alloc]init];
+    }
+    return _handle;
+}
 
 @end

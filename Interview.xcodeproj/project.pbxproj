@@ -13,8 +13,6 @@
 		5FA7F5121CC2030B004CB38C /* AttachmentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F5111CC2030B004CB38C /* AttachmentCell.m */; };
 		5FA7F5151CC23F40004CB38C /* AttachmentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FA7F5141CC23F40004CB38C /* AttachmentModel.m */; };
 		5FAA52A51CC3E8FE006E2AA7 /* QMManuscriptListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FAA52A41CC3E8FE006E2AA7 /* QMManuscriptListViewController.m */; };
-		5FD8B65A1CC0D01B0067DCD1 /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */; };
-		5FD8B65C1CC0D0490067DCD1 /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */; };
 		5FD8B65F1CC0D6AC0067DCD1 /* NewManuscriptVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8B65E1CC0D6AC0067DCD1 /* NewManuscriptVC.m */; };
 		5FD8B6621CC0D7D60067DCD1 /* ManuscriptModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FD8B6611CC0D7D60067DCD1 /* ManuscriptModel.m */; };
 		5FD8B66F1CC0EBBE0067DCD1 /* 切换键盘@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B6641CC0EBBE0067DCD1 /* 切换键盘@2x.png */; };
@@ -28,6 +26,7 @@
 		5FD8B6771CC0EBBE0067DCD1 /* 效果3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66C1CC0EBBE0067DCD1 /* 效果3.png */; };
 		5FD8B6781CC0EBBE0067DCD1 /* 数字背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66D1CC0EBBE0067DCD1 /* 数字背景@2x.png */; };
 		5FD8B6791CC0EBBE0067DCD1 /* 添加附件@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */; };
+		5FE156591CCCE0A500AC33FD /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE156581CCCE0A500AC33FD /* Manuscript.storyboard */; };
 		840E80BF1CBE0D560049EE51 /* QMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E80BE1CBE0D560049EE51 /* QMUserModel.m */; };
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
@@ -36,6 +35,8 @@
 		84281EEB1CC3CCF80003583C /* QMPostFileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 84281EEA1CC3CCF80003583C /* QMPostFileTool.m */; };
 		84281EEE1CC3D0B30003583C /* QMPostParamterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 84281EED1CC3D0B30003583C /* QMPostParamterModel.m */; };
 		842FC1561CC08F14002EE18D /* QMWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 842FC1551CC08F14002EE18D /* QMWaveView.m */; };
+		846CBE8A1CC9FD6600560337 /* QMCacheViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846CBE881CC9FD6600560337 /* QMCacheViewController.m */; };
+		846CBE8B1CC9FD6600560337 /* QMCacheViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846CBE891CC9FD6600560337 /* QMCacheViewController.xib */; };
 		846D36F51CBB6F0000EF7254 /* LZCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 846D36F41CBB6F0000EF7254 /* LZCode.m */; };
 		8478648B1CB3A15600F66CC7 /* QMRecorderListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 847864891CB3A15600F66CC7 /* QMRecorderListCell.m */; };
 		8478648C1CB3A15600F66CC7 /* QMRecorderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8478648A1CB3A15600F66CC7 /* QMRecorderListCell.xib */; };
@@ -55,6 +56,7 @@
 		84B8150C1CBE36F40078755E /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B815061CBE36F40078755E /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		84B815111CBE39320078755E /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B815101CBE39320078755E /* AFNetworkReachabilityManager.m */; };
 		84B8151A1CBE40080078755E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84B815191CBE40080078755E /* Security.framework */; };
+		84B904901CCCCF700022E38F /* QMManuscriptDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B9048F1CCCCF700022E38F /* QMManuscriptDBManager.m */; };
 		84C81BB81CB6674B0053FF3B /* LZFileHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C81BB71CB6674B0053FF3B /* LZFileHandle.m */; };
 		84CE482F1CAEBC500012B584 /* QMSettingTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE482E1CAEBC500012B584 /* QMSettingTableViewCell.m */; };
 		84CE48321CAEC29A0012B584 /* QMSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CE48311CAEC29A0012B584 /* QMSettingViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -177,8 +179,6 @@
 		5FA7F5141CC23F40004CB38C /* AttachmentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AttachmentModel.m; path = "Interview/Classes/Manuscript(稿件)/AttachmentModel.m"; sourceTree = SOURCE_ROOT; };
 		5FAA52A31CC3E8FE006E2AA7 /* QMManuscriptListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMManuscriptListViewController.h; sourceTree = "<group>"; };
 		5FAA52A41CC3E8FE006E2AA7 /* QMManuscriptListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptListViewController.m; sourceTree = "<group>"; };
-		5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Manuscript.storyboard; path = "../Manuscript(稿件)/Manuscript.storyboard"; sourceTree = "<group>"; };
-		5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manuscript.storyboard; sourceTree = "<group>"; };
 		5FD8B65D1CC0D6AC0067DCD1 /* NewManuscriptVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewManuscriptVC.h; sourceTree = "<group>"; };
 		5FD8B65E1CC0D6AC0067DCD1 /* NewManuscriptVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewManuscriptVC.m; sourceTree = "<group>"; };
 		5FD8B6601CC0D7D60067DCD1 /* ManuscriptModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ManuscriptModel.h; path = "Interview/Classes/Manuscript(稿件)/ViewController/ManuscriptModel.h"; sourceTree = SOURCE_ROOT; };
@@ -194,6 +194,7 @@
 		5FD8B66C1CC0EBBE0067DCD1 /* 效果3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "效果3.png"; sourceTree = "<group>"; };
 		5FD8B66D1CC0EBBE0067DCD1 /* 数字背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字背景@2x.png"; sourceTree = "<group>"; };
 		5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加附件@2x.png"; sourceTree = "<group>"; };
+		5FE156581CCCE0A500AC33FD /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manuscript.storyboard; sourceTree = "<group>"; };
 		840E80BD1CBE0D560049EE51 /* QMUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUserModel.h; sourceTree = "<group>"; };
 		840E80BE1CBE0D560049EE51 /* QMUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUserModel.m; sourceTree = "<group>"; };
 		840F1CCC1CB397B0006F38B1 /* QMRecorderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListViewController.h; sourceTree = "<group>"; };
@@ -209,6 +210,9 @@
 		84281EED1CC3D0B30003583C /* QMPostParamterModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMPostParamterModel.m; sourceTree = "<group>"; };
 		842FC1541CC08F14002EE18D /* QMWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMWaveView.h; sourceTree = "<group>"; };
 		842FC1551CC08F14002EE18D /* QMWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMWaveView.m; sourceTree = "<group>"; };
+		846CBE871CC9FD6600560337 /* QMCacheViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMCacheViewController.h; sourceTree = "<group>"; };
+		846CBE881CC9FD6600560337 /* QMCacheViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMCacheViewController.m; sourceTree = "<group>"; };
+		846CBE891CC9FD6600560337 /* QMCacheViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMCacheViewController.xib; sourceTree = "<group>"; };
 		846D36F31CBB6F0000EF7254 /* LZCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZCode.h; sourceTree = "<group>"; };
 		846D36F41CBB6F0000EF7254 /* LZCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZCode.m; sourceTree = "<group>"; };
 		847864881CB3A15600F66CC7 /* QMRecorderListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListCell.h; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 		84B8150F1CBE39320078755E /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		84B815101CBE39320078755E /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		84B815191CBE40080078755E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		84B9048E1CCCCF700022E38F /* QMManuscriptDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMManuscriptDBManager.h; sourceTree = "<group>"; };
+		84B9048F1CCCCF700022E38F /* QMManuscriptDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMManuscriptDBManager.m; sourceTree = "<group>"; };
 		84C81BB61CB6674B0053FF3B /* LZFileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZFileHandle.h; sourceTree = "<group>"; };
 		84C81BB71CB6674B0053FF3B /* LZFileHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZFileHandle.m; sourceTree = "<group>"; };
 		84CE482D1CAEBC500012B584 /* QMSettingTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMSettingTableViewCell.h; sourceTree = "<group>"; };
@@ -774,7 +780,7 @@
 		84E345D11CAC04AD007A41A2 /* Manuscript(稿件) */ = {
 			isa = PBXGroup;
 			children = (
-				5FD8B65B1CC0D0490067DCD1 /* Manuscript.storyboard */,
+				5FE156581CCCE0A500AC33FD /* Manuscript.storyboard */,
 				84E345D21CAC04AD007A41A2 /* Model */,
 				84E345D31CAC04AD007A41A2 /* View */,
 				84E345D41CAC04AD007A41A2 /* ViewController */,
@@ -875,7 +881,6 @@
 		84E345D91CAC04AD007A41A2 /* Recorder(录音) */ = {
 			isa = PBXGroup;
 			children = (
-				5FD8B6591CC0D01B0067DCD1 /* Manuscript.storyboard */,
 				84E345DA1CAC04AD007A41A2 /* Model */,
 				84E345DB1CAC04AD007A41A2 /* View */,
 				84E345DC1CAC04AD007A41A2 /* ViewController */,
@@ -956,6 +961,9 @@
 				84CE48351CAEC5D60012B584 /* QMUserInfoViewController.h */,
 				84CE48361CAEC5D60012B584 /* QMUserInfoViewController.m */,
 				84CE48371CAEC5D60012B584 /* QMUserInfoViewController.xib */,
+				846CBE871CC9FD6600560337 /* QMCacheViewController.h */,
+				846CBE881CC9FD6600560337 /* QMCacheViewController.m */,
+				846CBE891CC9FD6600560337 /* QMCacheViewController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1033,6 +1041,8 @@
 			children = (
 				84E4D9641CB2AA5F00910C91 /* QMRecorderDBManager.h */,
 				84E4D9651CB2AA5F00910C91 /* QMRecorderDBManager.m */,
+				84B9048E1CCCCF700022E38F /* QMManuscriptDBManager.h */,
+				84B9048F1CCCCF700022E38F /* QMManuscriptDBManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -1277,7 +1287,7 @@
 				TargetAttributes = {
 					84E345751CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 7KZ5EX9Q69;
+						DevelopmentTeam = G9GWY6T6FF;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1326,11 +1336,10 @@
 				8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */,
 				84ECDBEE1CACBB4D007FD6E0 /* MBProgressHUD.bundle in Resources */,
 				5FD8B6741CC0EBBE0067DCD1 /* 已添加的录音@2x.png in Resources */,
-				5FD8B65A1CC0D01B0067DCD1 /* Manuscript.storyboard in Resources */,
 				5FD8B6751CC0EBBE0067DCD1 /* 效果1.png in Resources */,
 				5FD8B6771CC0EBBE0067DCD1 /* 效果3.png in Resources */,
 				84ECDBEC1CACBB4D007FD6E0 /* 数据库.rtf in Resources */,
-				5FD8B65C1CC0D0490067DCD1 /* Manuscript.storyboard in Resources */,
+				846CBE8B1CC9FD6600560337 /* QMCacheViewController.xib in Resources */,
 				5FD8B6761CC0EBBE0067DCD1 /* 效果2.png in Resources */,
 				84CE48341CAEC2A90012B584 /* QMSettingViewController.storyboard in Resources */,
 				5FD8B6701CC0EBBE0067DCD1 /* 切换附件@2x.png in Resources */,
@@ -1338,6 +1347,7 @@
 				84B80F501CB00319002E3870 /* QMRecorderViewController.storyboard in Resources */,
 				5FD8B6781CC0EBBE0067DCD1 /* 数字背景@2x.png in Resources */,
 				5FD8B6721CC0EBBE0067DCD1 /* 发送@2x.png in Resources */,
+				5FE156591CCCE0A500AC33FD /* Manuscript.storyboard in Resources */,
 				5FD8B6711CC0EBBE0067DCD1 /* 删除附件@2x.png in Resources */,
 				84CE48391CAEC5D60012B584 /* QMUserInfoViewController.xib in Resources */,
 				5FD8B6731CC0EBBE0067DCD1 /* 已添加的图片@2x.png in Resources */,
@@ -1388,6 +1398,7 @@
 				84E413151CC750CD0070DEEA /* ASIHTTPRequest.m in Sources */,
 				84ECDBCF1CACBAA0007FD6E0 /* MJRefreshConst.m in Sources */,
 				84E413111CC750CD0070DEEA /* ASIDataCompressor.m in Sources */,
+				846CBE8A1CC9FD6600560337 /* QMCacheViewController.m in Sources */,
 				84E412F51CC74DED0070DEEA /* SBJSON.m in Sources */,
 				8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */,
 				A5568A8A1CBF2C3200CCC984 /* LKDBHelper.m in Sources */,
@@ -1425,6 +1436,7 @@
 				84281EEB1CC3CCF80003583C /* QMPostFileTool.m in Sources */,
 				84E413181CC750CD0070DEEA /* Reachability.m in Sources */,
 				A5D6B5B61CB235A100B6E845 /* NewPlanVC.m in Sources */,
+				84B904901CCCCF700022E38F /* QMManuscriptDBManager.m in Sources */,
 				5FD8B65F1CC0D6AC0067DCD1 /* NewManuscriptVC.m in Sources */,
 				84ECDB921CACB7BA007FD6E0 /* AFURLSessionManager.m in Sources */,
 				84E4D9661CB2AA5F00910C91 /* QMRecorderDBManager.m in Sources */,
@@ -1606,8 +1618,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = interview/PrefixHeader.pch;
@@ -1618,9 +1630,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yandb.news;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MR..;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "25d98e49-6a8d-4f9b-972b-21d6bad54a78";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1628,8 +1640,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = interview/PrefixHeader.pch;
@@ -1640,9 +1652,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yandb.news;
+				PRODUCT_BUNDLE_IDENTIFIER = com.MR..;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "25d98e49-6a8d-4f9b-972b-21d6bad54a78";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

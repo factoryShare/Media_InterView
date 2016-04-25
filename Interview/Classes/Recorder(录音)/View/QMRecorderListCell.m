@@ -23,4 +23,9 @@
     self.musicName.text = model.CustomName;
 }
 
+//- (void)setSelected:(BOOL)selected {
+////    self.selected = selected;
+//    self.cellPlayBtn.selected = selected;
+//}
+
 @end
