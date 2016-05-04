@@ -47,7 +47,8 @@
     [[QMRecorderDBManager sharedQMRecorderDBManager] getAllModel:^(NSArray *array) {
         self.dataSource = [NSMutableArray arrayWithArray:array];
     }];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopAudio) name:@"enterBackground" object:nil];
+    // 进入后台停止播放
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(stopAudio) name:@"enterBackground" object:nil];
 
     // 初始播放设置
     [self getInitial];

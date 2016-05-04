@@ -1287,7 +1287,7 @@
 				TargetAttributes = {
 					84E345751CABFA87007A41A2 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = G9GWY6T6FF;
+						DevelopmentTeam = 7KZ5EX9Q69;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1618,8 +1618,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = interview/PrefixHeader.pch;
@@ -1630,9 +1630,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MR..;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yandb.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "25d98e49-6a8d-4f9b-972b-21d6bad54a78";
 			};
 			name = Debug;
 		};
@@ -1640,8 +1640,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Y&B Technology Co.,Ltd (7KZ5EX9Q69)";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = interview/PrefixHeader.pch;
@@ -1652,9 +1652,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.MR..;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yandb.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "25d98e49-6a8d-4f9b-972b-21d6bad54a78";
 			};
 			name = Release;
 		};

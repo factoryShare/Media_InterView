@@ -16,7 +16,7 @@
 #import "RevelationManager.h"
 #import "QMUserInfoViewController.h"
 
-#define marginX 10.0
+#define marginX 10.0  
 #define numPerLine 3
 #define itemWidth ([UIScreen mainScreen].bounds.size.width - (numPerLine+1) * marginX) / numPerLine
 
