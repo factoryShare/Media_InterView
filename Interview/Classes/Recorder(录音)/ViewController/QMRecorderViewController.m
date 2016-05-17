@@ -36,6 +36,8 @@
 @property(nonatomic,strong) QMRecorderDBManager *recorderDBManager;
 @property(nonatomic,strong) UIWindow *keyWindow;
 
+@property(nonatomic,strong) UIViewController *topMostViewController;
+
 @end
 
 @implementation QMRecorderViewController

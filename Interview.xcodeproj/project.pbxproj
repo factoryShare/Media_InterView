@@ -27,6 +27,8 @@
 		5FD8B6781CC0EBBE0067DCD1 /* 数字背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66D1CC0EBBE0067DCD1 /* 数字背景@2x.png */; };
 		5FD8B6791CC0EBBE0067DCD1 /* 添加附件@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */; };
 		5FE156591CCCE0A500AC33FD /* Manuscript.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5FE156581CCCE0A500AC33FD /* Manuscript.storyboard */; };
+		8408B2E61CE9C0E700C004BB /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8408B2E51CE9C0E700C004BB /* libmp3lame.a */; };
+		8408B2E91CE9C13D00C004BB /* LZAudioTransformTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408B2E81CE9C13D00C004BB /* LZAudioTransformTool.m */; };
 		840E80BF1CBE0D560049EE51 /* QMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E80BE1CBE0D560049EE51 /* QMUserModel.m */; };
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
@@ -195,6 +197,11 @@
 		5FD8B66D1CC0EBBE0067DCD1 /* 数字背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "数字背景@2x.png"; sourceTree = "<group>"; };
 		5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "添加附件@2x.png"; sourceTree = "<group>"; };
 		5FE156581CCCE0A500AC33FD /* Manuscript.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Manuscript.storyboard; sourceTree = "<group>"; };
+		8408B2E21CE9BC3500C004BB /* exported.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = exported.caf; sourceTree = "<group>"; };
+		8408B2E41CE9C0E700C004BB /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
+		8408B2E51CE9C0E700C004BB /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		8408B2E71CE9C13D00C004BB /* LZAudioTransformTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZAudioTransformTool.h; sourceTree = "<group>"; };
+		8408B2E81CE9C13D00C004BB /* LZAudioTransformTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZAudioTransformTool.m; sourceTree = "<group>"; };
 		840E80BD1CBE0D560049EE51 /* QMUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMUserModel.h; sourceTree = "<group>"; };
 		840E80BE1CBE0D560049EE51 /* QMUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUserModel.m; sourceTree = "<group>"; };
 		840F1CCC1CB397B0006F38B1 /* QMRecorderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListViewController.h; sourceTree = "<group>"; };
@@ -447,6 +454,7 @@
 				84E4131E1CC751F40070DEEA /* MobileCoreServices.framework in Frameworks */,
 				84E4131C1CC751E90070DEEA /* SystemConfiguration.framework in Frameworks */,
 				84E4131A1CC751DB0070DEEA /* CFNetwork.framework in Frameworks */,
+				8408B2E61CE9C0E700C004BB /* libmp3lame.a in Frameworks */,
 				84B8151A1CBE40080078755E /* Security.framework in Frameworks */,
 				84ECDBF81CACBE16007FD6E0 /* libsqlite3.tbd in Frameworks */,
 				84A21B4F1CB0D4D400440905 /* libopencore-amrwb.a in Frameworks */,
@@ -504,6 +512,15 @@
 				5FD8B66E1CC0EBBE0067DCD1 /* 添加附件@2x.png */,
 			);
 			path = "稿件";
+			sourceTree = "<group>";
+		};
+		8408B2E31CE9C0E700C004BB /* lame */ = {
+			isa = PBXGroup;
+			children = (
+				8408B2E41CE9C0E700C004BB /* lame.h */,
+				8408B2E51CE9C0E700C004BB /* libmp3lame.a */,
+			);
+			path = lame;
 			sourceTree = "<group>";
 		};
 		846D36F21CBB6F0000EF7254 /* LZCode */ = {
@@ -648,6 +665,7 @@
 		84E345791CABFA87007A41A2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8408B2E21CE9BC3500C004BB /* exported.caf */,
 				5FD8B6631CC0EBBE0067DCD1 /* 稿件 */,
 				84E345851CABFA87007A41A2 /* Assets.xcassets */,
 				84E345AD1CAC01A9007A41A2 /* PrefixHeader.pch */,
@@ -749,6 +767,9 @@
 				84E4D9631CB28AAF00910C91 /* SynthesizeSingleton.h */,
 				84281EE91CC3CCF80003583C /* QMPostFileTool.h */,
 				84281EEA1CC3CCF80003583C /* QMPostFileTool.m */,
+				8408B2E71CE9C13D00C004BB /* LZAudioTransformTool.h */,
+				8408B2E81CE9C13D00C004BB /* LZAudioTransformTool.m */,
+				8408B2E31CE9C0E700C004BB /* lame */,
 				84B815041CBE36F40078755E /* KeychainItemWrapper */,
 				846D36F21CBB6F0000EF7254 /* LZCode */,
 				84C81BB51CB6674B0053FF3B /* LZFileHandle */,
@@ -1380,6 +1401,7 @@
 				84A21B4D1CB0D4D400440905 /* wav.mm in Sources */,
 				84E345CB1CAC0358007A41A2 /* AppDelegate.m in Sources */,
 				84ECDBCD1CACBAA0007FD6E0 /* MJRefreshStateHeader.m in Sources */,
+				8408B2E91CE9C13D00C004BB /* LZAudioTransformTool.m in Sources */,
 				84ECDBC91CACBAA0007FD6E0 /* MJRefreshBackNormalFooter.m in Sources */,
 				84ECDBC31CACBAA0007FD6E0 /* MJRefreshFooter.m in Sources */,
 				A5D6B5C51CB2570A00B6E845 /* PlanItemModel.m in Sources */,
@@ -1629,6 +1651,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/VoiceConvert/lib",
+					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/lame",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yandb.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1651,6 +1674,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/VoiceConvert/lib",
+					"$(PROJECT_DIR)/Interview/Classes/Main/Tools/lame",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.yandb.news;
 				PRODUCT_NAME = "$(TARGET_NAME)";

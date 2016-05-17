@@ -10,19 +10,17 @@
 #import "QMSettingTableViewCell.h"
 #import "QMUserInfoViewController.h"
 #import "QMCacheViewController.h"
-
 #import "QMPostFileTool.h"
 #import "AFNetworking.h"
-
 #import "RevelationManager.h"
+
+#import "LZAudioTransformTool.h"
 
 @interface QMSettingViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
 
 @implementation QMSettingViewController
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,8 +32,6 @@
 //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"push" style:(UIBarButtonItemStyleDone) target:self action:@selector(push)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(uploadFile:) name:@"postFileByArray" object:nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(MRC:) name:@"wosai_success" object:nil];
 
 }
 
@@ -81,9 +77,26 @@
         [self.navigationController pushViewController:userInfoVC animated:YES];
     } else if(indexPath.row == 1){
         UIViewController *bannerVC = [[UIViewController alloc]init];
-        UIImageView *im = [[UIImageView alloc]initWithFrame:bannerVC.view.bounds];
+        UIImageView *im = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, _kScreenWidth, _kScreenHeight - 64)];
+        im.contentMode = UIViewContentModeScaleToFill;
         im.image = [UIImage imageNamed:@"Banner_bg"];
         [bannerVC.view addSubview:im];
+
+        // 版权信息
+        UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(0, _kScreenHeight - 64 - 60, _kScreenWidth-2, 30)];
+        label1.text = @"版本 : 1.3";
+        label1.textColor = [UIColor whiteColor];
+        label1.textAlignment = NSTextAlignmentRight;
+        label1.font = [UIFont boldSystemFontOfSize:15];
+        [bannerVC.view addSubview:label1];
+        
+        UILabel *label2 = [[UILabel alloc]initWithFrame:CGRectMake(0, _kScreenHeight - 64 - 30, _kScreenWidth-2, 30)];
+        label2.text = @"© 版权所有，北京永安博技术有限公司";
+        label2.textColor = [UIColor whiteColor];
+        label2.textAlignment = NSTextAlignmentRight;
+        label2.font = [UIFont boldSystemFontOfSize:15];
+        [bannerVC.view addSubview:label2];
+        
         bannerVC.title  = @"关于";
         
         [self.navigationController pushViewController:bannerVC animated:YES
@@ -92,7 +105,6 @@
         QMCacheViewController *cacheVC = [[QMCacheViewController alloc]init];
         [self.navigationController pushViewController:cacheVC animated:YES
          ];
-
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -113,22 +125,25 @@
     [manager SendRequset:fileArr :scriptTitle :scriptContent];
 
 }
-//
-//- (void)MRC:(NSNotification *)no {
-//    QMLog(@"%@",no.userInfo);
-//}
+
 
 #pragma mark - 瞎搞
 - (void)push {
-    NSString *audioPath = @"/Users/admin/Desktop/外包项目/Interview/Interview/20164220024258.amr";
-    NSMutableArray *imageArr = [NSMutableArray array];
+    NSString *audioPath =@"/Users/admin/Desktop/exported.caf";
     
-    [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
+    LZAudioTransformTool *tool = [LZAudioTransformTool sharedLZAudioTransformTool];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        [tool audio_PCMtoMP3WithResourcePath:audioPath];
+    });
     
-    RevelationManager *manager = [[RevelationManager alloc]init];
-//    __block  QMSettingViewController *vc = self;
-//    manager.delegate  = self;
-    [manager SendRequset:imageArr :@"test" :@"gg"];
+//    NSMutableArray *imageArr = [NSMutableArray array];
+//    
+//    [imageArr addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:audioPath,@"filename",@"1",@"filetype", nil]];
+//    
+//    RevelationManager *manager = [[RevelationManager alloc]init];
+////    __block  QMSettingViewController *vc = self;
+////    manager.delegate  = self;
+//    [manager SendRequset:imageArr :@"test" :@"gg"];
     
 }
 

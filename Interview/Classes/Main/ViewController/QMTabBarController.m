@@ -73,6 +73,15 @@
     [self addChildViewController:nav];
 }
 
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown;
+}
+
+- (BOOL)shouldAutorotate{
+    return YES;
+}
+
+
 /*
 #pragma mark - Navigation
 

@@ -465,7 +465,6 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:@"wosai_success" object:nil userInfo:@{@"status":@"0"}];
             
         } else {
-            
             [[NSNotificationCenter defaultCenter] postNotificationName:@"wosai_success" object:nil userInfo:@{@"status":@"1"}];
                 
             [MBProgressHUD showError:@"请重新登陆"];

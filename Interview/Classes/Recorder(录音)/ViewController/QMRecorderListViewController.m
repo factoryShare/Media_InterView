@@ -14,6 +14,8 @@
 #import "LZPlayerForRecorder.h"
 #import "QMRecorderListBottomView.h"
 
+#import <AVFoundation/AVFoundation.h>
+
 @interface QMRecorderListViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong) UITableView *tableView;
@@ -42,6 +44,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
+
     [self createBarItem];
 
     [[QMRecorderDBManager sharedQMRecorderDBManager] getAllModel:^(NSArray *array) {
