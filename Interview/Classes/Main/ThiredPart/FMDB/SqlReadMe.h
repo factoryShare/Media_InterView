@@ -6,7 +6,7 @@
 
 sql="select * from 数据表 where 字段名=字段值 order by 字段名 [desc]"
 　　
-sql="select * from 数据表 where 字段名 like '%字段值%' order by 字段名 [desc]"
+sql="select * from 数据表 where 字段名 like '%字段值%' order by 字段名 [desc]"asc
 　　
 　
 sql="select * from 数据表 where 字段名 in ('值1','值2','值3')"
@@ -74,29 +74,4 @@ sql="select sum(字段名) as 别名 from 数据表 where 条件表达式"
  *
  *  @return 返回筛选后的FMResultSet
  */
-- (FMResultSet *)ReadDataBase:(NSString *)dataBaseName subDataBase:(NSString *)subDataBase andSelectItem:(NSString *)item{
-    // 获得home
-    NSString *home = NSHomeDirectory();
-    NSString *homePath = [home stringByAppendingPathComponent:@"Documents"];
-    
-    NSString *cityDBpath = [homePath stringByAppendingPathComponent:dataBaseName];
-    
-    // 创立数据库
-    _dataBase = [[FMDatabase alloc]initWithPath:cityDBpath];
-    // 打开数据库
-    [_dataBase open];
-    
-    // 读取城市数据库
-    
-    NSString *sqSel = @"SELECT * FROM ";
-    NSString *sqlSub = [sqSel stringByAppendingFormat:@"%@ %@",subDataBase,item];
-    
-    FMResultSet *set = [_dataBase executeQuery: sqlSub];
-    
-    return set;
-}
 
-
-
-
-*/

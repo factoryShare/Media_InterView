@@ -66,8 +66,6 @@
     [self updateTableView];
     
     [self createBottomView];
-
-    QMLog(@"%@",_player);
 }
 
 - (void)viewDidAppear:(BOOL)animated {

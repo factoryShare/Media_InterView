@@ -31,6 +31,7 @@
 		8408B2E91CE9C13D00C004BB /* LZAudioTransformTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8408B2E81CE9C13D00C004BB /* LZAudioTransformTool.m */; };
 		840E80BF1CBE0D560049EE51 /* QMUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 840E80BE1CBE0D560049EE51 /* QMUserModel.m */; };
 		840F1CCF1CB397B0006F38B1 /* QMRecorderListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */; };
+		840FF1AF1CEB06DD00B62E11 /* VTMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 840FF1AE1CEB06DD00B62E11 /* VTMViewController.m */; };
 		8418C12C1CB7527D0027C257 /* QMRecorderListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */; };
 		8418C12F1CB753FE0027C257 /* QMRecorderListBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */; };
 		841F30A91CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841F30A81CBF30DC0013ADD8 /* QMManuscriptAMRListViewController.m */; };
@@ -206,6 +207,8 @@
 		840E80BE1CBE0D560049EE51 /* QMUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMUserModel.m; sourceTree = "<group>"; };
 		840F1CCC1CB397B0006F38B1 /* QMRecorderListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListViewController.h; sourceTree = "<group>"; };
 		840F1CCD1CB397B0006F38B1 /* QMRecorderListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListViewController.m; sourceTree = "<group>"; };
+		840FF1AD1CEB06DD00B62E11 /* VTMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VTMViewController.h; sourceTree = "<group>"; };
+		840FF1AE1CEB06DD00B62E11 /* VTMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VTMViewController.m; sourceTree = "<group>"; };
 		8418C12B1CB7527D0027C257 /* QMRecorderListBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QMRecorderListBottomView.xib; sourceTree = "<group>"; };
 		8418C12D1CB753FE0027C257 /* QMRecorderListBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QMRecorderListBottomView.h; sourceTree = "<group>"; };
 		8418C12E1CB753FE0027C257 /* QMRecorderListBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QMRecorderListBottomView.m; sourceTree = "<group>"; };
@@ -700,7 +703,7 @@
 				84E345AF1CAC0358007A41A2 /* Main */,
 				84E345D91CAC04AD007A41A2 /* Recorder(录音) */,
 				84E345D11CAC04AD007A41A2 /* Manuscript(稿件) */,
-				84E345D51CAC04AD007A41A2 /* Plan */,
+				84E345D51CAC04AD007A41A2 /* Plan(策划) */,
 				84E345DD1CAC04AD007A41A2 /* Setting(设置) */,
 			);
 			path = Classes;
@@ -769,6 +772,8 @@
 				84281EEA1CC3CCF80003583C /* QMPostFileTool.m */,
 				8408B2E71CE9C13D00C004BB /* LZAudioTransformTool.h */,
 				8408B2E81CE9C13D00C004BB /* LZAudioTransformTool.m */,
+				840FF1AD1CEB06DD00B62E11 /* VTMViewController.h */,
+				840FF1AE1CEB06DD00B62E11 /* VTMViewController.m */,
 				8408B2E31CE9C0E700C004BB /* lame */,
 				84B815041CBE36F40078755E /* KeychainItemWrapper */,
 				846D36F21CBB6F0000EF7254 /* LZCode */,
@@ -844,7 +849,7 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		84E345D51CAC04AD007A41A2 /* Plan */ = {
+		84E345D51CAC04AD007A41A2 /* Plan(策划) */ = {
 			isa = PBXGroup;
 			children = (
 				A5D6B5B21CB2342F00B6E845 /* Plan.storyboard */,
@@ -852,7 +857,6 @@
 				84E345D71CAC04AD007A41A2 /* View */,
 				84E345D81CAC04AD007A41A2 /* ViewController */,
 			);
-			name = Plan;
 			path = "Plan(策划)";
 			sourceTree = "<group>";
 		};
@@ -1402,6 +1406,7 @@
 				84E345CB1CAC0358007A41A2 /* AppDelegate.m in Sources */,
 				84ECDBCD1CACBAA0007FD6E0 /* MJRefreshStateHeader.m in Sources */,
 				8408B2E91CE9C13D00C004BB /* LZAudioTransformTool.m in Sources */,
+				840FF1AF1CEB06DD00B62E11 /* VTMViewController.m in Sources */,
 				84ECDBC91CACBAA0007FD6E0 /* MJRefreshBackNormalFooter.m in Sources */,
 				84ECDBC31CACBAA0007FD6E0 /* MJRefreshFooter.m in Sources */,
 				A5D6B5C51CB2570A00B6E845 /* PlanItemModel.m in Sources */,

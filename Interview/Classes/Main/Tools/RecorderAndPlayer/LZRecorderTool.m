@@ -65,11 +65,7 @@
         float power = [self.recorder averagePowerForChannel:0]; //取得第一个通道的音频，注意音频强度范围时-160到0
         
         self.audioPower = (CGFloat)(power+160.0);
-        if (self.delegate && [self.delegate respondsToSelector:@selector(getaudioPower:)]) {
-            [self.delegate getaudioPower:self.audioPower];
-        } else {
-            QMLog(@"没有设置代理或没有实现协议方法");
-        }
+        [self.delegate getaudioPower:self.audioPower];
     } else {
         self.timer.fireDate = [NSDate distantFuture]; // 关闭定时器
         if (self.timer.isValid) {
